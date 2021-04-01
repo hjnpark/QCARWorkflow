@@ -1,2 +1,2 @@
 __all__ = ['qcaw']
-from QCAWorkflow import qcaw
+from QCARWorkflow import qcaw

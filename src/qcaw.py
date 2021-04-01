@@ -8,7 +8,7 @@ import os, sys, subprocess, time
 import qcengine as qcng
 import qcelemental as qcel
 import qcportal as ptl
-from geometric.molecule import Molecule, EqualSpacing, TopEqual, MolEqual
+from QCARWorkflow.molecule import Molecule, EqualSpacing, TopEqual, MolEqual
 from collections import OrderedDict
 import numpy as np
 
@@ -98,6 +98,10 @@ class User:
         client : client object 
             With the client object, a user can create/access datasets
         """
+        if start: 
+            subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
+            time.sleep(3.0)
+            print("Server is running, you can set \"start = False\" now") 
         info = os.popen("qcfractal-server info").readlines()
         a = 0
         for i, j in enumerate(info):
@@ -110,10 +114,7 @@ class User:
         client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
         print("Client is ready")
        
-        if start: 
-            subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
-            time.sleep(1.0)
-            print("Server is running")  
+         
         return client           
 
 class Dataset:
@@ -265,7 +266,7 @@ class Workflow:
         return ds_sp 
         
 
-    def optimization(self, method=None, basis=None, subsample = None, compute = False, spec_overwrite = False): 
+    def optimization(self, method=None, basis=None, subsample = None, compute = False, maxiter = None, spec_overwrite = False): 
         """
         This function converts the xyz file to QCAI molecule objects and sets up optimization jobs.          
 
@@ -279,6 +280,9 @@ class Workflow:
 
         compute : boolean
             "compute = False" will only save the molecules in the given dataset and specfication. "compute = True" will submit the jobs to server.
+
+        maxiter : int
+            maximum scf iteration number
 
         spec_overwrite : boolean
             "spec_overwrite = True" will overwrite the spec if the same name spec exists
@@ -294,9 +298,11 @@ class Workflow:
         if basis == None:
             basis = "6-31g(d)"   
         if subsample == None:
-            subsample == 10
+            subsample = 10
+        if maxiter == None:
+            maxiter = 500
         ds_opt = self.ds
-        key = [ptl.models.KeywordSet(values={'maxiter':500})]        
+        key = [ptl.models.KeywordSet(values={'maxiter':maxiter})]        
         key_id = self.client.add_keywords(key)[0]
         optimize = {
             "name" : self.spec_name,
@@ -405,7 +411,7 @@ class Workflow:
             
             command ="Nebterpolate.py --morse 1e-2 --repulsive --allpairs --anchor 2 %s/spaced_%s.xyz %s/NEB_ready_%s.xyz &> %s/interpolate_%s.log" %(NEB_path, fname, NEB_path, fname, NEB_path, fname)
             subprocess.Popen(command, shell=True)
-        print("Smoothing Procedure is running. NEB ready xyz files will be generated once the smoothing procedure is done.")
+        print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
         
 
 

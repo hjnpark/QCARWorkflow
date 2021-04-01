@@ -1,9 +1,0 @@
-Traceback (most recent call last):
-  File "/home/hpark21/miniconda3/envs/p4_test/bin/Nebterpolate.py", line 104, in try_smooth_internal
-    return smooth_internal(*args, **kwargs)
-  File "/home/hpark21/miniconda3/envs/p4_test/lib/python3.7/site-packages/nebterpolator/path_operations.py", line 134, in smooth_internal
-    elem=atom_names, w_morse=w_morse_, rep=rep)
-  File "/home/hpark21/miniconda3/envs/p4_test/lib/python3.7/site-packages/nebterpolator/inversion.py", line 113, in least_squares_cartesian
-    raise ImportError('The least_squares_cartesian function requires the nanoreactor.molecule module')
-ImportError: The least_squares_cartesian function requires the nanoreactor.molecule module
-Interpolator failed due to error - copying input to output instead.

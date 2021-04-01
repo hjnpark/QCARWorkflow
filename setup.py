@@ -15,12 +15,12 @@ requirements = ['numpy', 'networkx', 'qcelemental', 'qcfractal', 'qcportal', 'qc
     
 def buildKeywordDictionary():
     setupKeywords = {}
-    setupKeywords["name"]              = "QCAWorkflow"
+    setupKeywords["name"]              = "QCARWorkflow"
     setupKeywords["version"]           = "%.1f" %VERSION
     setupKeywords["author"]            = __author__
     setupKeywords["author_email"]      = "heepark@ucdavis.edu"
-    setupKeywords["packages"]          = ["QCAWorkflow", "nebterpolator", "nebterpolator.io", "nebterpolator.core"]
-    setupKeywords["package_dir"]       = {"QCAWorkflow": "src"}
+    setupKeywords["packages"]          = ["QCARWorkflow", "nebterpolator", "nebterpolator.io", "nebterpolator.core"]
+    setupKeywords["package_dir"]       = {"QCARWorkflow": "src"}
     setupKeywords["scripts"]           = glob.glob("bin/*.py")# + glob.glob("bin/*.sh") + glob.glob("bin/*.exe") + glob.glob("bin/*.vmd")
     setupKeywords["platforms"]         = ["Linux"]
     setupKeywords["description"]       = "An automated workflow that can refine reaction pathways from MD simulation trajectories."
@@ -41,7 +41,7 @@ def main():
       try:
           exec('import %s' % requirement)
       except ImportError as e:
-          print('\nWarning: Could not import %s' % e, file=sys.stderr)
+          print('\nWarning:%s' % e, file=sys.stderr)
           print('Warning: Some package functionality may not work', file=sys.stderr)
 
 if __name__ == '__main__':
