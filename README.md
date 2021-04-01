@@ -43,7 +43,7 @@ Run the command below in ~/QCARWorkflow directory after downloading this reposit
 python setup.py install
 
 ```
-### 5. Other Depencencies
+### 5. Other Dependencies
 SciPy might need to be installed.
 ```shell
 conda install -c anaconda scipy
@@ -101,7 +101,7 @@ Once the jobs are ready, [`qcfractal-manager`](http://docs.qcarchive.molssi.org/
 ```shell
 qcfractal-manager --fractal-uri=https://localhost:7777/  --verify False -u User1 -p 1234
 ```
-You might want to chane `localhost` to the name of the machine that contains the server (where `qcfractal-server start` is running) if the computing resources and the local machine aren't same. The portnumber here `7777` is the default value from the qcfractal-server. Running `qcfractal-server info` in terminal will provide detailed server information with the portnumber. 
+You might want to change `localhost` to the machine name where `qcfractal-server start` is running if the computing resources and the local machine aren't same. The portnumber here `7777` is default value from the qcfractal-server. Running `qcfractal-server info` in terminal will provide detailed server information with the portnumber. 
 
 ### 3. Smoothing procedure
 First, let's check the status of the calculations.
@@ -112,7 +112,7 @@ client = User(user = 'User1', password = '1234').server() # This will connect yo
 ds = Dataset(name = 'ds_test', ds_type = 'OptimizationDataset', client = client).setting('load') # Note that the setting is "load" now since we already created the ds_test for optimizations. 
 print (ds.status(collapse = False))
 ```
-Running the scipt above after submitting jobs and 'qcfractal-manager' will show the status of jobs. Once all the jobs are 'COMPLETED', running the script below will detect reactions and smooth them.  
+Running the script above will show job status of the dataset. Once all the jobs are 'COMPLETED', running the script below will detect reactions and smooth them.  
 ```python
 from QCARWorkflow.qcaw import User, Dataset, Workflow
     
@@ -126,7 +126,7 @@ It will create directories /some_example/xx-xx/ and write final result xyz files
 ## Useful Tips
 ### 1. Resubmitting "ERROR" status jobs
 
-The current version won't be able to smooth OptimizationDataset results that contain any "ERROR" status in it. You can resubmit jobs to the server with "ERROR" results. The resubmitted jobs will be carried with the same specification.
+The current version won't be able to smooth OptimizationDataset results that contain any "ERROR" status in it. You can resubmit jobs to the server with "ERROR" results. The resubmitted calculations will be carried with the same specification.
 ```python
 from QCARWorkflow.qcaw import User, resubmit_all
     
@@ -137,7 +137,7 @@ client.resubmit_all()
 This will resubmit ALL the failed jobs in all of the dataset in the server.
 """
 ```
-If "ERROR" status persists, you can "reset" the datset with a new specification (or add a new pecification with a different method and basis) and run the calculations again until all the jobs are "COMPLETED" successfully. 
+If "ERROR" status persists, you can "reset" the datset with a new specification (or add a new specification to the previous dataset with different methods and bases) and run the calculations again until all the jobs are "COMPLETED" successfully. 
 
 If you want to resubmit failed jobs only from a specific dataset, you can use the script below.
  ```python
