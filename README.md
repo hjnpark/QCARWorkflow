@@ -44,7 +44,7 @@ python setup.py install
 
 ```
 ### 5. Other Dependencies
-SciPy might need to be installed.
+SciPy needs to be installed.
 ```shell
 conda install -c anaconda scipy
 ```

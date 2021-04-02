@@ -408,9 +408,11 @@ class Workflow:
             geo_mol_Traj.write(os.path.join(path + fnum,"connected_%s.xyz" %fname))
             equal = EqualSpacing(geo_mol_Traj, dx = 0.05) 
             equal.write(os.path.join(path + fnum, "spaced_%s.xyz" %fname))
-            
+            geo_mol_Traj= None 
             command ="Nebterpolate.py --morse 1e-2 --repulsive --allpairs --anchor 2 %s/spaced_%s.xyz %s/NEB_ready_%s.xyz &> %s/interpolate_%s.log" %(NEB_path, fname, NEB_path, fname, NEB_path, fname)
-            subprocess.Popen(command, shell=True)
+            log = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
+            #err = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
+            subprocess.Popen(command, shell=True, stdout = log, stderr = log)
         print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
         
 
