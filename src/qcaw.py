@@ -84,7 +84,7 @@ class User:
         self.user = user
         self.password = password
 
-    def server(self, start = False):
+    def server(self):
         """
         Setting up or starting a QCFractal server
         
@@ -98,10 +98,6 @@ class User:
         client : client object 
             With the client object, a user can create/access datasets
         """
-        if start: 
-            subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
-            time.sleep(3.0)
-            print("Server is running, you can set \"start = False\" now") 
         info = os.popen("qcfractal-server info").readlines()
         a = 0
         for i, j in enumerate(info):
@@ -111,10 +107,15 @@ class User:
                 a += 1
             if a > 1 and "port" in j :
                 port = int(j.strip().split(" ")[-1])
-        client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+        try:
+            client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+        except:
+            subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
+            time.sleep(3.0)
+            client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+            print("Server is running") 
         print("Client is ready")
        
-         
         return client           
 
 class Dataset:

@@ -55,9 +55,8 @@ Done!
 QCFractal server handles data storage and job submissions.
 ```shell
 qcfractal-server init
-nohup qcfractal-server start &
 ```
-The commands above will create a server and run the server. Once the server is started, it will be running until either a user kills it manually or the machine shuts down. Next, we can add users to the server. 
+The commands above will create a server. Next, we can add users to the server. 
 ```shell
 qcfractal-server user add User1 --password 1234 --permissions admin
 ``` 
@@ -75,6 +74,7 @@ client = User(user = 'User1', password = '1234').server() # This will connect yo
 ds = Dataset(name = 'ds_test', ds_type = 'OptimizationDataset', client = client).setting('make')
 
 """
+If the server is not running, it will run the server automatically and connect to the server.
 name : Name of the dataset
 ds_type : Dataset type. For now "Dataset" and "OptimizationDataset" are supported.
 client : client object that we defined above.
