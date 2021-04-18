@@ -110,7 +110,7 @@ def window_smooth(signal, window_len=11, window='flat'):
         else:
             w = getattr(np, window)(window_len)
         output = np.convolve(w / w.sum(), padded, mode='valid')
-        return output[(window_len//2):-(window_len//2)] #Not sure whether this needs to be integer or not.
+        return output[(window_len//2):-(window_len//2)] 
 
 
 def buttersworth_smooth(signal, width=11, order=3):
