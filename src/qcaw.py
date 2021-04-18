@@ -99,20 +99,24 @@ class User:
             With the client object, a user can create/access datasets
         """
         info = os.popen("qcfractal-server info").readlines()
-        a = 0
-        for i, j in enumerate(info):
-            if "host" in j:
-                host = j.strip().split(" ")[-1]
-            if "fractal" in j:
-                a += 1
-            if a > 1 and "port" in j :
-                port = int(j.strip().split(" ")[-1])
+        for line in info:
+            if "host" in line:
+                host = line.strip().split(" ")[-1]
+            if "port" in line:
+                port = int(line.strip().split(" ")[-1])
         try:
             client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
         except:
-            subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
-            time.sleep(3.0)
-            client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+            for i in range(0, 3):
+                try:
+                    subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
+                    time.sleep(3.0)
+                    client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+                    cnt_error = None
+                except Exception as cnt_error:
+                    pass
+                if cnt_error == None:
+                    break 
             print("Server is running") 
         print("Client is ready")
        
@@ -349,7 +353,10 @@ class Workflow:
                 num += 1
                 self.client.modify_task("restart", opts[i].id)
         print ("%i failed jobs in %s dataset with %s specfication have been submitted again." %(num, self.ds.name, self.spec_name))
-    
+
+    def Equal(self, m1, m2):
+        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
+
     def smoothing(self):
         """
         Once the optimization is done, smoothing function will detect reactions and smooth them for NEB calculation.
@@ -358,38 +365,60 @@ class Workflow:
         opts = self.ds.df[self.spec_name].tolist()
         stats = [opt.status for opt in opts] 
         mol_names = opt.index.tolist() 
-        for i in range(len(stats)):
-            if stats[i].value == "ERROR" or stats[i].value == "INCOMPLETE":
-                raise RuntimeError ("ERROR or INCOMPLETE result detected. Make sure all the optimizations in \'%s\' dataset with \'%s\' specification are completed." %(self.ds.name, self.spec_name))
-        M = None
+        mol_name = '_'.join(str(elem) for elem in mol_names[0].split("_")[:-1])
+       # for stat in stats:
+       #     if stat.value == "ERROR" or stat.value == "INCOMPLETE":
+       #         raise RuntimeError ("ERROR or INCOMPLETE result detected. Make sure all the optimizations in \'%s\' dataset with \'%s\' specification are completed." %(self.ds.name, self.spec_name))
+        
+        OptMols = OrderedDict()
+        for name, calc in zip(mol_names, stats):
+            frm = int(name.split("_")[-1])
+            err = 0
+            if calc.value == "ERROR" or calc.value == "INCOMPLETE":
+                err += 1
+                if err == 0:
+                    print ("WARNING: ERROR or INCOMPLETE result detected.") 
+                continue
+            qcel_M = self.ds.get_record(name, self.spec_name).get_final_molecule()
+            OptMols[frm] = qc_to_geo(qcel_M, b2a = True)  
+
+        path_initial = [] 
+        path_final = []
+        for fi, fj in zip(list(OptMols.keys())[:-1], list(OptMols.keys())[1:]): 
+            if not self.Equal(OptMols[fi], OptMols[fj]): 
+                path_initial.append(fi)
+                path_final.append(fj)
+
         MolPairs = []
         FramePairs = []
-        for i in range(len(mol_names)):
-            qcel_M = self.ds.get_record(mol_names[i], self.spec_name).get_final_molecule()
-            geo_M = qc_to_geo(qcel_M, b2a = True)
-            if M != None:
-                if not (TopEqual(M, geo_M) if True else MolEqual(M, geo_M)): 
-                    MolPairs.append((M, geo_M))
-                    FramePairs.append((mol_names[i-1], mol_names[i]))
-            M = geo_M
-                
+            
+        for fi in path_initial:
+            for fj in path_final:
+                if fj > fi and (not self.Equal(OptMols[fi], OptMols[fj])):
+                    if (fj - fi) > 1000: continue
+                    NewPair = True
+                    for imp, (m1, m2) in enumerate(MolPairs):
+                        if self.Equal(OptMols[fi], m1) and self.Equal(OptMols[fj], m2):
+                            FramePairs[imp].append((fi, fj))
+                            NewPair = False
+                            break
+                        elif self.Equal(OptMols[fi], m2) and self.Equal(OptMols[fj], m1):
+                            FramePairs[imp].append((fi, fj))
+                            NewPair = False
+                            break
+                    if NewPair:
+                        MolPairs.append((OptMols[fi], OptMols[fj]))
+                        FramePairs.append([(fi, fj)])
+
         if len(MolPairs) != len(FramePairs) or len (MolPairs) == 0:
             raise RuntimeError ("No reactions are detected or the Number of detected pairs of reacting molecules and frames don't match.")            
 
         geo_mol_Traj = None
         for i in range(len(MolPairs)): 
-            a = int(FramePairs[i][0].split("_")[-1])
-            b = int(FramePairs[i][1].split("_")[-1]) 
-            name_list = FramePairs[i][0].split("_")
-            mol_name = ''
-            for _ in range(len(name_list[:-1])):
-                if _ != len(name_list[:-1])-1:
-                    mol_name += name_list[_] + "_"
-                else:
-                    mol_name += name_list[_]
+            (a,b) = FramePairs[i][np.argmin([(jb-ja) for (ja, jb) in FramePairs[i]])]
+            qc_mol_Traj1 = self.ds.get_record(mol_name + "_" + str(a), self.spec_name).get_molecular_trajectory()
+            qc_mol_Traj2 = self.ds.get_record(mol_name + "_" + str(b), self.spec_name).get_molecular_trajectory()
 
-            qc_mol_Traj1 = self.ds.get_record(FramePairs[i][0], self.spec_name).get_molecular_trajectory()
-            qc_mol_Traj2 = self.ds.get_record(FramePairs[i][1], self.spec_name).get_molecular_trajectory()
             for j in range(len(qc_mol_Traj1)-1):
                 if geo_mol_Traj == None:
                     geo_mol_Traj = qc_to_geo(qc_mol_Traj1[-1])
