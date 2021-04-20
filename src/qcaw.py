@@ -345,13 +345,13 @@ class Workflow:
         """
         This function detects ERROR calculation results in a given dataset with a specficiation and submit them again. 
         """
-        opt = ds.status(self.spec_name, collapse = False)
-        opts = ds.df[self.spec_name].tolist()
+        opt = self.ds.status(self.spec_name, collapse = False)
+        opts = self.ds.df[self.spec_name].tolist()
         num = 0
         for i in range (len(opts)):
             if opts[i].error != None:
                 num += 1
-                self.client.modify_task("restart", opts[i].id)
+                self.client.modify_tasks("restart", opts[i].id)
         print ("%i failed jobs in %s dataset with %s specfication have been submitted again." %(num, self.ds.name, self.spec_name))
 
     def Equal(self, m1, m2):
