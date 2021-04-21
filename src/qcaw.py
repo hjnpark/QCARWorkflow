@@ -32,9 +32,7 @@ import numpy as np
 #    frames = M[::subsample]
 #    return frames
 
-
-
-def qc_to_geo(qc_M, b2a = False):
+def qc_to_geo(qc_M, b2a=False):
     """
     Convert QCArchive molecule object to geomeTRIC molecule objects
    
@@ -52,7 +50,7 @@ def qc_to_geo(qc_M, b2a = False):
     geo_M = Molecule()
     geo_M.comms = ["placeholder"]
     geo_M.elem = list(qc_M.symbols)
-    geom = np.array(qc_M.geometry, dtype=np.float64).reshape(-1, 3)
+    geom = np.array(qc_M.geometry, dtype = np.float64).reshape(-1, 3)
     if b2a == True:
         geom *= 0.529177210 
     geo_M.xyzs = [geom]
@@ -60,19 +58,19 @@ def qc_to_geo(qc_M, b2a = False):
     geo_M.build_topology()
     return geo_M
 
-
-
 def resubmit_all(client):
         """
         This function will submit ALL the failed jobs again to server.
         """
-        errors = client.query_tasks(status="ERROR")
+        errors = client.query_tasks(status = "ERROR")
         for i in range(len(errors)):
             client.modify_tasks("restart", errors[i].base_result)
-        print ("All the failed calculations in the server were submitted again.")
-
+        print ("All the failed calculations were submitted again.")
 
 class User:
+    """
+    This class helps users to connect to the server.
+    """
     def __init__(self, user, password):
         """
         Parameters
@@ -88,15 +86,10 @@ class User:
         """
         Setting up or starting a QCFractal server
         
-        Parameters
-        ----------
-        start : boolean
-            start = True will start the server. As long as the running server does not get killed, start = False will work.
-
         Return
         ----------
         client : client object 
-            With the client object, a user can create/access datasets
+            With the client object, users can create/access dataset
         """
         info = os.popen("qcfractal-server info").readlines()
         for line in info:
@@ -105,13 +98,13 @@ class User:
             if "port" in line:
                 port = int(line.strip().split(" ")[-1])
         try:
-            client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+            client = ptl.FractalClient("%s:%i"%(host, port), verify = False, username = self.user, password = self.password)
         except:
             for i in range(0, 3):
                 try:
-                    subprocess.run("qcfractal-server start &", shell = True, stdout=subprocess.DEVNULL)
+                    subprocess.run("qcfractal-server start &", shell = True, stdout = subprocess.DEVNULL)
                     time.sleep(3.0)
-                    client = ptl.FractalClient("%s:%i"%(host, port), verify=False, username = self.user, password= self.password)
+                    client = ptl.FractalClient("%s:%i"%(host, port), verify = False, username = self.user, password = self.password)
                     cnt_error = None
                 except Exception as cnt_error:
                     pass
@@ -123,6 +116,9 @@ class User:
         return client           
 
 class Dataset:
+    """
+    This class helps users with handling dataset. 
+    """
     def __init__(self, name, ds_type, client):
         """
         Parameters
@@ -191,9 +187,9 @@ class Dataset:
 
 class Workflow:
     """
-    This class handles the automated workflow using QCArchive Infrastructure
+    This class perfroms the automated reaction refinement workflow using QCArchive Infrastructure
     """
-    def __init__(self, ds, spec_name, client, initial):
+    def __init__(self, ds, spec_name, client, initial, charge=None, mult=None):
         """
         Parameters
         ----------
@@ -208,6 +204,11 @@ class Workflow:
         initial : string
             xyz file name 
 
+        charge : int
+            molecular charge.
+
+        mult : int
+            molecular multiplicity.
         """
         
         self.initial = initial
@@ -215,8 +216,10 @@ class Workflow:
         self.client = client
         self.spec_name = spec_name
         self.M = Molecule(initial)
- 
-    def energy(self, method=None, basis=None, compute = False):
+        self.charge = charge 
+        self.mult = mult
+
+    def energy(self, method=None, basis=None, compute=False):
         """
         This function converts xyz file to QCAI molecule objects and creates single point energy calculation jobs.          
 
@@ -243,7 +246,7 @@ class Workflow:
             basis = "6-31g(d)" 
         ds_sp = self.ds 
         M = self.M 
-        key = ptl.models.KeywordSet(values={'maxiter':1000,
+        key = ptl.models.KeywordSet(values = {'maxiter':1000,
                                              'e_convergence': 1e-6,
                                              'guess' : 'sad',
                                              'scf_type' : 'df'})        
@@ -257,7 +260,7 @@ class Workflow:
                 "tag" : None}
         frames = list(range(len(M)))
         for frm in frames:               
-            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs}) 
+            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs, "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
             if len(M[frm].comms[0]) == 0 or len(M[frm].comms[0]) > 10:
                 raise RuntimeError("Please provide a short name, less than 10 letters, of the molecule in comment line in the input xyz file (between number of atoms and coordinates).")
             try:
@@ -271,7 +274,7 @@ class Workflow:
         return ds_sp 
         
 
-    def optimization(self, method=None, basis=None, subsample = None, compute = False, maxiter = None, spec_overwrite = False): 
+    def optimization(self, method=None, basis=None, subsample=None, compute=False, maxiter=None, spec_overwrite=False): 
         """
         This function converts the xyz file to QCAI molecule objects and sets up optimization jobs.          
 
@@ -307,7 +310,7 @@ class Workflow:
         if maxiter == None:
             maxiter = 500
         ds_opt = self.ds
-        key = [ptl.models.KeywordSet(values={'maxiter':maxiter})]        
+        key = [ptl.models.KeywordSet(values = {'maxiter':maxiter})]        
         key_id = self.client.add_keywords(key)[0]
         optimize = {
             "name" : self.spec_name,
@@ -330,7 +333,7 @@ class Workflow:
         if (len(M)-1) not in frames:
             frames.append(len(M)-1)
         for frm in frames:               
-            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs}) 
+            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs, "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
             try:
                 ds_opt.add_entry("%s_%i" %(self.initial.split(".")[0], frm), mol, save = False)
             except:
@@ -365,22 +368,28 @@ class Workflow:
         opts = self.ds.df[self.spec_name].tolist()
         stats = [opt.status for opt in opts] 
         mol_names = opt.index.tolist() 
-        mol_name = '_'.join(str(elem) for elem in mol_names[0].split("_")[:-1])
-       # for stat in stats:
-       #     if stat.value == "ERROR" or stat.value == "INCOMPLETE":
-       #         raise RuntimeError ("ERROR or INCOMPLETE result detected. Make sure all the optimizations in \'%s\' dataset with \'%s\' specification are completed." %(self.ds.name, self.spec_name))
-        
+        mol_name = '_'.join(str(elem) for elem in mol_names[0].split("_")[:-1]) 
+
         OptMols = OrderedDict()
+        Iter = OrderedDict()
+        err = 0
         for name, calc in zip(mol_names, stats):
             frm = int(name.split("_")[-1])
-            err = 0
             if calc.value == "ERROR" or calc.value == "INCOMPLETE":
+                Iter[frm] = "ERROR"
                 err += 1
-                if err == 0:
-                    print ("WARNING: ERROR or INCOMPLETE result detected.") 
                 continue
             qcel_M = self.ds.get_record(name, self.spec_name).get_final_molecule()
             OptMols[frm] = qc_to_geo(qcel_M, b2a = True)  
+            Iter[frm] = len(self.ds.get_record(name, self.spec_name).trajectory)
+
+        if err > 0 : 
+            print ("WARNING: %i ERROR or/and INCOMPLETE results detected." % err) 
+
+        with open ("%s_iterations.txt" %mol_name, "w") as fn:
+            fn.write("Optimization Iteration Numbers of %s\n" %mol_name)
+            for frame, ite in Iter.items():
+                fn.write("%i : %s\n" %(frame, ite))
 
         path_initial = [] 
         path_final = []
@@ -438,11 +447,11 @@ class Workflow:
             geo_mol_Traj.write(os.path.join(path + fnum,"connected_%s.xyz" %fname))
             equal = EqualSpacing(geo_mol_Traj, dx = 0.05) 
             equal.write(os.path.join(path + fnum, "spaced_%s.xyz" %fname))
-            geo_mol_Traj= None 
+            geo_mol_Traj = None 
             command ="Nebterpolate.py --morse 1e-2 --repulsive --allpairs --anchor 2 %s/spaced_%s.xyz %s/NEB_ready_%s.xyz &> %s/interpolate_%s.log" %(NEB_path, fname, NEB_path, fname, NEB_path, fname)
             log = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
             #err = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
-            subprocess.Popen(command, shell=True, stdout = log, stderr = log)
+            subprocess.Popen(command, shell = True, stdout = log, stderr = log)
         print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
         
 
