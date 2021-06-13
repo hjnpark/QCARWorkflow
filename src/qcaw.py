@@ -32,6 +32,31 @@ import numpy as np
 #    frames = M[::subsample]
 #    return frames
 
+def formula(M):
+    """
+    Provides a molecular formula
+        
+    Parameters
+    ----------
+    M : Molecular object
+
+    Return
+    ------
+    formula : string
+    """
+    elem_list = M.elem
+    name = OrderedDict()
+    for elem in elem_list:
+        if not elem in name.keys():
+            name[elem] = 0
+        name[elem] += 1
+
+    formula = ''
+    for key, val in name.items():
+        formula += key + str(val)
+    return formula
+
+
 def qc_to_geo(qc_M, b2a=False):
     """
     Convert QCArchive molecule object to geomeTRIC molecule objects
@@ -71,7 +96,7 @@ class User:
     """
     This class helps users to connect to the server.
     """
-    def __init__(self, user, password):
+    def __init__(self, user=None, password=None):
         """
         Parameters
         ----------
@@ -250,7 +275,7 @@ class Workflow:
                                              'e_convergence': 1e-6,
                                              'guess' : 'sad',
                                              'scf_type' : 'df'})        
-        ds_sp.add_keywords(self.spec_name, "psi4",key)
+        ds_sp.add_keywords(self.spec_name, "psi4", key)
 
         spec = {
                 "program" : "psi4",
@@ -259,12 +284,13 @@ class Workflow:
                 "keywords": self.spec_name,
                 "tag" : None}
         frames = list(range(len(M)))
+
         for frm in frames:               
-            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs, "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
-            if len(M[frm].comms[0]) == 0 or len(M[frm].comms[0]) > 10:
-                raise RuntimeError("Please provide a short name, less than 10 letters, of the molecule in comment line in the input xyz file (between number of atoms and coordinates).")
+            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": np.array(M[frm].xyzs)/0.529177210, "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
+            #if len(M[frm].comms[0]) == 0 or len(M[frm].comms[0]) > 10:
+            #    raise RuntimeError("Please provide a short name, less than 10 letters, of the molecule in comment line in the input xyz file (between number of atoms and coordinates).")
             try:
-                ds_sp.add_entry("%s" %(M[frm].comms[0]), mol)
+                ds_sp.add_entry("%s_%s" %(formula(M[frm])+str(frm)), mol)
             except:
                 pass 
         ds_sp.save()
@@ -333,7 +359,7 @@ class Workflow:
         if (len(M)-1) not in frames:
             frames.append(len(M)-1)
         for frm in frames:               
-            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": M[frm].xyzs, "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
+            mol = qcel.models.Molecule(**{"symbols": M[frm].elem, "geometry": np.array(M[frm].xyzs)/0.529177210,  "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
             try:
                 ds_opt.add_entry("%s_%i" %(self.initial.split(".")[0], frm), mol, save = False)
             except:
@@ -362,7 +388,7 @@ class Workflow:
 
     def smoothing(self):
         """
-        Once the optimization is done, smoothing function will detect reactions and smooth them for NEB calculation.
+        Once the optimization is done, smoothing function will detect reactions and smooth them for the NEB method.
         """
         opt = self.ds.status(self.spec_name, collapse = False)
         opts = self.ds.df[self.spec_name].tolist()
@@ -390,6 +416,8 @@ class Workflow:
             fn.write("Optimization Iteration Numbers of %s\n" %mol_name)
             for frame, ite in Iter.items():
                 fn.write("%i : %s\n" %(frame, ite))
+
+        print ("Detecting reactions now.")
 
         path_initial = [] 
         path_final = []
@@ -430,11 +458,11 @@ class Workflow:
 
             for j in range(len(qc_mol_Traj1)-1):
                 if geo_mol_Traj == None:
-                    geo_mol_Traj = qc_to_geo(qc_mol_Traj1[-1])
-                geo_mol_Traj += qc_to_geo(qc_mol_Traj1[::-1][j+1]) 
+                    geo_mol_Traj = qc_to_geo(qc_mol_Traj1[-1], b2a = True)
+                geo_mol_Traj += qc_to_geo(qc_mol_Traj1[::-1][j+1], b2a = True) 
             geo_mol_Traj += self.M[a:b]
             for k in range(len(qc_mol_Traj2)):
-                geo_mol_Traj += qc_to_geo(qc_mol_Traj2[k])    
+                geo_mol_Traj += qc_to_geo(qc_mol_Traj2[k], b2a = True)    
             
             fnum =  str(a) + "-" + str(b)
             fname = str(mol_name +"_"+ fnum)
