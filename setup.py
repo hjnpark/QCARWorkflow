@@ -23,7 +23,7 @@ def buildKeywordDictionary():
     setupKeywords["package_dir"]       = {"QCARWorkflow": "src"}
     setupKeywords["scripts"]           = glob.glob("bin/*.py")# + glob.glob("bin/*.sh") + glob.glob("bin/*.exe") + glob.glob("bin/*.vmd")
     setupKeywords["platforms"]         = ["Linux"]
-    setupKeywords["description"]       = "An automated workflow that can refine reaction pathways from MD simulation trajectories."
+    setupKeywords["description"]       = " An automated workflow that can refine reaction pathways from MD simulation trajectories."
     outputString=""
     firstTab     = 40
     secondTab    = 60

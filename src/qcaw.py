@@ -4,7 +4,7 @@
 qcaw.py
 
 """
-import os, sys, subprocess, time
+import os, sys, subprocess, time, shutil, json
 import qcengine as qcng
 import qcelemental as qcel
 import qcportal as ptl
@@ -125,17 +125,22 @@ class User:
         try:
             client = ptl.FractalClient("%s:%i"%(host, port), verify = False, username = self.user, password = self.password)
         except:
-            for i in range(0, 3):
+            client = None
+            for i in range(3):
                 try:
                     subprocess.run("qcfractal-server start &", shell = True, stdout = subprocess.DEVNULL)
                     time.sleep(3.0)
                     client = ptl.FractalClient("%s:%i"%(host, port), verify = False, username = self.user, password = self.password)
-                    cnt_error = None
-                except Exception as cnt_error:
-                    pass
-                if cnt_error == None:
-                    break 
+                except:
+                    if client != None:
+                        break 
+                    else:
+                        continue
             print("Server is running") 
+
+            if client == None:
+                raise RuntimeError("Client could not be claimed properly. Try to restart the qcfractal-server.")
+ 
         print("Client is ready")
        
         return client           
@@ -214,7 +219,7 @@ class Workflow:
     """
     This class perfroms the automated reaction refinement workflow using QCArchive Infrastructure
     """
-    def __init__(self, ds, spec_name, client, initial, charge=None, mult=None):
+    def __init__(self, client, ds=None, spec_name=None, initial=None, charge=None, mult=None):
         """
         Parameters
         ----------
@@ -243,6 +248,22 @@ class Workflow:
         self.M = Molecule(initial)
         self.charge = charge 
         self.mult = mult
+
+    def resubmit(self): 
+        """
+        This function detects ERROR calculation results in a given dataset with a specficiation and submit them again. 
+        """
+        opt = self.ds.status(self.spec_name, collapse = False)
+        opts = self.ds.df[self.spec_name].tolist()
+        num = 0
+        for i in range (len(opts)):
+            if opts[i].error != None:
+                num += 1
+                self.client.modify_tasks("restart", opts[i].id)
+        print ("%i failed jobs in \"%s\" dataset with \"%s\" specfication have been submitted again." %(num, self.ds.name, self.spec_name))
+
+    def Equal(self, m1, m2):
+        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
 
     def energy(self, method=None, basis=None, compute=False):
         """
@@ -300,7 +321,7 @@ class Workflow:
         return ds_sp 
         
 
-    def optimization(self, method=None, basis=None, subsample=None, compute=False, maxiter=None, spec_overwrite=False): 
+    def optimization(self, method="b3lyp", basis="6-31g(d)", subsample=10, maxiter=500, compute=False, spec_overwrite=False): 
         """
         This function converts the xyz file to QCAI molecule objects and sets up optimization jobs.          
 
@@ -327,14 +348,6 @@ class Workflow:
             print(ds_opt.status(collapse = False)) will show the dataset's status 
 
         """  
-        if method == None:
-            method = "b3lyp"
-        if basis == None:
-            basis = "6-31g(d)"   
-        if subsample == None:
-            subsample = 10
-        if maxiter == None:
-            maxiter = 500
         ds_opt = self.ds
         key = [ptl.models.KeywordSet(values = {'maxiter':maxiter})]        
         key_id = self.client.add_keywords(key)[0]
@@ -370,22 +383,7 @@ class Workflow:
             print ("Calculations in \'%s\' with \'%s\' specification have been submitted. Run the QCFractal manager to carry the calculations." %(ds_opt.name, self.spec_name))
         return ds_opt
 
-    def resubmit(self): 
-        """
-        This function detects ERROR calculation results in a given dataset with a specficiation and submit them again. 
-        """
-        opt = self.ds.status(self.spec_name, collapse = False)
-        opts = self.ds.df[self.spec_name].tolist()
-        num = 0
-        for i in range (len(opts)):
-            if opts[i].error != None:
-                num += 1
-                self.client.modify_tasks("restart", opts[i].id)
-        print ("%i failed jobs in %s dataset with %s specfication have been submitted again." %(num, self.ds.name, self.spec_name))
-
-    def Equal(self, m1, m2):
-        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
-
+    
     def smoothing(self):
         """
         Once the optimization is done, smoothing function will detect reactions and smooth them for the NEB method.
@@ -451,6 +449,13 @@ class Workflow:
             raise RuntimeError ("No reactions are detected or the Number of detected pairs of reacting molecules and frames don't match.")            
 
         geo_mol_Traj = None
+
+        path = "./%s/" %(mol_name)
+        if os.path.exists(path):
+            shutil.rmtree(path) 
+        os.mkdir(path)
+        self.neb_inputs = {}
+
         for i in range(len(MolPairs)): 
             (a,b) = FramePairs[i][np.argmin([(jb-ja) for (ja, jb) in FramePairs[i]])]
             qc_mol_Traj1 = self.ds.get_record(mol_name + "_" + str(a), self.spec_name).get_molecular_trajectory()
@@ -469,8 +474,6 @@ class Workflow:
             path = "./%s/" %(mol_name)
             
             NEB_path = path + fnum
-            if not os.path.exists(path):
-                os.mkdir(path)
             os.mkdir(NEB_path)
             geo_mol_Traj.write(os.path.join(path + fnum,"connected_%s.xyz" %fname))
             equal = EqualSpacing(geo_mol_Traj, dx = 0.05) 
@@ -480,11 +483,85 @@ class Workflow:
             log = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
             #err = open('%s/interpolate_%s.log' %(NEB_path, fname), 'a')
             subprocess.Popen(command, shell = True, stdout = log, stderr = log)
+            self.neb_inputs[i] = NEB_path + "/NEB_ready_%s.xyz" %fname
         print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
         
 
+    def neb(self, neb, method="b3lyp", basis="6-31g(d)", images=21, coordsys="cart", avgg=0.025, maxg=0.05):
+        """
+        This function will run NEB calculations          
 
+        Parameters
+        -----------
+        neb : str
+            Name of the neb ready xyz file.
 
+        method, basis : string
+            Electron structure method and basis sets
+
+        images : integer
+            Number of images for the neb chain. 
+
+        coordsys : str
+            'cart': Cartesian Coordinates
+            'prim': Primitive (a.k.a. redundant) Coordinates
+            'tric': Translation-Rotational Coordinates
+            'dlc' : Delocalized Internal Coordinates
+            'hdlc': Hybrid Delocalized Internal Coordinates
+
+        avgg, maxg : float
+            Average RMS-gradient and max RMS-gradient for convergence.
+
+        Return
+        ----------
+
+        """  
+        band = Molecule(neb) 
+
+        qcel_mol = qcel.models.Molecule(**{"symbols": band.elem, "geometry": np.array(band[0].xyzs)/0.529177210,  "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
+
+        neb_input = {
+            "keywords" : {
+                "program" : "psi4"
+                },
+            "input_specification":{
+                "driver": "gradient",
+                "model" : {
+                    "method": method,
+                    "basis": basis
+                    },
+                "keywords": {
+                    "images": images,
+                    "avgg": avgg,
+                    "maxg": maxg,
+                    "maxcyc" : 200,
+                    "coords": neb,
+                    "coordsys": coordsys,
+                    "engine": "qcengine",
+                    "client": self.client 
+                    } 
+
+                },
+            "initial_molecule":qcel_mol
+            }
+
+        #input_opts = geometric.run_json.parse_input_json_dict(neb_input)        
+        #options = input_opts.get("qcschema").pop("keywords")
+        neb_procedure = qcng.compute_procedure(neb_input, "geometric")#procedure: "optimization", program: "geometric", extras : options, molecule_initial : molecule)
+       # options = {
+       #             "images": images,
+       #             "avgg": avgg,
+       #             "maxg": maxg,
+       #             "maxcyc" : 200,
+       #             "coords": neb,
+       #             "coordsys": coordsys,
+       #             "engine": "qcengine"
+       #             } 
+
+       # neb_procedure = ptl.FractalClient.add_procedure(self.client, procedure= "optimization", program= "geometric", program_options= options, molecule = qcel_mol)
+ 
+
+        return neb_procedure
 
 
 
