@@ -262,7 +262,7 @@ class Workflow:
                 self.client.modify_tasks("restart", opts[i].id)
         print ("%i failed jobs in \"%s\" dataset with \"%s\" specfication have been submitted again." %(num, self.ds.name, self.spec_name))
 
-    def Equal(self, m1, m2):
+    def equal(self, m1, m2):
         return TopEqual(m1, m2) if True else MolEqual(m1, m2)
 
     def energy(self, method=None, basis=None, compute=False):
@@ -386,7 +386,7 @@ class Workflow:
     
     def smoothing(self):
         """
-        Once the optimization is done, smoothing function will detect reactions and smooth them for the NEB method.
+        Once the optimization is done, smoothing function will detect reactions and smooth them for the NEB calculation. 
         """
         opt = self.ds.status(self.spec_name, collapse = False)
         opts = self.ds.df[self.spec_name].tolist()
@@ -420,7 +420,7 @@ class Workflow:
         path_initial = [] 
         path_final = []
         for fi, fj in zip(list(OptMols.keys())[:-1], list(OptMols.keys())[1:]): 
-            if not self.Equal(OptMols[fi], OptMols[fj]): 
+            if not self.equal(OptMols[fi], OptMols[fj]): 
                 path_initial.append(fi)
                 path_final.append(fj)
 
@@ -429,15 +429,15 @@ class Workflow:
             
         for fi in path_initial:
             for fj in path_final:
-                if fj > fi and (not self.Equal(OptMols[fi], OptMols[fj])):
+                if fj > fi and (not self.equal(OptMols[fi], OptMols[fj])):
                     if (fj - fi) > 1000: continue
                     NewPair = True
                     for imp, (m1, m2) in enumerate(MolPairs):
-                        if self.Equal(OptMols[fi], m1) and self.Equal(OptMols[fj], m2):
+                        if self.equal(OptMols[fi], m1) and self.equal(OptMols[fj], m2):
                             FramePairs[imp].append((fi, fj))
                             NewPair = False
                             break
-                        elif self.Equal(OptMols[fi], m2) and self.Equal(OptMols[fj], m1):
+                        elif self.equal(OptMols[fi], m2) and self.equal(OptMols[fj], m1):
                             FramePairs[imp].append((fi, fj))
                             NewPair = False
                             break
@@ -487,9 +487,9 @@ class Workflow:
         print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
         
 
-    def neb(self, neb, method="b3lyp", basis="6-31g(d)", images=21, coordsys="cart", avgg=0.025, maxg=0.05):
+    def neb(self, neb, method="b3lyp", basis="6-31g(d)", images=21, coordsys="cart", ew = False, nebk = 0.1, avgg=0.025, maxg=0.05, guessk=0.05, guessw=0.1):
         """
-        This function will run NEB calculations          
+        This function will run NEB calculations to locate rough transition state structures.          
 
         Parameters
         -----------
@@ -509,11 +509,18 @@ class Workflow:
             'dlc' : Delocalized Internal Coordinates
             'hdlc': Hybrid Delocalized Internal Coordinates
 
+        nebk : float
+            Spring constant in Hartree/Ang^2
+
         avgg, maxg : float
             Average RMS-gradient and max RMS-gradient for convergence.
 
+        guessk, guessw : float
+            Guess Hessian and guess weight for chain coordinates.
+
         Return
         ----------
+        it will write each iterated chains in .tmp directory and final transition state geometries.
 
         """  
         band = Molecule(neb) 
@@ -532,36 +539,79 @@ class Workflow:
                     },
                 "keywords": {
                     "images": images,
-                    "avgg": avgg,
-                    "maxg": maxg,
+                    "avgg" : avgg,
+                    "maxg" : maxg,
+                    "nebk" : nebk, 
                     "maxcyc" : 200,
+                    "guessk" : guessk,
+                    "guessw" : guessw,
                     "coords": neb,
                     "coordsys": coordsys,
                     "engine": "qcengine",
-                    "client": self.client 
+                    "client": self.client, 
+                    "input": "chains"
                     } 
 
                 },
             "initial_molecule":qcel_mol
             }
+        if ew:
+            neb_input["input_specification"]["keywords"]["ew"] = None
 
-        #input_opts = geometric.run_json.parse_input_json_dict(neb_input)        
-        #options = input_opts.get("qcschema").pop("keywords")
-        neb_procedure = qcng.compute_procedure(neb_input, "geometric")#procedure: "optimization", program: "geometric", extras : options, molecule_initial : molecule)
-       # options = {
-       #             "images": images,
-       #             "avgg": avgg,
-       #             "maxg": maxg,
-       #             "maxcyc" : 200,
-       #             "coords": neb,
-       #             "coordsys": coordsys,
-       #             "engine": "qcengine"
-       #             } 
+        neb_procedure = qcng.compute_procedure(neb_input, "geometric")
 
-       # neb_procedure = ptl.FractalClient.add_procedure(self.client, procedure= "optimization", program= "geometric", program_options= options, molecule = qcel_mol)
- 
 
-        return neb_procedure
+    def tsopt(self, ts, method="b3lyp", basis="6-31g(d)", maxiter=500):
+        """
+        This function will run transition           
+
+        Parameters
+        -----------
+        ts : str
+            Name of the xyz file containing rough guess ts structure.
+
+        method, basis : string
+            Electron structure method and basis sets
+
+        maxiter : int
+            Maximum iteration number for scf calculations.
+
+        Return
+        ----------
+        result : ComputeResponse Object
+
+        """  
+        
+        ts_mol = Molecule(ts)
+        qcel_mol = qcel.models.Molecule(**{"symbols": ts_mol.elem, "geometry": np.array(ts_mol.xyzs)/0.529177210,  "molecular_charge" : self.charge, "molecular_multiplicity" : self.mult}) 
+        key = [ptl.models.KeywordSet(values = {'maxiter':maxiter})]        
+        key_id = self.client.add_keywords(key)[0]
+        # If I add transtion here, server error will be occurred
+        ts_optimize = {
+            "keywords" : None,
+            "qc_spec" : {
+                    "driver": "gradient", 
+                    "method": method, 
+                    "basis": basis,
+                    "program": "psi4"
+                     }
+                       }
+
+
+        ts_procedure = self.client.add_procedure("optimization", "geometric", ts_optimize, [qcel_mol])
+        print(ts_procedure)
+        proc = self.client.query_procedures(id=ts_procedure.ids)[0]
+        print(proc)
+        status = proc.status.split(".")[-1]
+        print(status)
+        if status == "ERROR":
+            self.client.modify_tasks("restart",ts_procedure.ids)
+        elif status =="COMPLETE":
+            result = proc.get_final_molecule()
+
+
+
+
 
 
 

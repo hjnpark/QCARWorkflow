@@ -2,7 +2,7 @@
 setup.py: Install QCArchive Workflow script.  
 """
 
-VERSION = 1.0
+VERSION = 1.1
 __author__ = "Heejune Park"
 __version__ = "%.1f"%VERSION
 
