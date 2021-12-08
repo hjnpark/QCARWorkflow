@@ -13,7 +13,7 @@ print (ds.status(collapse = False))
 
 # We can submit another set of molecules with a new data set
 
-ds_2 = Dataset("H2O_proton", ds_type = "OptimizationDataset", client=client).setting("load")
+ds_2 = Dataset("H2O_proton", ds_type = "OptimizationDataset", client=client).setting("make")
 Workflow(ds = ds_2, client = client, spec_name = "H2O_proton", initial = "H2O_proton.xyz").optimization(method = 'b3lyp', basis = 'def2-svpd', subsample = 20, compute = True)
 print (ds_2.status(collapse = False))
 
