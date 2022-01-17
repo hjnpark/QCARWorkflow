@@ -32,8 +32,11 @@ Now we need to install geomeTRIC and QCARWorkflow.
 
 ### 2. Installing geomeTRIC
 
-Install geomeTRIC from its github repository:
-[https://github.com/leeping/geomeTRIC](https://github.com/leeping/geomeTRIC)
+Install geomeTRIC from the `neb` branch of a forked github repository:
+[https://github.com/hjnpark/geomeTRIC/tree/neb](https://github.com/hjnpark/geomeTRIC/tree/neb)
+This branch of geomeTRIC can perform the NEB method.
+It will be merged into the master branch once some of the functions in neb.py are updated.
+
 
 ### 3. Installing QCARWorkflow
 
