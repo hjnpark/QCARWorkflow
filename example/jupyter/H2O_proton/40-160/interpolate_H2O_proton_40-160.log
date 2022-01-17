@@ -1,1213 +1,0 @@
-/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/core/internal_derivs.py:215: RuntimeWarning: divide by zero encountered in true_divide
-  term2 = np.cross(v, w) / (v_norm * (1 - np.dot(v, w)**2))
-/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/core/internal_derivs.py:217: RuntimeWarning: divide by zero encountered in true_divide
-  term4 = np.cross(v, w) * np.dot(v, w) / (w_norm * (1 - np.dot(v, w)**2))
-/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/core/internal_derivs.py:222: RuntimeWarning: invalid value encountered in add
-  derivatives[d, p, :] = term2 - term3 + term4
-/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/core/internal_derivs.py:214: RuntimeWarning: divide by zero encountered in true_divide
-  term1 = np.cross(u, w) / (u_norm * (1 - np.dot(u, w)**2))
-/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/core/internal_derivs.py:216: RuntimeWarning: divide by zero encountered in true_divide
-  term3 = np.cross(u, w) * np.dot(u, w) / (w_norm * (1 - np.dot(u, w)**2))
-Traceback (most recent call last):
-  File "/home/hpark21/miniconda3/envs/p4env/bin/Nebterpolate.py", line 104, in try_smooth_internal
-    return smooth_internal(*args, **kwargs)
-  File "/home/hpark21/miniconda3/envs/p4env/lib/python3.7/site-packages/nebterpolator/path_operations.py", line 176, in smooth_internal
-    if xyzlist_match != None:
-ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-Cnvgd (fev= 2) : LSq: 0.0000 (+0.0000) Distance: 0.0000 (+0.0000) Angle: 0.0000 (+0.0000) Dihedral: 0.0000 (+0.0000) 
-Working on frame 0 / 303 
-Cnvgd (fev= 6) : LSq: 0.0003 (-0.0201) Distance: 0.0003 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 3.107563 max(dx) 0.004023, trying anchor = 0.017342 Cnvgd (fev= 6) : LSq: 0.0004 (-0.0201) Distance: 0.0003 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 3.095429 max(dx) 0.004007, trying anchor = 0.026012 Cnvgd (fev= 6) : LSq: 0.0004 (-0.0201) Distance: 0.0003 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 3.080577 max(dx) 0.003988, trying anchor = 0.039018 Cnvgd (fev= 6) : LSq: 0.0004 (-0.0200) Distance: 0.0003 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0001 (+0.0001) Morse: 0.0000 (+0.0000) 
-jump 3.048369 max(dx) 0.003946, trying anchor = 0.058528 Cnvgd (fev= 6) : LSq: 0.0006 (-0.0199) Distance: 0.0003 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0002 (+0.0002) Morse: 0.0000 (+0.0000) 
-jump 2.981365 max(dx) 0.003859, trying anchor = 0.087791 Cnvgd (fev= 6) : LSq: 0.0008 (-0.0197) Distance: 0.0004 (-0.0160) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0004 (+0.0004) Morse: 0.0000 (+0.0000) 
-jump 2.852545 max(dx) 0.003693, trying anchor = 0.131687 Cnvgd (fev= 5) : LSq: 0.0013 (-0.0192) Distance: 0.0005 (-0.0158) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0007 (+0.0007) Morse: 0.0000 (+0.0000) 
-jump 2.634505 max(dx) 0.003410, trying anchor = 0.197531 Cnvgd (fev= 5) : LSq: 0.0019 (-0.0186) Distance: 0.0009 (-0.0154) Angle: 0.0000 (-0.0037) Dihedral: 0.0000 (-0.0004) Anchor: 0.0010 (+0.0010) Morse: 0.0000 (+0.0000) 
-jump 2.319458 max(dx) 0.003003, trying anchor = 0.296296 Cnvgd (fev= 5) : LSq: 0.0028 (-0.0177) Distance: 0.0015 (-0.0148) Angle: 0.0000 (-0.0037) Dihedral: 0.0001 (-0.0003) Anchor: 0.0012 (+0.0012) Morse: 0.0000 (+0.0000) 
-xyz: error 0.002840 max(dx) 0.002489 jump 1.9225449483130843 anchor 0.296296
-max(dx) 0.002489 (new) 0.001295 (old) 1.922545[0m (ratio)
-Cnvgd (fev= 8) : LSq: 0.0013 (-0.1821) Distance: 0.0012 (-0.1200) Angle: 0.0000 (-0.0521) Dihedral: 0.0001 (-0.0101) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.005650 (new) 0.007109 (old) 0.794727[0m (ratio)
-Cnvgd (fev= 8) : LSq: 0.0028 (-0.3311) Distance: 0.0026 (-0.1996) Angle: 0.0000 (-0.1049) Dihedral: 0.0002 (-0.0267) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.004106 (new) 0.006310 (old) 0.650639[0m (ratio)
-Cnvgd (fev= 9) : LSq: 0.0048 (-0.5764) Distance: 0.0045 (-0.4520) Angle: 0.0000 (-0.0509) Dihedral: 0.0003 (-0.0736) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.004043 (new) 0.009141 (old) 0.442319[0m (ratio)
-Cnvgd (fev= 9) : LSq: 0.0071 (-0.6051) Distance: 0.0067 (-0.4088) Angle: 0.0000 (-0.1197) Dihedral: 0.0004 (-0.0766) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003844 (new) 0.007595 (old) 0.506147[0m (ratio)
-Cnvgd (fev= 9) : LSq: 0.0099 (-0.7360) Distance: 0.0093 (-0.3795) Angle: 0.0000 (-0.2916) Dihedral: 0.0006 (-0.0648) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003709 (new) 0.007987 (old) 0.464356[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0129 (-1.2836) Distance: 0.0121 (-0.5436) Angle: 0.0001 (-0.6674) Dihedral: 0.0008 (-0.0727) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003685 (new) 0.007126 (old) 0.517118[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0163 (-2.3040) Distance: 0.0152 (-0.8296) Angle: 0.0001 (-1.3530) Dihedral: 0.0010 (-0.1214) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003616 (new) 0.006701 (old) 0.539608[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0199 (-3.3656) Distance: 0.0186 (-1.1638) Angle: 0.0001 (-1.9216) Dihedral: 0.0012 (-0.2801) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003493 (new) 0.005835 (old) 0.598750[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0237 (-4.6320) Distance: 0.0222 (-1.6507) Angle: 0.0001 (-2.5125) Dihedral: 0.0014 (-0.4687) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 10 / 303 
-max(dx) 0.003370 (new) 0.006043 (old) 0.557695[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0278 (-5.5887) Distance: 0.0260 (-2.1489) Angle: 0.0002 (-2.7181) Dihedral: 0.0016 (-0.7217) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003269 (new) 0.006571 (old) 0.497518[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0320 (-6.5472) Distance: 0.0300 (-2.6975) Angle: 0.0002 (-2.8517) Dihedral: 0.0019 (-0.9980) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003181 (new) 0.006688 (old) 0.475711[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0365 (-7.0185) Distance: 0.0341 (-3.2848) Angle: 0.0002 (-2.4272) Dihedral: 0.0022 (-1.3065) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003111 (new) 0.006860 (old) 0.453476[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0412 (-7.1940) Distance: 0.0385 (-3.6650) Angle: 0.0003 (-1.9938) Dihedral: 0.0024 (-1.5351) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003048 (new) 0.006342 (old) 0.480702[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0460 (-7.2479) Distance: 0.0430 (-3.5079) Angle: 0.0003 (-2.1907) Dihedral: 0.0027 (-1.5493) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002973 (new) 0.007726 (old) 0.384852[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0510 (-7.3961) Distance: 0.0477 (-3.3926) Angle: 0.0003 (-2.4399) Dihedral: 0.0030 (-1.5636) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002896 (new) 0.007764 (old) 0.373022[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0562 (-7.6152) Distance: 0.0526 (-3.3318) Angle: 0.0004 (-2.7145) Dihedral: 0.0032 (-1.5690) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002810 (new) 0.008484 (old) 0.331158[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0615 (-7.8313) Distance: 0.0576 (-3.2866) Angle: 0.0004 (-2.9787) Dihedral: 0.0035 (-1.5661) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002711 (new) 0.008806 (old) 0.307883[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0670 (-8.0135) Distance: 0.0627 (-3.2295) Angle: 0.0005 (-3.2330) Dihedral: 0.0038 (-1.5511) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002623 (new) 0.009113 (old) 0.287866[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0726 (-8.3396) Distance: 0.0680 (-3.3385) Angle: 0.0005 (-3.4671) Dihedral: 0.0040 (-1.5340) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 20 / 303 
-max(dx) 0.002693 (new) 0.009326 (old) 0.288718[0m (ratio)
-Cnvgd (fev=12) : LSq: 0.0783 (-8.9292) Distance: 0.0734 (-3.6118) Angle: 0.0006 (-3.7948) Dihedral: 0.0043 (-1.5226) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002854 (new) 0.009379 (old) 0.304314[0m (ratio)
-Cnvgd (fev=35) : LSq: 0.0978 (-9.9735) Distance: 0.0920 (-4.1218) Angle: 0.0006 (-4.3122) Dihedral: 0.0052 (-1.5395) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003575 (new) 0.009226 (old) 0.387475[0m (ratio)
-Cnvgd (fev=38) : LSq: 0.1604 (-11.5743) Distance: 0.1516 (-4.9258) Angle: 0.0020 (-5.0604) Dihedral: 0.0069 (-1.5882) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.004526 (new) 0.007417 (old) 0.610162[0m (ratio)
-Cnvgd (fev=36) : LSq: 0.2151 (-13.1920) Distance: 0.2043 (-6.0543) Angle: 0.0031 (-5.5094) Dihedral: 0.0077 (-1.6283) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002271 (new) 0.008354 (old) 0.271806[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.2450 (-14.7975) Distance: 0.2336 (-7.4258) Angle: 0.0036 (-5.7262) Dihedral: 0.0078 (-1.6454) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002085 (new) 0.008438 (old) 0.247120[0m (ratio)
-Cnvgd (fev=36) : LSq: 0.3328 (-14.8034) Distance: 0.3172 (-7.4994) Angle: 0.0061 (-5.7353) Dihedral: 0.0095 (-1.5687) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002859 (new) 0.006625 (old) 0.431553[0m (ratio)
-Cnvgd (fev=33) : LSq: 0.4385 (-14.7139) Distance: 0.4178 (-7.6072) Angle: 0.0093 (-5.6212) Dihedral: 0.0114 (-1.4855) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002778 (new) 0.006780 (old) 0.409773[0m (ratio)
-Cnvgd (fev=41) : LSq: 0.5652 (-14.8359) Distance: 0.5383 (-7.9135) Angle: 0.0132 (-5.5147) Dihedral: 0.0136 (-1.4077) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002791 (new) 0.006780 (old) 0.411611[0m (ratio)
-Cnvgd (fev=47) : LSq: 0.7138 (-15.1641) Distance: 0.6797 (-8.4179) Angle: 0.0180 (-5.4115) Dihedral: 0.0162 (-1.3347) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002797 (new) 0.006779 (old) 0.412652[0m (ratio)
-Cnvgd (fev=49) : LSq: 0.8074 (-15.0775) Distance: 0.7696 (-8.4752) Angle: 0.0206 (-5.3307) Dihedral: 0.0172 (-1.2716) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 30 / 303 
-max(dx) 0.002077 (new) 0.007785 (old) 0.266813[0m (ratio)
-Cnvgd (fev=39) : LSq: 0.8933 (-15.0549) Distance: 0.8525 (-8.6147) Angle: 0.0229 (-5.2245) Dihedral: 0.0178 (-1.2158) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002020 (new) 0.008140 (old) 0.248168[0m (ratio)
-Cnvgd (fev=45) : LSq: 0.9888 (-15.1161) Distance: 0.9446 (-8.8305) Angle: 0.0255 (-5.1233) Dihedral: 0.0186 (-1.1623) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001933 (new) 0.008136 (old) 0.237574[0m (ratio)
-Cnvgd (fev=42) : LSq: 1.0754 (-15.2147) Distance: 1.0278 (-9.0625) Angle: 0.0281 (-5.0399) Dihedral: 0.0195 (-1.1123) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002188 (new) 0.008073 (old) 0.271042[0m (ratio)
-Cnvgd (fev=38) : LSq: 1.0854 (-15.2149) Distance: 1.0359 (-9.1470) Angle: 0.0291 (-4.9970) Dihedral: 0.0204 (-1.0709) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003463 (new) 0.007911 (old) 0.437746[0m (ratio)
-Cnvgd (fev=34) : LSq: 1.0995 (-15.2778) Distance: 1.0479 (-9.2812) Angle: 0.0302 (-4.9647) Dihedral: 0.0214 (-1.0319) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003400 (new) 0.007905 (old) 0.430094[0m (ratio)
-Cnvgd (fev=50) : LSq: 1.1176 (-15.4046) Distance: 1.0638 (-9.4680) Angle: 0.0313 (-4.9415) Dihedral: 0.0225 (-0.9951) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003346 (new) 0.007897 (old) 0.423728[0m (ratio)
-Cnvgd (fev=58) : LSq: 1.1396 (-15.5970) Distance: 1.0835 (-9.7103) Angle: 0.0325 (-4.9263) Dihedral: 0.0236 (-0.9604) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003283 (new) 0.007889 (old) 0.416161[0m (ratio)
-Cnvgd (fev=72) : LSq: 1.1652 (-15.8578) Distance: 1.1068 (-10.0118) Angle: 0.0337 (-4.9182) Dihedral: 0.0247 (-0.9278) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003228 (new) 0.007881 (old) 0.409576[0m (ratio)
-Cnvgd (fev=86) : LSq: 1.1260 (-15.8645) Distance: 1.0684 (-9.9957) Angle: 0.0327 (-4.9694) Dihedral: 0.0249 (-0.8994) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003784 (new) 0.008324 (old) 0.454536[0m (ratio)
-Cnvgd (fev=117) : LSq: 1.0796 (-15.8643) Distance: 1.0232 (-9.9518) Angle: 0.0313 (-5.0394) Dihedral: 0.0251 (-0.8731) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 40 / 303 
-max(dx) 0.003954 (new) 0.008733 (old) 0.452809[0m (ratio)
-Cnvgd (fev=240) : LSq: 1.0421 (-15.9375) Distance: 0.9866 (-9.9711) Angle: 0.0301 (-5.1181) Dihedral: 0.0254 (-0.8483) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003934 (new) 0.008753 (old) 0.449389[0m (ratio)
-Cnvgd (fev=110) : LSq: 1.0129 (-16.0884) Distance: 0.9587 (-10.0571) Angle: 0.0290 (-5.2056) Dihedral: 0.0253 (-0.8258) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003268 (new) 0.008762 (old) 0.372972[0m (ratio)
-Cnvgd (fev=62) : LSq: 0.9872 (-16.3230) Distance: 0.9348 (-10.2149) Angle: 0.0279 (-5.3026) Dihedral: 0.0245 (-0.8055) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002636 (new) 0.008771 (old) 0.300562[0m (ratio)
-Cnvgd (fev=48) : LSq: 0.9640 (-16.6439) Distance: 0.9134 (-10.4468) Angle: 0.0269 (-5.4104) Dihedral: 0.0238 (-0.7868) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002618 (new) 0.008779 (old) 0.298179[0m (ratio)
-Cnvgd (fev=41) : LSq: 0.9434 (-17.0535) Distance: 0.8943 (-10.7536) Angle: 0.0259 (-5.5303) Dihedral: 0.0231 (-0.7695) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002600 (new) 0.008787 (old) 0.295904[0m (ratio)
-Cnvgd (fev=39) : LSq: 0.9166 (-17.4986) Distance: 0.8694 (-11.0567) Angle: 0.0248 (-5.6877) Dihedral: 0.0224 (-0.7542) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002585 (new) 0.008911 (old) 0.290133[0m (ratio)
-Cnvgd (fev=37) : LSq: 0.8255 (-17.6092) Distance: 0.7837 (-10.7964) Angle: 0.0213 (-6.0690) Dihedral: 0.0205 (-0.7438) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003227 (new) 0.009760 (old) 0.330618[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.7184 (-17.7348) Distance: 0.6828 (-10.4012) Angle: 0.0173 (-6.5967) Dihedral: 0.0183 (-0.7369) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003714 (new) 0.009900 (old) 0.375185[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.6253 (-18.1108) Distance: 0.5950 (-10.1754) Angle: 0.0138 (-7.2026) Dihedral: 0.0164 (-0.7328) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003696 (new) 0.009926 (old) 0.372372[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.5455 (-18.7377) Distance: 0.5198 (-10.1106) Angle: 0.0109 (-7.8957) Dihedral: 0.0148 (-0.7315) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 50 / 303 
-max(dx) 0.003677 (new) 0.009952 (old) 0.369481[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.4717 (-19.3103) Distance: 0.4504 (-9.8811) Angle: 0.0082 (-8.6928) Dihedral: 0.0131 (-0.7364) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003893 (new) 0.008398 (old) 0.463563[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.4065 (-19.8256) Distance: 0.3892 (-9.4483) Angle: 0.0059 (-9.6277) Dihedral: 0.0114 (-0.7496) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.004142 (new) 0.007513 (old) 0.551347[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.4079 (-18.8802) Distance: 0.3909 (-8.8354) Angle: 0.0059 (-9.3149) Dihedral: 0.0112 (-0.7300) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001960 (new) 0.007172 (old) 0.273252[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.4097 (-18.0277) Distance: 0.3930 (-8.3020) Angle: 0.0058 (-9.0144) Dihedral: 0.0109 (-0.7113) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001946 (new) 0.007136 (old) 0.272761[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.4120 (-17.2659) Distance: 0.3955 (-7.8459) Angle: 0.0058 (-8.7265) Dihedral: 0.0107 (-0.6935) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001927 (new) 0.007099 (old) 0.271434[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.4146 (-16.5928) Distance: 0.3984 (-7.4647) Angle: 0.0058 (-8.4514) Dihedral: 0.0105 (-0.6767) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001914 (new) 0.007062 (old) 0.271028[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.4177 (-16.0060) Distance: 0.4016 (-7.1560) Angle: 0.0058 (-8.1893) Dihedral: 0.0103 (-0.6607) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001896 (new) 0.007024 (old) 0.269915[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.4212 (-15.5034) Distance: 0.4053 (-6.9173) Angle: 0.0058 (-7.9404) Dihedral: 0.0101 (-0.6456) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001882 (new) 0.006985 (old) 0.269496[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.4250 (-15.0824) Distance: 0.4093 (-6.7460) Angle: 0.0059 (-7.7050) Dihedral: 0.0099 (-0.6314) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001866 (new) 0.006945 (old) 0.268766[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.4292 (-14.7408) Distance: 0.4136 (-6.6394) Angle: 0.0059 (-7.4833) Dihedral: 0.0097 (-0.6180) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 60 / 303 
-max(dx) 0.001851 (new) 0.006904 (old) 0.268154[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.4338 (-14.4759) Distance: 0.4183 (-6.5948) Angle: 0.0060 (-7.2756) Dihedral: 0.0095 (-0.6055) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001837 (new) 0.006863 (old) 0.267673[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4387 (-14.2852) Distance: 0.4233 (-6.6092) Angle: 0.0060 (-7.0822) Dihedral: 0.0093 (-0.5938) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001823 (new) 0.006821 (old) 0.267321[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4439 (-14.1660) Distance: 0.4287 (-6.6798) Angle: 0.0061 (-6.9033) Dihedral: 0.0091 (-0.5829) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001810 (new) 0.006779 (old) 0.266945[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4495 (-14.1154) Distance: 0.4344 (-6.8033) Angle: 0.0062 (-6.7393) Dihedral: 0.0090 (-0.5728) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001798 (new) 0.006736 (old) 0.266985[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.4555 (-14.1305) Distance: 0.4403 (-6.9765) Angle: 0.0063 (-6.5905) Dihedral: 0.0088 (-0.5635) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001786 (new) 0.006693 (old) 0.266845[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.4618 (-14.2082) Distance: 0.4467 (-7.1961) Angle: 0.0064 (-6.4572) Dihedral: 0.0087 (-0.5549) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001776 (new) 0.006649 (old) 0.267029[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4606 (-14.2785) Distance: 0.4460 (-7.3867) Angle: 0.0062 (-6.3434) Dihedral: 0.0084 (-0.5484) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001839 (new) 0.006417 (old) 0.286648[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.4438 (-13.7272) Distance: 0.4308 (-6.9507) Angle: 0.0053 (-6.2385) Dihedral: 0.0078 (-0.5379) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.002793 (new) 0.003088 (old) 0.904507[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.4271 (-12.8446) Distance: 0.4157 (-6.1797) Angle: 0.0043 (-6.1404) Dihedral: 0.0071 (-0.5245) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003265 (new) 0.006931 (old) 0.471042[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4200 (-12.0810) Distance: 0.4099 (-5.5100) Angle: 0.0035 (-6.0592) Dihedral: 0.0066 (-0.5119) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 70 / 303 
-max(dx) 0.003233 (new) 0.006946 (old) 0.465430[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.4223 (-11.4389) Distance: 0.4130 (-4.9432) Angle: 0.0030 (-5.9956) Dihedral: 0.0063 (-0.5001) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.003200 (new) 0.006963 (old) 0.459485[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4300 (-10.9245) Distance: 0.4206 (-4.4852) Angle: 0.0030 (-5.9503) Dihedral: 0.0064 (-0.4889) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001503 (new) 0.006983 (old) 0.215305[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4378 (-10.5450) Distance: 0.4283 (-4.1416) Angle: 0.0031 (-5.9245) Dihedral: 0.0065 (-0.4789) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001612 (new) 0.007004 (old) 0.230124[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4458 (-10.3029) Distance: 0.4360 (-3.9139) Angle: 0.0031 (-5.9192) Dihedral: 0.0067 (-0.4699) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001639 (new) 0.007027 (old) 0.233251[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4538 (-10.2006) Distance: 0.4439 (-3.8033) Angle: 0.0031 (-5.9353) Dihedral: 0.0068 (-0.4620) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001657 (new) 0.007052 (old) 0.234949[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4620 (-10.2405) Distance: 0.4518 (-3.8113) Angle: 0.0032 (-5.9738) Dihedral: 0.0070 (-0.4554) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001668 (new) 0.007079 (old) 0.235696[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4704 (-10.5783) Distance: 0.4598 (-4.0362) Angle: 0.0032 (-6.0903) Dihedral: 0.0073 (-0.4518) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001683 (new) 0.006118 (old) 0.275041[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4788 (-11.0900) Distance: 0.4680 (-4.3948) Angle: 0.0033 (-6.2464) Dihedral: 0.0075 (-0.4489) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001683 (new) 0.006247 (old) 0.269475[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4874 (-11.8801) Distance: 0.4763 (-5.0027) Angle: 0.0033 (-6.4307) Dihedral: 0.0079 (-0.4466) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001675 (new) 0.008529 (old) 0.196406[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.4962 (-13.0171) Distance: 0.4847 (-5.9092) Angle: 0.0034 (-6.6623) Dihedral: 0.0082 (-0.4457) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 80 / 303 
-max(dx) 0.001662 (new) 0.008501 (old) 0.195534[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.5052 (-14.4998) Distance: 0.4932 (-7.1081) Angle: 0.0034 (-6.9453) Dihedral: 0.0086 (-0.4464) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001646 (new) 0.008471 (old) 0.194272[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5144 (-15.6080) Distance: 0.5019 (-8.0351) Angle: 0.0034 (-7.1291) Dihedral: 0.0090 (-0.4438) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001624 (new) 0.005418 (old) 0.299732[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5237 (-16.0799) Distance: 0.5107 (-8.4872) Angle: 0.0035 (-7.1561) Dihedral: 0.0095 (-0.4366) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001600 (new) 0.008591 (old) 0.186278[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5333 (-16.4756) Distance: 0.5197 (-8.8971) Angle: 0.0035 (-7.1492) Dihedral: 0.0101 (-0.4294) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001576 (new) 0.008668 (old) 0.181854[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5431 (-16.9384) Distance: 0.5288 (-9.3801) Angle: 0.0036 (-7.1354) Dihedral: 0.0107 (-0.4229) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001552 (new) 0.008611 (old) 0.180243[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5531 (-17.4628) Distance: 0.5381 (-9.9315) Angle: 0.0036 (-7.1142) Dihedral: 0.0114 (-0.4171) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001528 (new) 0.008549 (old) 0.178685[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.5634 (-18.0432) Distance: 0.5476 (-10.5459) Angle: 0.0036 (-7.0853) Dihedral: 0.0122 (-0.4120) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001503 (new) 0.008484 (old) 0.177160[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.5739 (-18.6735) Distance: 0.5572 (-11.2176) Angle: 0.0037 (-7.0483) Dihedral: 0.0131 (-0.4076) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001477 (new) 0.008413 (old) 0.175617[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.5848 (-19.9915) Distance: 0.5670 (-12.5443) Angle: 0.0037 (-7.0413) Dihedral: 0.0141 (-0.4059) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001456 (new) 0.006486 (old) 0.224411[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.5959 (-21.9139) Distance: 0.5770 (-14.3954) Angle: 0.0037 (-7.1104) Dihedral: 0.0152 (-0.4081) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-Working on frame 90 / 303 
-max(dx) 0.001439 (new) 0.006698 (old) 0.214848[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.6073 (-24.0115) Distance: 0.5872 (-16.4009) Angle: 0.0037 (-7.1990) Dihedral: 0.0164 (-0.4116) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001422 (new) 0.006983 (old) 0.203702[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.6191 (-26.3709) Distance: 0.5976 (-18.6632) Angle: 0.0038 (-7.2916) Dihedral: 0.0177 (-0.4162) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001404 (new) 0.006975 (old) 0.201319[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.6313 (-28.9890) Distance: 0.6083 (-21.1811) Angle: 0.0038 (-7.3860) Dihedral: 0.0192 (-0.4219) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001384 (new) 0.006967 (old) 0.198698[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.6438 (-32.0445) Distance: 0.6191 (-24.1285) Angle: 0.0038 (-7.4847) Dihedral: 0.0209 (-0.4279) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0033) 
-max(dx) 0.001362 (new) 0.006487 (old) 0.209923[0m (ratio)
-Cnvgd (fev=17) : LSq: 0.6567 (-33.9678) Distance: 0.6301 (-25.9539) Angle: 0.0038 (-7.5639) Dihedral: 0.0228 (-0.4285) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0214) 
-max(dx) 0.001338 (new) 0.006898 (old) 0.194009[0m (ratio)
-Cnvgd (fev=17) : LSq: 0.6700 (-35.5955) Distance: 0.6413 (-27.4963) Angle: 0.0038 (-7.6276) Dihedral: 0.0249 (-0.4283) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0433) 
-max(dx) 0.001316 (new) 0.007960 (old) 0.165291[0m (ratio)
-Cnvgd (fev=17) : LSq: 0.6837 (-37.2919) Distance: 0.6528 (-29.1093) Angle: 0.0038 (-7.6807) Dihedral: 0.0272 (-0.4287) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0732) 
-max(dx) 0.001293 (new) 0.007876 (old) 0.164126[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.6980 (-39.0475) Distance: 0.6645 (-30.7839) Angle: 0.0038 (-7.7227) Dihedral: 0.0297 (-0.4298) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1111) 
-max(dx) 0.001269 (new) 0.007786 (old) 0.162968[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7127 (-39.9253) Distance: 0.6764 (-32.2962) Angle: 0.0037 (-7.1240) Dihedral: 0.0326 (-0.4118) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0933) 
-max(dx) 0.001246 (new) 0.007880 (old) 0.158120[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7280 (-38.0062) Distance: 0.6886 (-31.9204) Angle: 0.0037 (-5.7330) Dihedral: 0.0357 (-0.3524) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0003) 
-Working on frame 100 / 303 
-max(dx) 0.001225 (new) 0.006647 (old) 0.184326[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7438 (-36.5984) Distance: 0.7009 (-30.9069) Angle: 0.0037 (-5.3657) Dihedral: 0.0392 (-0.3243) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0015) 
-max(dx) 0.001204 (new) 0.008082 (old) 0.149029[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7602 (-37.0139) Distance: 0.7136 (-30.2712) Angle: 0.0036 (-6.3696) Dihedral: 0.0430 (-0.3689) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0043) 
-max(dx) 0.001182 (new) 0.008519 (old) 0.138706[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7773 (-39.6823) Distance: 0.7264 (-30.3531) Angle: 0.0036 (-8.8327) Dihedral: 0.0473 (-0.4827) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0139) 
-max(dx) 0.001191 (new) 0.008857 (old) 0.134521[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.7950 (-43.3727) Distance: 0.7395 (-31.1598) Angle: 0.0035 (-11.6076) Dihedral: 0.0520 (-0.5853) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0201) 
-max(dx) 0.001203 (new) 0.007366 (old) 0.163315[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.8134 (-47.3578) Distance: 0.7528 (-32.3906) Angle: 0.0035 (-14.2891) Dihedral: 0.0572 (-0.6587) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0193) 
-max(dx) 0.001214 (new) 0.006987 (old) 0.173699[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.8327 (-51.4894) Distance: 0.7664 (-33.9844) Angle: 0.0034 (-16.7913) Dihedral: 0.0629 (-0.7009) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0128) 
-max(dx) 0.001228 (new) 0.006401 (old) 0.191866[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.8527 (-55.8481) Distance: 0.7802 (-35.9466) Angle: 0.0033 (-19.0371) Dihedral: 0.0692 (-0.6940) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1704) 
-max(dx) 0.001243 (new) 0.007102 (old) 0.174998[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.8737 (-58.3674) Distance: 0.7942 (-37.2845) Angle: 0.0033 (-19.9251) Dihedral: 0.0762 (-0.6136) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.5442) 
-max(dx) 0.001255 (new) 0.007688 (old) 0.163220[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.8956 (-57.4200) Distance: 0.8085 (-37.0859) Angle: 0.0032 (-19.5453) Dihedral: 0.0839 (-0.4968) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2920) 
-max(dx) 0.001269 (new) 0.008521 (old) 0.148983[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.9185 (-55.9681) Distance: 0.8231 (-36.3088) Angle: 0.0031 (-19.1887) Dihedral: 0.0924 (-0.3997) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0710) 
-Working on frame 110 / 303 
-max(dx) 0.001284 (new) 0.008107 (old) 0.158377[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.9426 (-54.9808) Distance: 0.8379 (-35.4927) Angle: 0.0030 (-19.1463) Dihedral: 0.1017 (-0.3419) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001299 (new) 0.008021 (old) 0.161903[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.9678 (-54.6111) Distance: 0.8529 (-34.8390) Angle: 0.0029 (-19.4002) Dihedral: 0.1120 (-0.3719) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001313 (new) 0.008014 (old) 0.163892[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.9943 (-54.8756) Distance: 0.8682 (-34.3711) Angle: 0.0028 (-19.9419) Dihedral: 0.1233 (-0.5626) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001326 (new) 0.008086 (old) 0.164000[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.0222 (-55.9110) Distance: 0.8837 (-34.1577) Angle: 0.0027 (-20.7497) Dihedral: 0.1357 (-1.0035) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001343 (new) 0.008189 (old) 0.164001[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.0515 (-57.8045) Distance: 0.8995 (-34.3047) Angle: 0.0026 (-21.7315) Dihedral: 0.1494 (-1.7684) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001358 (new) 0.008285 (old) 0.163951[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.0825 (-61.2436) Distance: 0.9156 (-34.9037) Angle: 0.0025 (-23.4101) Dihedral: 0.1644 (-2.9298) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001375 (new) 0.008021 (old) 0.171410[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.1153 (-66.1214) Distance: 0.9319 (-35.6121) Angle: 0.0025 (-26.3504) Dihedral: 0.1809 (-4.1590) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-max(dx) 0.001394 (new) 0.008107 (old) 0.171976[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.1499 (-71.4998) Distance: 0.9485 (-36.0111) Angle: 0.0024 (-30.4262) Dihedral: 0.1990 (-5.0541) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0085) 
-max(dx) 0.001417 (new) 0.008441 (old) 0.167935[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.1865 (-78.1973) Distance: 0.9654 (-35.9364) Angle: 0.0023 (-36.1634) Dihedral: 0.2189 (-5.7703) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.3272) 
-max(dx) 0.001441 (new) 0.007977 (old) 0.180629[0m (ratio)
-Cnvgd (fev=21) : LSq: 1.2254 (-85.3379) Distance: 0.9825 (-35.0502) Angle: 0.0023 (-42.9962) Dihedral: 0.2406 (-6.4571) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.8344) 
-Working on frame 120 / 303 
-max(dx) 0.001459 (new) 0.006831 (old) 0.213550[0m (ratio)
-Cnvgd (fev=21) : LSq: 1.2666 (-90.8978) Distance: 1.0000 (-33.5604) Angle: 0.0022 (-49.4875) Dihedral: 0.2644 (-7.2820) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.5679) 
-max(dx) 0.001481 (new) 0.006074 (old) 0.243818[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.3103 (-94.2087) Distance: 1.0177 (-31.8373) Angle: 0.0022 (-54.7523) Dihedral: 0.2904 (-7.5431) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0760) 
-max(dx) 0.001503 (new) 0.006605 (old) 0.227527[0m (ratio)
-Cnvgd (fev=20) : LSq: 1.3567 (-95.4443) Distance: 1.0357 (-29.9968) Angle: 0.0022 (-57.7232) Dihedral: 0.3188 (-7.7136) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0105) 
-max(dx) 0.001520 (new) 0.008005 (old) 0.189933[0m (ratio)
-Cnvgd (fev=43) : LSq: 4.4417 (-95.1909) Distance: 3.1562 (-26.2932) Angle: 0.0171 (-58.1762) Dihedral: 1.2683 (-10.7140) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0074) 
-jump 12.222989 max(dx) 0.104295, trying anchor = 0.017342 Cnvgd (fev=47) : LSq: 4.4485 (-95.1898) Distance: 3.1549 (-26.2945) Angle: 0.0173 (-58.1760) Dihedral: 1.2691 (-10.7132) Anchor: 0.0071 (+0.0014) Morse: 0.0000 (-0.0074) 
-jump 12.307378 max(dx) 0.105016, trying anchor = 0.026012 Cnvgd (fev=51) : LSq: 4.4270 (-95.2185) Distance: 3.1193 (-26.3302) Angle: 0.0171 (-58.1762) Dihedral: 1.2733 (-10.7090) Anchor: 0.0172 (+0.0043) Morse: 0.0000 (-0.0074) 
-jump 12.263991 max(dx) 0.104645, trying anchor = 0.039018 Cnvgd (fev=48) : LSq: 4.4443 (-95.2174) Distance: 3.1115 (-26.3379) Angle: 0.0174 (-58.1760) Dihedral: 1.2775 (-10.7048) Anchor: 0.0378 (+0.0087) Morse: 0.0000 (-0.0074) 
-jump 12.466309 max(dx) 0.106372, trying anchor = 0.058528 Cnvgd (fev=46) : LSq: 4.4332 (-95.2648) Distance: 3.0305 (-26.4189) Angle: 0.0150 (-58.1783) Dihedral: 1.2867 (-10.6956) Anchor: 0.1009 (+0.0354) Morse: 0.0000 (-0.0074) 
-jump 12.197811 max(dx) 0.104081, trying anchor = 0.087791 Cnvgd (fev=49) : LSq: 4.4829 (-95.2971) Distance: 3.0844 (-26.3650) Angle: 0.0240 (-58.1694) Dihedral: 1.3172 (-10.6651) Anchor: 0.0574 (-0.0901) Morse: 0.0000 (-0.0074) 
-jump 15.082638 max(dx) 0.128696, trying anchor = 0.131687 Cnvgd (fev=47) : LSq: 3.5211 (-96.4431) Distance: 2.1075 (-27.3420) Angle: 0.0193 (-58.1741) Dihedral: 1.2834 (-10.6989) Anchor: 0.1109 (-0.2208) Morse: 0.0000 (-0.0074) 
-jump 11.410643 max(dx) 0.097364, trying anchor = 0.197531 Cnvgd (fev=42) : LSq: 3.4402 (-96.9387) Distance: 1.9049 (-27.5445) Angle: 0.0196 (-58.1738) Dihedral: 1.2514 (-10.7309) Anchor: 0.2643 (-0.4821) Morse: 0.0000 (-0.0074) 
-jump 9.309838 max(dx) 0.079438, trying anchor = 0.296296 Cnvgd (fev=49) : LSq: 3.6605 (-97.6515) Distance: 2.0003 (-27.4491) Angle: 0.0252 (-58.1681) Dihedral: 1.1897 (-10.7926) Anchor: 0.4449 (-1.2345) Morse: 0.0003 (-0.0071) 
-jump 8.902504 max(dx) 0.075963, trying anchor = 0.444444 Cnvgd (fev=49) : LSq: 4.1326 (-99.2786) Distance: 2.1024 (-27.3471) Angle: 0.0313 (-58.1621) Dihedral: 1.1537 (-10.8286) Anchor: 0.8436 (-2.9351) Morse: 0.0017 (-0.0057) 
-jump 8.554647 max(dx) 0.072994, trying anchor = 0.666667 Cnvgd (fev=39) : LSq: 5.0861 (-103.0485) Distance: 2.1657 (-27.2837) Angle: 0.0444 (-58.1490) Dihedral: 1.3121 (-10.6702) Anchor: 1.5573 (-6.9447) Morse: 0.0065 (-0.0009) 
-jump 8.932414 max(dx) 0.076218, trying anchor = 1.000000 Cnvgd (fev=26) : LSq: 6.6673 (-112.0948) Distance: 1.7690 (-27.6804) Angle: 0.0897 (-58.1037) Dihedral: 2.3471 (-9.6352) Anchor: 2.4490 (-16.6805) Morse: 0.0125 (+0.0050) 
-jump 10.946319 max(dx) 0.093402, trying anchor = 2.000000 Cnvgd (fev=18) : LSq: 12.6960 (-163.4544) Distance: 1.3563 (-28.0932) Angle: 0.3443 (-57.8491) Dihedral: 3.5692 (-8.4131) Anchor: 7.2719 (-69.2460) Morse: 0.1543 (+0.1469) 
-jump 11.484353 max(dx) 0.097993, trying anchor = 3.000000 Cnvgd (fev=24) : LSq: 21.1844 (-250.6134) Distance: 1.2991 (-28.1504) Angle: 0.9025 (-57.2908) Dihedral: 3.9085 (-8.0738) Anchor: 14.4746 (-157.6907) Morse: 0.5997 (+0.5922) 
-jump 11.037506 max(dx) 0.094180, trying anchor = 4.000000 Cnvgd (fev=12) : LSq: 1.4200 (-404.2842) Distance: 1.0591 (-28.3903) Angle: 0.0043 (-58.1890) Dihedral: 0.3526 (-11.6297) Anchor: 0.0039 (-306.0678) Morse: 0.0000 (-0.0074) 
-xyz: error 1.419991 max(dx) 0.001456 jump 0.17059304481482812 anchor 4.000000
-max(dx) 0.001456 (new) 0.008533 (old) 0.170593[0m (ratio)
-Cnvgd (fev=46) : LSq: 4.6083 (-90.7627) Distance: 3.2535 (-24.9482) Angle: 0.0155 (-55.8361) Dihedral: 1.3393 (-9.9773) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0010) 
-jump 12.411438 max(dx) 0.105784, trying anchor = 3.000000 Cnvgd (fev=18) : LSq: 21.6671 (-247.7047) Distance: 1.3854 (-26.8164) Angle: 0.9390 (-54.9126) Dihedral: 4.0372 (-7.2795) Anchor: 14.7238 (-159.2771) Morse: 0.5818 (+0.5808) 
-jump 11.164893 max(dx) 0.095159, trying anchor = 4.000000 Cnvgd (fev=18) : LSq: 32.5295 (-372.1764) Distance: 1.3794 (-26.8224) Angle: 2.0786 (-53.7731) Dihedral: 4.0579 (-7.2587) Anchor: 23.6639 (-285.6710) Morse: 1.3498 (+1.3488) 
-jump 10.579656 max(dx) 0.090171, trying anchor = 5.000000 Cnvgd (fev=17) : LSq: 1.4945 (-577.2123) Distance: 1.0982 (-27.1035) Angle: 0.0062 (-55.8454) Dihedral: 0.3845 (-10.9322) Anchor: 0.0056 (-483.3302) Morse: 0.0000 (-0.0010) 
-xyz: error 1.494517 max(dx) 0.002182 jump 0.25601961742026863 anchor 5.000000
-max(dx) 0.002182 (new) 0.008523 (old) 0.256020[0m (ratio)
-Cnvgd (fev=53) : LSq: 4.8062 (-85.1509) Distance: 3.3874 (-23.8445) Angle: 0.0155 (-51.7932) Dihedral: 1.4033 (-9.5131) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.680517 max(dx) 0.112477, trying anchor = 4.000000 Cnvgd (fev=20) : LSq: 33.3018 (-369.9715) Distance: 1.4972 (-25.7347) Angle: 2.1141 (-49.6946) Dihedral: 4.2193 (-6.6971) Anchor: 24.1463 (-289.1699) Morse: 1.3248 (+1.3248) 
-jump 11.112666 max(dx) 0.091365, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 46.2036 (-533.3101) Distance: 1.5052 (-25.7267) Angle: 4.2393 (-47.5694) Dihedral: 4.0212 (-6.8952) Anchor: 34.0687 (-455.4879) Morse: 2.3691 (+2.3691) 
-jump 10.396314 max(dx) 0.085475, trying anchor = 6.000000 Cnvgd (fev=19) : LSq: 1.5861 (-793.3325) Distance: 1.1549 (-26.0770) Angle: 0.0074 (-51.8014) Dihedral: 0.4169 (-10.4995) Anchor: 0.0069 (-704.9547) Morse: 0.0000 (+0.0000) 
-xyz: error 1.586117 max(dx) 0.002919 jump 0.3550297205510964 anchor 6.000000
-max(dx) 0.002919 (new) 0.008222 (old) 0.355030[0m (ratio)
-Cnvgd (fev=25) : LSq: 2.7902 (-80.0373) Distance: 0.7483 (-25.8722) Angle: 0.0247 (-45.6920) Dihedral: 2.0172 (-8.4731) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.781670 max(dx) 0.111237, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 47.4134 (-532.5677) Distance: 1.6748 (-24.9456) Angle: 4.1897 (-41.5270) Dihedral: 4.2494 (-6.2409) Anchor: 34.9878 (-462.1657) Morse: 2.3116 (+2.3116) 
-jump 11.603297 max(dx) 0.087318, trying anchor = 6.000000 Cnvgd (fev=31) : LSq: 1.7179 (-797.0107) Distance: 1.2445 (-25.3759) Angle: 0.0078 (-45.7089) Dihedral: 0.4539 (-10.0364) Anchor: 0.0117 (-715.8894) Morse: 0.0000 (+0.0000) 
-xyz: error 1.717948 max(dx) 0.004481 jump 0.5954645906597321 anchor 6.000000
-max(dx) 0.004481 (new) 0.007525 (old) 0.595465[0m (ratio)
-Cnvgd (fev=24) : LSq: 2.6801 (-72.3611) Distance: 0.7343 (-25.6714) Angle: 0.0240 (-38.5717) Dihedral: 1.9218 (-8.1134) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0045) 
-jump 16.484747 max(dx) 0.107968, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 48.8431 (-532.0299) Distance: 1.8984 (-24.5073) Angle: 4.1614 (-34.4344) Dihedral: 4.5050 (-5.5302) Anchor: 36.0211 (-469.8108) Morse: 2.2573 (+2.2528) 
-jump 13.661034 max(dx) 0.089474, trying anchor = 6.000000 Cnvgd (fev=51) : LSq: 63.8980 (-739.5410) Distance: 1.9262 (-24.4795) Angle: 7.7404 (-30.8554) Dihedral: 4.1373 (-5.8979) Anchor: 46.6154 (-681.7825) Morse: 3.4787 (+3.4742) 
-jump 12.618093 max(dx) 0.082643, trying anchor = 7.000000 Cnvgd (fev=24) : LSq: 1.9112 (-1064.5603) Distance: 1.3765 (-25.0292) Angle: 0.0115 (-38.5843) Dihedral: 0.5053 (-9.5299) Anchor: 0.0180 (-991.4124) Morse: 0.0000 (-0.0045) 
-xyz: error 1.911215 max(dx) 0.005495 jump 0.8390568292759674 anchor 7.000000
-max(dx) 0.005495 (new) 0.006550 (old) 0.839057[0m (ratio)
-Cnvgd (fev=23) : LSq: 2.5696 (-64.8573) Distance: 0.7204 (-25.7234) Angle: 0.0232 (-31.2177) Dihedral: 1.8260 (-7.7198) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1964) 
-jump 15.174020 max(dx) 0.104291, trying anchor = 6.000000 Cnvgd (fev=29) : LSq: 65.8231 (-742.6115) Distance: 2.1453 (-24.2985) Angle: 7.3757 (-23.8652) Dihedral: 4.5315 (-5.0143) Anchor: 48.4647 (-692.5429) Morse: 3.3059 (+3.1095) 
-jump 12.602044 max(dx) 0.086614, trying anchor = 7.000000 Cnvgd (fev=37) : LSq: 2.1433 (-1073.8774) Distance: 1.5350 (-24.9088) Angle: 0.0133 (-31.2276) Dihedral: 0.5714 (-8.9744) Anchor: 0.0235 (-1008.5702) Morse: 0.0000 (-0.1964) 
-xyz: error 2.143253 max(dx) 0.004888 jump 0.7112473781164017 anchor 7.000000
-max(dx) 0.004888 (new) 0.006873 (old) 0.711247[0m (ratio)
-Cnvgd (fev=23) : LSq: 2.4592 (-58.1611) Distance: 0.7066 (-25.7849) Angle: 0.0224 (-24.6695) Dihedral: 1.7302 (-7.2847) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.4220) 
-jump 14.674599 max(dx) 0.101004, trying anchor = 6.000000 Cnvgd (fev=26) : LSq: 67.5919 (-747.3299) Distance: 2.3567 (-24.1348) Angle: 7.5000 (-17.1920) Dihedral: 4.8174 (-4.1975) Anchor: 49.7398 (-704.5618) Morse: 3.1781 (+2.7561) 
-jump 12.955861 max(dx) 0.089174, trying anchor = 7.000000 Cnvgd (fev=43) : LSq: 84.6909 (-1002.6176) Distance: 2.3449 (-24.1465) Angle: 12.2399 (-12.4520) Dihedral: 4.4979 (-4.5170) Anchor: 61.3407 (-965.3475) Morse: 4.2674 (+3.8454) 
-jump 12.209336 max(dx) 0.084036, trying anchor = 8.000000 Cnvgd (fev=13) : LSq: 2.3662 (-1399.2347) Distance: 1.6876 (-24.8038) Angle: 0.0147 (-24.6772) Dihedral: 0.6433 (-8.3715) Anchor: 0.0205 (-1340.9600) Morse: 0.0000 (-0.4220) 
-xyz: error 2.366157 max(dx) 0.003297 jump 0.4789778014977211 anchor 8.000000
-Working on frame 130 / 303 
-max(dx) 0.003297 (new) 0.006883 (old) 0.478978[0m (ratio)
-Cnvgd (fev=24) : LSq: 2.3494 (-52.2573) Distance: 0.6930 (-25.6481) Angle: 0.0216 (-19.5319) Dihedral: 1.6348 (-6.8074) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2700) 
-jump 13.865292 max(dx) 0.099913, trying anchor = 7.000000 Cnvgd (fev=17) : LSq: 2.5572 (-1097.4880) Distance: 1.8169 (-24.5242) Angle: 0.0104 (-19.5431) Dihedral: 0.7091 (-7.7331) Anchor: 0.0208 (-1045.4176) Morse: 0.0000 (-0.2700) 
-xyz: error 2.557173 max(dx) 0.002403 jump 0.33352466440234246 anchor 7.000000
-max(dx) 0.002403 (new) 0.007206 (old) 0.333525[0m (ratio)
-Cnvgd (fev=23) : LSq: 2.2408 (-48.0470) Distance: 0.6797 (-25.3381) Angle: 0.0207 (-16.3700) Dihedral: 1.5404 (-6.3061) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0328) 
-jump 12.934372 max(dx) 0.103090, trying anchor = 6.000000 Cnvgd (fev=24) : LSq: 70.6901 (-763.6817) Distance: 2.7162 (-23.3015) Angle: 8.2952 (-8.0955) Dihedral: 5.2866 (-2.5599) Anchor: 51.5591 (-732.5249) Morse: 2.8329 (+2.8001) 
-jump 11.656847 max(dx) 0.092908, trying anchor = 7.000000 Cnvgd (fev=13) : LSq: 2.7442 (-1114.7690) Distance: 1.9411 (-24.0767) Angle: 0.0083 (-16.3824) Dihedral: 0.7751 (-7.0713) Anchor: 0.0197 (-1067.2058) Morse: 0.0000 (-0.0328) 
-xyz: error 2.744240 max(dx) 0.002237 jump 0.2807144869701127 anchor 7.000000
-max(dx) 0.002237 (new) 0.007970 (old) 0.280714[0m (ratio)
-Cnvgd (fev=23) : LSq: 2.1339 (-46.2726) Distance: 0.6667 (-24.8638) Angle: 0.0198 (-15.5228) Dihedral: 1.4474 (-5.8474) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0386) 
-jump 12.750381 max(dx) 0.105958, trying anchor = 6.000000 Cnvgd (fev=24) : LSq: 72.4228 (-777.6234) Distance: 2.9246 (-22.6059) Angle: 9.0434 (-6.4992) Dihedral: 5.4984 (-1.7964) Anchor: 52.3991 (-749.2406) Morse: 2.5572 (+2.5187) 
-jump 11.360756 max(dx) 0.094410, trying anchor = 7.000000 Cnvgd (fev=13) : LSq: 2.9668 (-1136.5603) Distance: 2.0896 (-23.4408) Angle: 0.0083 (-15.5343) Dihedral: 0.8466 (-6.4482) Anchor: 0.0222 (-1091.0985) Morse: 0.0000 (-0.0386) 
-xyz: error 2.966804 max(dx) 0.002703 jump 0.3252711776638155 anchor 7.000000
-max(dx) 0.002703 (new) 0.008310 (old) 0.325271[0m (ratio)
-Cnvgd (fev=22) : LSq: 2.0292 (-46.2822) Distance: 0.6539 (-24.2905) Angle: 0.0189 (-16.3507) Dihedral: 1.3564 (-5.5823) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0587) 
-jump 12.637278 max(dx) 0.109175, trying anchor = 6.000000 Cnvgd (fev=17) : LSq: 3.2319 (-864.2651) Distance: 2.2765 (-22.6679) Angle: 0.0102 (-16.3594) Dihedral: 0.9148 (-6.0239) Anchor: 0.0305 (-819.1552) Morse: 0.0000 (-0.0587) 
-xyz: error 3.231948 max(dx) 0.003611 jump 0.41797565193695946 anchor 6.000000
-max(dx) 0.003611 (new) 0.008639 (old) 0.417976[0m (ratio)
-Cnvgd (fev=22) : LSq: 1.9273 (-47.2005) Distance: 0.6416 (-23.8216) Angle: 0.0180 (-17.6988) Dihedral: 1.2678 (-5.6801) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.136943 max(dx) 0.113437, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 58.7153 (-570.4868) Distance: 3.6535 (-20.8097) Angle: 4.8263 (-12.8905) Dihedral: 5.3730 (-1.5750) Anchor: 43.3669 (-536.7072) Morse: 1.4956 (+1.4956) 
-jump 12.700471 max(dx) 0.101911, trying anchor = 6.000000 Cnvgd (fev=13) : LSq: 3.5502 (-880.8844) Distance: 2.5136 (-21.9496) Angle: 0.0175 (-17.6992) Dihedral: 0.9866 (-5.9613) Anchor: 0.0325 (-835.2743) Morse: 0.0000 (+0.0000) 
-xyz: error 3.550205 max(dx) 0.004680 jump 0.5832572187887209 anchor 6.000000
-max(dx) 0.004680 (new) 0.008024 (old) 0.583257[0m (ratio)
-Cnvgd (fev=22) : LSq: 1.8288 (-48.0304) Distance: 0.6296 (-23.6702) Angle: 0.0170 (-18.3449) Dihedral: 1.1822 (-6.0153) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.180229 max(dx) 0.118750, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 60.4075 (-578.4641) Distance: 4.0512 (-20.2486) Angle: 5.6047 (-12.7573) Dihedral: 5.2367 (-1.9607) Anchor: 44.2936 (-544.7187) Morse: 1.2213 (+1.2213) 
-jump 15.011498 max(dx) 0.103760, trying anchor = 6.000000 Cnvgd (fev=14) : LSq: 3.8877 (-894.1494) Distance: 2.7654 (-21.5344) Angle: 0.0276 (-18.3343) Dihedral: 1.0607 (-6.1368) Anchor: 0.0339 (-848.1439) Morse: 0.0000 (+0.0000) 
-xyz: error 3.887657 max(dx) 0.004865 jump 0.703803596244453 anchor 6.000000
-max(dx) 0.004865 (new) 0.006912 (old) 0.703804[0m (ratio)
-Cnvgd (fev=23) : LSq: 1.7340 (-48.4405) Distance: 0.6180 (-23.8989) Angle: 0.0161 (-18.1403) Dihedral: 1.0999 (-6.4013) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0000) 
-jump 15.818657 max(dx) 0.124330, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 61.7995 (-584.7127) Distance: 4.3900 (-20.1268) Angle: 6.2658 (-11.8907) Dihedral: 5.0912 (-2.4100) Anchor: 45.0324 (-551.3053) Morse: 1.0201 (+1.0201) 
-jump 13.397536 max(dx) 0.105301, trying anchor = 6.000000 Cnvgd (fev=14) : LSq: 4.1870 (-904.7138) Distance: 2.9840 (-21.5329) Angle: 0.0372 (-18.1193) Dihedral: 1.1332 (-6.3680) Anchor: 0.0327 (-858.6936) Morse: 0.0000 (-0.0000) 
-xyz: error 4.187036 max(dx) 0.003838 jump 0.48833362023845434 anchor 6.000000
-max(dx) 0.003838 (new) 0.007860 (old) 0.488334[0m (ratio)
-Cnvgd (fev=24) : LSq: 1.6433 (-48.9267) Distance: 0.6068 (-24.4464) Angle: 0.0152 (-17.4772) Dihedral: 1.0213 (-6.8724) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1308) 
-jump 16.702744 max(dx) 0.129163, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 62.7461 (-591.4342) Distance: 4.6178 (-20.4354) Angle: 6.7065 (-10.7859) Dihedral: 4.9249 (-2.9688) Anchor: 45.5897 (-558.0206) Morse: 0.9072 (+0.7764) 
-jump 13.781699 max(dx) 0.106574, trying anchor = 6.000000 Cnvgd (fev=14) : LSq: 4.4103 (-915.3586) Distance: 3.1347 (-21.9185) Angle: 0.0385 (-17.4539) Dihedral: 1.2074 (-6.6863) Anchor: 0.0297 (-869.1691) Morse: 0.0000 (-0.1308) 
-xyz: error 4.410344 max(dx) 0.002193 jump 0.28354930414118473 anchor 6.000000
-max(dx) 0.002193 (new) 0.007733 (old) 0.283549[0m (ratio)
-Cnvgd (fev=21) : LSq: 1.5571 (-49.2331) Distance: 0.5961 (-25.0373) Angle: 0.0144 (-16.5719) Dihedral: 0.9467 (-7.3961) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2277) 
-jump 16.872038 max(dx) 0.132473, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 63.3462 (-599.4416) Distance: 4.7583 (-20.8750) Angle: 6.9865 (-9.5998) Dihedral: 4.7421 (-3.6007) Anchor: 46.0113 (-565.9864) Morse: 0.8479 (+0.6202) 
-jump 13.685896 max(dx) 0.107457, trying anchor = 6.000000 Cnvgd (fev=15) : LSq: 4.5754 (-927.4915) Distance: 3.2334 (-22.3999) Angle: 0.0341 (-16.5522) Dihedral: 1.2812 (-7.0616) Anchor: 0.0266 (-881.2500) Morse: 0.0000 (-0.2277) 
-xyz: error 4.575362 max(dx) 0.001213 jump 0.15451656529513474 anchor 6.000000
-max(dx) 0.001213 (new) 0.007852 (old) 0.154517[0m (ratio)
-Cnvgd (fev=45) : LSq: 7.2955 (-43.2733) Distance: 4.0820 (-21.9431) Angle: 0.0194 (-15.7735) Dihedral: 3.1940 (-5.3801) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1766) 
-jump 20.958864 max(dx) 0.160917, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 63.7128 (-609.7878) Distance: 4.8349 (-21.1903) Angle: 7.1616 (-8.6313) Dihedral: 4.5520 (-4.0221) Anchor: 46.3414 (-576.5904) Morse: 0.8228 (+0.6462) 
-jump 14.071425 max(dx) 0.108037, trying anchor = 6.000000 Cnvgd (fev=15) : LSq: 4.7033 (-942.8873) Distance: 3.2992 (-22.7260) Angle: 0.0258 (-15.7671) Dihedral: 1.3538 (-7.2202) Anchor: 0.0244 (-896.9974) Morse: 0.0000 (-0.1766) 
-xyz: error 4.703291 max(dx) 0.000914 jump 0.11902712874333264 anchor 6.000000
-Working on frame 140 / 303 
-max(dx) 0.000914 (new) 0.007678 (old) 0.119027[0m (ratio)
-Cnvgd (fev=42) : LSq: 7.4003 (-43.4791) Distance: 4.0370 (-21.8528) Angle: 0.0188 (-15.6021) Dihedral: 3.3445 (-5.8112) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2131) 
-jump 22.176781 max(dx) 0.161921, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 64.0110 (-622.0706) Distance: 4.8978 (-20.9920) Angle: 7.3728 (-8.2480) Dihedral: 4.3743 (-4.7814) Anchor: 46.5747 (-588.6276) Morse: 0.7914 (+0.5783) 
-jump 14.832295 max(dx) 0.108296, trying anchor = 6.000000 Cnvgd (fev=18) : LSq: 4.8372 (-960.7334) Distance: 3.3661 (-22.5238) Angle: 0.0157 (-15.6051) Dihedral: 1.4305 (-7.7252) Anchor: 0.0250 (-914.6662) Morse: 0.0000 (-0.2131) 
-xyz: error 4.837216 max(dx) 0.001239 jump 0.16972861691760074 anchor 6.000000
-max(dx) 0.001239 (new) 0.007301 (old) 0.169729[0m (ratio)
-Cnvgd (fev=53) : LSq: 7.5288 (-44.1761) Distance: 3.9863 (-21.2240) Angle: 0.0254 (-16.0288) Dihedral: 3.5171 (-6.7470) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1763) 
-jump 20.942774 max(dx) 0.163373, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 64.4137 (-635.6608) Distance: 4.9908 (-20.2195) Angle: 7.6870 (-8.3672) Dihedral: 4.2216 (-6.0425) Anchor: 46.7782 (-601.5914) Morse: 0.7361 (+0.5597) 
-jump 13.888060 max(dx) 0.108339, trying anchor = 6.000000 Cnvgd (fev=19) : LSq: 5.0123 (-980.3449) Distance: 3.4635 (-21.7468) Angle: 0.0081 (-16.0461) Dihedral: 1.5116 (-8.7525) Anchor: 0.0291 (-933.6231) Morse: 0.0000 (-0.1763) 
-xyz: error 5.012262 max(dx) 0.001307 jump 0.16750764317048206 anchor 6.000000
-max(dx) 0.001307 (new) 0.007801 (old) 0.167508[0m (ratio)
-Cnvgd (fev=24) : LSq: 1.2593 (-49.6155) Distance: 0.5576 (-23.5205) Angle: 0.0113 (-16.6913) Dihedral: 0.6904 (-9.3133) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0903) 
-jump 14.241460 max(dx) 0.137597, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 64.9816 (-649.0178) Distance: 5.1260 (-18.9520) Angle: 8.0672 (-8.6354) Dihedral: 4.0977 (-5.9060) Anchor: 47.0191 (-616.1055) Morse: 0.6715 (+0.5812) 
-jump 11.216509 max(dx) 0.108371, trying anchor = 6.000000 Cnvgd (fev=15) : LSq: 5.2429 (-1000.5313) Distance: 3.6037 (-20.4743) Angle: 0.0037 (-16.6989) Dihedral: 1.5993 (-8.4044) Anchor: 0.0362 (-954.8633) Morse: 0.0000 (-0.0903) 
-xyz: error 5.242928 max(dx) 0.001496 jump 0.15485310699227853 anchor 6.000000
-max(dx) 0.001496 (new) 0.009662 (old) 0.154853[0m (ratio)
-Cnvgd (fev=26) : LSq: 1.1966 (-47.8072) Distance: 0.5490 (-22.3225) Angle: 0.0106 (-17.0571) Dihedral: 0.6370 (-8.4234) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0043) 
-jump 14.521174 max(dx) 0.138590, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 65.6689 (-660.1570) Distance: 5.2764 (-17.5951) Angle: 8.3674 (-8.7002) Dihedral: 3.9906 (-5.0698) Anchor: 47.4041 (-629.4180) Morse: 0.6304 (+0.6262) 
-jump 11.390574 max(dx) 0.108712, trying anchor = 6.000000 Cnvgd (fev=15) : LSq: 5.4885 (-1018.1391) Distance: 3.7593 (-19.1122) Angle: 0.0027 (-17.0649) Dihedral: 1.6853 (-7.3751) Anchor: 0.0411 (-974.5827) Morse: 0.0000 (-0.0043) 
-xyz: error 5.488494 max(dx) 0.001727 jump 0.18099327200315887 anchor 6.000000
-max(dx) 0.001727 (new) 0.009544 (old) 0.180993[0m (ratio)
-Cnvgd (fev=21) : LSq: 1.1385 (-46.6679) Distance: 0.5409 (-21.5300) Angle: 0.0100 (-16.9717) Dihedral: 0.5876 (-8.1662) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.304792 max(dx) 0.139553, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 66.3512 (-669.0673) Distance: 5.4178 (-16.6531) Angle: 8.4857 (-8.4960) Dihedral: 3.8871 (-4.8667) Anchor: 47.9298 (-639.6823) Morse: 0.6308 (+0.6308) 
-jump 15.914061 max(dx) 0.109376, trying anchor = 6.000000 Cnvgd (fev=15) : LSq: 5.7149 (-1032.2529) Distance: 3.9039 (-18.1670) Angle: 0.0027 (-16.9789) Dihedral: 1.7669 (-6.9869) Anchor: 0.0414 (-990.1200) Morse: 0.0000 (+0.0000) 
-xyz: error 5.714910 max(dx) 0.001778 jump 0.2587011779425273 anchor 6.000000
-max(dx) 0.001778 (new) 0.006873 (old) 0.258701[0m (ratio)
-Cnvgd (fev=22) : LSq: 1.0847 (-45.8942) Distance: 0.5332 (-21.2536) Angle: 0.0094 (-16.3730) Dihedral: 0.5421 (-8.2677) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.941212 max(dx) 0.140234, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 66.8911 (-675.4012) Distance: 5.5311 (-16.2556) Angle: 8.4024 (-7.9799) Dihedral: 3.7806 (-5.0292) Anchor: 48.4998 (-646.8137) Morse: 0.6773 (+0.6773) 
-jump 15.643452 max(dx) 0.110011, trying anchor = 6.000000 Cnvgd (fev=16) : LSq: 5.9183 (-1042.3120) Distance: 4.0261 (-17.7606) Angle: 0.0027 (-16.3796) Dihedral: 1.8483 (-6.9615) Anchor: 0.0412 (-1001.2102) Morse: 0.0000 (+0.0000) 
-xyz: error 5.918316 max(dx) 0.001700 jump 0.24166860319273356 anchor 6.000000
-max(dx) 0.001700 (new) 0.007032 (old) 0.241669[0m (ratio)
-Cnvgd (fev=26) : LSq: 1.0349 (-45.2984) Distance: 0.5259 (-21.4549) Angle: 0.0088 (-15.1217) Dihedral: 0.5002 (-8.6793) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0425) 
-jump 15.367377 max(dx) 0.140565, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 67.1788 (-678.3372) Distance: 5.5932 (-16.3876) Angle: 8.0833 (-7.0473) Dihedral: 3.6690 (-5.5105) Anchor: 49.0473 (-650.1353) Morse: 0.7860 (+0.7435) 
-jump 12.089044 max(dx) 0.110578, trying anchor = 6.000000 Cnvgd (fev=17) : LSq: 6.0851 (-1047.0713) Distance: 4.1126 (-17.8681) Angle: 0.0028 (-15.1278) Dihedral: 1.9283 (-7.2512) Anchor: 0.0414 (-1006.7817) Morse: 0.0000 (-0.0425) 
-xyz: error 6.085116 max(dx) 0.001170 jump 0.12794005481100534 anchor 6.000000
-max(dx) 0.001170 (new) 0.009147 (old) 0.127940[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.9891 (-44.9197) Distance: 0.5189 (-21.8588) Angle: 0.0083 (-13.4065) Dihedral: 0.4618 (-9.3461) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.3083) 
-jump 17.328813 max(dx) 0.140490, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 67.2280 (-680.5185) Distance: 5.6080 (-16.7696) Angle: 7.7580 (-5.6568) Dihedral: 3.5526 (-6.2554) Anchor: 49.4041 (-652.4336) Morse: 0.9053 (+0.5970) 
-jump 13.686577 max(dx) 0.110962, trying anchor = 6.000000 Cnvgd (fev=38) : LSq: 87.4344 (-969.1206) Distance: 5.3292 (-17.0485) Angle: 16.8785 (+3.4637) Dihedral: 3.9753 (-5.8327) Anchor: 60.3061 (-950.3401) Morse: 0.9453 (+0.6370) 
-jump 12.716447 max(dx) 0.103096, trying anchor = 7.000000 Cnvgd (fev=14) : LSq: 6.2272 (-1415.2834) Distance: 4.1782 (-18.1995) Angle: 0.0034 (-13.4114) Dihedral: 2.0117 (-7.7962) Anchor: 0.0339 (-1375.5680) Morse: 0.0000 (-0.3083) 
-xyz: error 6.227225 max(dx) 0.001476 jump 0.18201870118200486 anchor 7.000000
-max(dx) 0.001476 (new) 0.008107 (old) 0.182019[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.9469 (-40.5921) Distance: 0.5123 (-21.9139) Angle: 0.0079 (-11.4196) Dihedral: 0.4267 (-6.9208) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.3377) 
-jump 20.558477 max(dx) 0.139791, trying anchor = 6.000000 Cnvgd (fev=27) : LSq: 87.5612 (-970.9124) Distance: 5.3990 (-17.0272) Angle: 15.8390 (+4.4115) Dihedral: 3.8417 (-3.5058) Anchor: 61.4062 (-955.5284) Morse: 1.0752 (+0.7375) 
-jump 15.301384 max(dx) 0.104044, trying anchor = 7.000000 Cnvgd (fev=15) : LSq: 6.4073 (-1419.2926) Distance: 4.2531 (-18.1732) Angle: 0.0095 (-11.4180) Dihedral: 2.1014 (-5.2461) Anchor: 0.0433 (-1384.1176) Morse: 0.0000 (-0.3377) 
-xyz: error 6.407334 max(dx) 0.001514 jump 0.22270305375712626 anchor 7.000000
-max(dx) 0.001514 (new) 0.006800 (old) 0.222703[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.9080 (-36.5729) Distance: 0.5060 (-21.7694) Angle: 0.0075 (-10.4160) Dihedral: 0.3946 (-4.1827) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2047) 
-jump 21.613872 max(dx) 0.138334, trying anchor = 6.000000 Cnvgd (fev=27) : LSq: 88.0952 (-979.8209) Distance: 5.5335 (-16.7418) Angle: 16.5100 (+6.0865) Dihedral: 3.7777 (-0.7996) Anchor: 61.3144 (-969.1208) Morse: 0.9595 (+0.7548) 
-jump 16.197881 max(dx) 0.103670, trying anchor = 7.000000 Cnvgd (fev=16) : LSq: 6.6836 (-1433.3341) Distance: 4.3960 (-17.8794) Angle: 0.0262 (-10.3973) Dihedral: 2.2012 (-2.3761) Anchor: 0.0602 (-1402.4766) Morse: 0.0000 (-0.2047) 
-xyz: error 6.683611 max(dx) 0.002538 jump 0.3964930159212673 anchor 7.000000
-Working on frame 150 / 303 
-max(dx) 0.002538 (new) 0.006400 (old) 0.396493[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.8724 (-33.5746) Distance: 0.5000 (-21.6782) Angle: 0.0071 (-10.0025) Dihedral: 0.3652 (-1.8368) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0571) 
-jump 24.729908 max(dx) 0.137210, trying anchor = 6.000000 Cnvgd (fev=28) : LSq: 89.2346 (-994.9256) Distance: 5.7346 (-16.4437) Angle: 19.2235 (+9.2138) Dihedral: 3.8031 (+1.6011) Anchor: 59.8222 (-989.8912) Morse: 0.6514 (+0.5943) 
-jump 18.404033 max(dx) 0.102112, trying anchor = 7.000000 Cnvgd (fev=15) : LSq: 7.0701 (-1456.1533) Distance: 4.6263 (-17.5520) Angle: 0.0512 (-9.9585) Dihedral: 2.3102 (+0.1082) Anchor: 0.0825 (-1428.6940) Morse: 0.0000 (-0.0571) 
-xyz: error 7.070072 max(dx) 0.003275 jump 0.5902790684335489 anchor 7.000000
-max(dx) 0.003275 (new) 0.005548 (old) 0.590279[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.8396 (-32.7517) Distance: 0.4943 (-21.7253) Angle: 0.0069 (-10.1498) Dihedral: 0.3385 (-0.8679) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0087) 
-jump 19.637269 max(dx) 0.136584, trying anchor = 6.000000 Cnvgd (fev=22) : LSq: 7.4994 (-1098.0623) Distance: 4.9086 (-17.3110) Angle: 0.0642 (-10.0925) Dihedral: 2.4010 (+1.1947) Anchor: 0.1257 (-1071.8448) Morse: 0.0000 (-0.0087) 
-xyz: error 7.499412 max(dx) 0.003212 jump 0.4618692908520949 anchor 6.000000
-max(dx) 0.003212 (new) 0.006955 (old) 0.461869[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.8095 (-33.7221) Distance: 0.4887 (-21.9856) Angle: 0.0066 (-11.0575) Dihedral: 0.3141 (-0.6791) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.254224 max(dx) 0.136552, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 72.6496 (-723.4878) Distance: 6.7928 (-15.6815) Angle: 10.7135 (-0.3506) Dihedral: 3.3462 (+2.3530) Anchor: 51.4532 (-710.1526) Morse: 0.3440 (+0.3440) 
-jump 15.898619 max(dx) 0.112754, trying anchor = 6.000000 Cnvgd (fev=18) : LSq: 7.8962 (-1123.3477) Distance: 5.2119 (-17.2624) Angle: 0.0702 (-10.9939) Dihedral: 2.4819 (+1.4886) Anchor: 0.1322 (-1096.5801) Morse: 0.0000 (+0.0000) 
-xyz: error 7.896239 max(dx) 0.003711 jump 0.5233092627279906 anchor 6.000000
-max(dx) 0.003711 (new) 0.007092 (old) 0.523309[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.7819 (-35.5931) Distance: 0.4833 (-22.4851) Angle: 0.0065 (-12.3899) Dihedral: 0.2921 (-0.7181) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.719308 max(dx) 0.136746, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 74.5715 (-738.0852) Distance: 7.0885 (-15.8800) Angle: 11.7451 (-0.6513) Dihedral: 3.3558 (+2.3456) Anchor: 52.1475 (-724.1341) Morse: 0.2346 (+0.2346) 
-jump 13.082545 max(dx) 0.113808, trying anchor = 6.000000 Cnvgd (fev=17) : LSq: 8.1850 (-1146.0356) Distance: 5.4630 (-17.5055) Angle: 0.0611 (-12.3352) Dihedral: 2.5372 (+1.5270) Anchor: 0.1237 (-1117.7218) Morse: 0.0000 (+0.0000) 
-xyz: error 8.184993 max(dx) 0.003426 jump 0.3937849355274878 anchor 6.000000
-max(dx) 0.003426 (new) 0.008699 (old) 0.393785[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.7565 (-36.9165) Distance: 0.4779 (-23.2321) Angle: 0.0064 (-12.8598) Dihedral: 0.2722 (-0.8246) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.899625 max(dx) 0.137656, trying anchor = 5.000000 Cnvgd (fev=19) : LSq: 75.8129 (-747.4446) Distance: 7.2049 (-16.5051) Angle: 12.0648 (-0.8013) Dihedral: 3.3143 (+2.2175) Anchor: 52.9933 (-732.5912) Morse: 0.2356 (+0.2356) 
-jump 12.465893 max(dx) 0.115171, trying anchor = 6.000000 Cnvgd (fev=17) : LSq: 8.2331 (-1160.6816) Distance: 5.5514 (-18.1587) Angle: 0.0335 (-12.8327) Dihedral: 2.5497 (+1.4529) Anchor: 0.0985 (-1131.1432) Morse: 0.0000 (+0.0000) 
-xyz: error 8.233129 max(dx) 0.001830 jump 0.19805437049965194 anchor 6.000000
-max(dx) 0.001830 (new) 0.009239 (old) 0.198054[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.7331 (-36.8453) Distance: 0.4722 (-23.8991) Angle: 0.0064 (-12.0065) Dihedral: 0.2545 (-0.9256) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0142) 
-jump 16.847377 max(dx) 0.139297, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 76.2668 (-749.7396) Distance: 7.1527 (-17.2186) Angle: 11.5600 (-0.4529) Dihedral: 3.2053 (+2.0253) Anchor: 54.0130 (-734.4149) Morse: 0.3357 (+0.3215) 
-jump 14.096040 max(dx) 0.116548, trying anchor = 6.000000 Cnvgd (fev=17) : LSq: 8.1116 (-1164.8031) Distance: 5.4903 (-18.8810) Angle: 0.0102 (-12.0027) Dihedral: 2.5339 (+1.3539) Anchor: 0.0772 (-1135.2591) Morse: 0.0000 (-0.0142) 
-xyz: error 8.111588 max(dx) 0.003944 jump 0.47702992019991103 anchor 6.000000
-max(dx) 0.003944 (new) 0.008268 (old) 0.477030[0m (ratio)
-Cnvgd (fev=34) : LSq: 0.7114 (-36.0019) Distance: 0.4654 (-24.2288) Angle: 0.0066 (-10.5149) Dihedral: 0.2394 (-1.0512) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.2070) 
-jump 18.625804 max(dx) 0.140954, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 76.2425 (-750.7603) Distance: 7.0488 (-17.6453) Angle: 10.8547 (+0.3332) Dihedral: 3.0679 (+1.7773) Anchor: 54.7981 (-735.4914) Morse: 0.4730 (+0.2660) 
-jump 15.500901 max(dx) 0.117306, trying anchor = 6.000000 Cnvgd (fev=18) : LSq: 7.9895 (-1166.7406) Distance: 5.3959 (-19.2982) Angle: 0.0039 (-10.5176) Dihedral: 2.5212 (+1.2306) Anchor: 0.0685 (-1137.9484) Morse: 0.0000 (-0.2070) 
-xyz: error 7.989521 max(dx) 0.003953 jump 0.5223310994775734 anchor 6.000000
-max(dx) 0.003953 (new) 0.007568 (old) 0.522331[0m (ratio)
-Cnvgd (fev=39) : LSq: 0.6909 (-34.5714) Distance: 0.4552 (-23.9062) Angle: 0.0070 (-9.0176) Dihedral: 0.2287 (-1.2542) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.3934) 
-jump 19.866968 max(dx) 0.142275, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 76.0968 (-753.3013) Distance: 6.9810 (-17.3804) Angle: 10.3402 (+1.3155) Dihedral: 2.9351 (+1.4522) Anchor: 55.2544 (-738.8813) Morse: 0.5862 (+0.1928) 
-jump 16.383991 max(dx) 0.117332, trying anchor = 6.000000 Cnvgd (fev=19) : LSq: 7.9378 (-1170.8799) Distance: 5.3443 (-19.0172) Angle: 0.0050 (-9.0197) Dihedral: 2.5237 (+1.0409) Anchor: 0.0649 (-1143.4905) Morse: 0.0000 (-0.3934) 
-xyz: error 7.937812 max(dx) 0.002755 jump 0.38472121624970307 anchor 6.000000
-max(dx) 0.002755 (new) 0.007161 (old) 0.384721[0m (ratio)
-Cnvgd (fev=43) : LSq: 0.6708 (-32.2770) Distance: 0.4342 (-22.6053) Angle: 0.0078 (-8.1121) Dihedral: 0.2289 (-1.3601) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.1994) 
-jump 22.041570 max(dx) 0.144042, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 75.8133 (-756.2433) Distance: 6.9906 (-16.0489) Angle: 9.6044 (+1.4846) Dihedral: 2.8163 (+1.2273) Anchor: 55.6487 (-743.4603) Morse: 0.7534 (+0.5539) 
-jump 17.785484 max(dx) 0.116229, trying anchor = 6.000000 Cnvgd (fev=27) : LSq: 7.9978 (-1175.6668) Distance: 5.3894 (-17.6501) Angle: 0.0085 (-8.1114) Dihedral: 2.5364 (+0.9474) Anchor: 0.0635 (-1150.6533) Morse: 0.0000 (-0.1994) 
-xyz: error 7.997792 max(dx) 0.005670 jump 0.8676632689351739 anchor 6.000000
-max(dx) 0.005670 (new) 0.006535 (old) 0.867663[0m (ratio)
-Cnvgd (fev=33) : LSq: 0.6494 (-30.4225) Distance: 0.4052 (-21.4835) Angle: 0.0081 (-7.4189) Dihedral: 0.2361 (-1.4471) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0730) 
-jump 21.887077 max(dx) 0.147234, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 75.4585 (-759.2725) Distance: 7.0518 (-14.8370) Angle: 8.9878 (+1.5608) Dihedral: 2.7072 (+1.0239) Anchor: 55.8076 (-747.8515) Morse: 0.9042 (+0.8312) 
-jump 17.262013 max(dx) 0.116121, trying anchor = 6.000000 Cnvgd (fev=25) : LSq: 98.2669 (-1090.0741) Distance: 6.7164 (-15.1724) Angle: 19.8192 (+12.3923) Dihedral: 3.1121 (+1.4288) Anchor: 67.7917 (-1089.4774) Morse: 0.8275 (+0.7545) 
-jump 16.057836 max(dx) 0.108021, trying anchor = 7.000000 Cnvgd (fev=15) : LSq: 8.1337 (-1598.1100) Distance: 5.5122 (-16.3765) Angle: 0.0138 (-7.4132) Dihedral: 2.5583 (+0.8751) Anchor: 0.0494 (-1575.1225) Morse: 0.0000 (-0.0730) 
-xyz: error 8.133706 max(dx) 0.005730 jump 0.8518250447561473 anchor 7.000000
-Working on frame 160 / 303 
-max(dx) 0.005730 (new) 0.006727 (old) 0.851825[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.6269 (-28.8066) Distance: 0.3821 (-20.4339) Angle: 0.0080 (-6.8097) Dihedral: 0.2368 (-1.5483) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (-0.0147) 
-jump 22.034494 max(dx) 0.150003, trying anchor = 6.000000 Cnvgd (fev=24) : LSq: 98.0062 (-1093.0840) Distance: 6.9244 (-13.8916) Angle: 17.3353 (+10.5176) Dihedral: 2.9460 (+1.1609) Anchor: 69.6709 (-1091.9858) Morse: 1.1296 (+1.1149) 
-jump 16.041418 max(dx) 0.109204, trying anchor = 7.000000 Cnvgd (fev=16) : LSq: 8.3312 (-1602.2461) Distance: 5.6764 (-15.1397) Angle: 0.0204 (-6.7973) Dihedral: 2.5820 (+0.7969) Anchor: 0.0524 (-1581.0914) Morse: 0.0000 (-0.0147) 
-xyz: error 8.331239 max(dx) 0.005678 jump 0.834035120779977 anchor 7.000000
-max(dx) 0.005678 (new) 0.006808 (old) 0.834035[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.6040 (-27.3608) Distance: 0.3636 (-19.4133) Angle: 0.0077 (-6.2855) Dihedral: 0.2327 (-1.6619) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.934733 max(dx) 0.152440, trying anchor = 6.000000 Cnvgd (fev=23) : LSq: 97.5905 (-1096.1536) Distance: 7.1409 (-12.6360) Angle: 15.6326 (+9.3393) Dihedral: 2.8117 (+0.9170) Anchor: 70.5984 (-1095.1810) Morse: 1.4070 (+1.4070) 
-jump 15.765123 max(dx) 0.109563, trying anchor = 7.000000 Cnvgd (fev=17) : LSq: 8.5690 (-1606.1510) Distance: 5.8790 (-13.8979) Angle: 0.0284 (-6.2648) Dihedral: 2.6056 (+0.7110) Anchor: 0.0560 (-1586.6992) Morse: 0.0000 (+0.0000) 
-xyz: error 8.569011 max(dx) 0.005641 jump 0.8116413286341164 anchor 7.000000
-max(dx) 0.005641 (new) 0.006950 (old) 0.811641[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.5809 (-26.4506) Distance: 0.3479 (-18.3919) Angle: 0.0074 (-6.3116) Dihedral: 0.2257 (-1.7471) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 36.752234 max(dx) 0.155004, trying anchor = 6.000000 Cnvgd (fev=21) : LSq: 96.7260 (-1098.5171) Distance: 7.1696 (-11.5702) Angle: 14.0228 (+7.7038) Dihedral: 2.6834 (+0.7106) Anchor: 71.1123 (-1097.0993) Morse: 1.7379 (+1.7379) 
-jump 26.151597 max(dx) 0.110295, trying anchor = 7.000000 Cnvgd (fev=19) : LSq: 8.6401 (-1608.4571) Distance: 5.9237 (-12.8161) Angle: 0.0361 (-6.2829) Dihedral: 2.6211 (+0.6483) Anchor: 0.0593 (-1590.0065) Morse: 0.0000 (+0.0000) 
-xyz: error 8.640133 max(dx) 0.002818 jump 0.6681610119087696 anchor 7.000000
-max(dx) 0.002818 (new) 0.004218 (old) 0.668161[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.5580 (-26.4627) Distance: 0.3342 (-17.3652) Angle: 0.0070 (-7.3395) Dihedral: 0.2168 (-1.7580) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 25.297576 max(dx) 0.156787, trying anchor = 6.000000 Cnvgd (fev=20) : LSq: 95.0349 (-1099.9024) Distance: 6.7896 (-10.9098) Angle: 12.3430 (+4.9965) Dihedral: 2.5556 (+0.5808) Anchor: 71.1712 (-1096.7454) Morse: 2.1754 (+2.1754) 
-jump 17.962925 max(dx) 0.111329, trying anchor = 7.000000 Cnvgd (fev=31) : LSq: 119.0127 (-1497.6723) Distance: 6.4729 (-11.2264) Angle: 25.3616 (+18.0152) Dihedral: 2.9455 (+0.9707) Anchor: 82.2058 (-1507.4585) Morse: 2.0268 (+2.0268) 
-jump 16.787131 max(dx) 0.104042, trying anchor = 8.000000 Cnvgd (fev=15) : LSq: 8.3477 (-2094.9692) Distance: 5.6299 (-12.0695) Angle: 0.0444 (-7.3021) Dihedral: 2.6220 (+0.6471) Anchor: 0.0515 (-2076.2448) Morse: 0.0000 (+0.0000) 
-xyz: error 8.347692 max(dx) 0.005522 jump 0.89096193914577 anchor 8.000000
-max(dx) 0.005522 (new) 0.006198 (old) 0.890962[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.5353 (-26.5937) Distance: 0.3219 (-16.4174) Angle: 0.0066 (-8.4046) Dihedral: 0.2067 (-1.7718) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.678895 max(dx) 0.155226, trying anchor = 7.000000 Cnvgd (fev=24) : LSq: 117.3118 (-1498.8530) Distance: 6.2328 (-10.5064) Angle: 20.1571 (+11.7459) Dihedral: 2.7176 (+0.7391) Anchor: 85.3338 (-1503.7020) Morse: 2.8705 (+2.8705) 
-jump 16.727171 max(dx) 0.105211, trying anchor = 8.000000 Cnvgd (fev=17) : LSq: 8.1013 (-2094.5030) Distance: 5.3659 (-11.3734) Angle: 0.0539 (-8.3573) Dihedral: 2.6252 (+0.6466) Anchor: 0.0564 (-2075.4189) Morse: 0.0000 (+0.0000) 
-xyz: error 8.101311 max(dx) 0.005421 jump 0.8619189603021615 anchor 8.000000
-max(dx) 0.005421 (new) 0.006290 (old) 0.861919[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.5130 (-26.8370) Distance: 0.3108 (-15.5527) Angle: 0.0063 (-9.4948) Dihedral: 0.1959 (-1.7895) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.074758 max(dx) 0.153407, trying anchor = 7.000000 Cnvgd (fev=22) : LSq: 115.2215 (-1501.2999) Distance: 5.9612 (-9.9023) Angle: 17.2581 (+7.7571) Dihedral: 2.5682 (+0.5828) Anchor: 85.8904 (-1503.2811) Morse: 3.5436 (+3.5436) 
-jump 16.452913 max(dx) 0.104839, trying anchor = 8.000000 Cnvgd (fev=21) : LSq: 7.8859 (-2095.1166) Distance: 5.1315 (-10.7320) Angle: 0.0635 (-9.4376) Dihedral: 2.6303 (+0.6449) Anchor: 0.0606 (-2075.5919) Morse: 0.0000 (+0.0000) 
-xyz: error 7.885901 max(dx) 0.005323 jump 0.8353649786960282 anchor 8.000000
-max(dx) 0.005323 (new) 0.006372 (old) 0.835365[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.4911 (-27.1880) Distance: 0.3007 (-14.7752) Angle: 0.0059 (-10.6007) Dihedral: 0.1845 (-1.8121) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 23.489179 max(dx) 0.151374, trying anchor = 7.000000 Cnvgd (fev=21) : LSq: 112.9095 (-1504.8464) Distance: 5.6956 (-9.3804) Angle: 15.0858 (+4.4791) Dihedral: 2.4453 (+0.4488) Anchor: 85.5398 (-1504.5370) Morse: 4.1431 (+4.1431) 
-jump 16.135325 max(dx) 0.103983, trying anchor = 8.000000 Cnvgd (fev=29) : LSq: 137.5652 (-1966.9489) Distance: 5.4397 (-9.6362) Angle: 27.6255 (+17.0189) Dihedral: 2.7724 (+0.7759) Anchor: 97.5797 (-1979.2553) Morse: 4.1478 (+4.1478) 
-jump 15.285276 max(dx) 0.098504, trying anchor = 9.000000 Cnvgd (fev=16) : LSq: 7.7153 (-2648.4582) Distance: 4.9450 (-10.1309) Angle: 0.0788 (-10.5279) Dihedral: 2.6348 (+0.6383) Anchor: 0.0566 (-2628.4377) Morse: 0.0000 (+0.0000) 
-xyz: error 7.715261 max(dx) 0.005198 jump 0.8066344022973122 anchor 9.000000
-max(dx) 0.005198 (new) 0.006444 (old) 0.806634[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.4698 (-27.6441) Distance: 0.2915 (-14.0891) Angle: 0.0056 (-11.7147) Dihedral: 0.1728 (-1.8402) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.929175 max(dx) 0.149195, trying anchor = 8.000000 Cnvgd (fev=25) : LSq: 135.1736 (-1971.5023) Distance: 5.2973 (-9.0833) Angle: 22.4437 (+10.7234) Dihedral: 2.5527 (+0.5397) Anchor: 99.6671 (-1978.8949) Morse: 5.2128 (+5.2128) 
-jump 15.179807 max(dx) 0.098772, trying anchor = 9.000000 Cnvgd (fev=18) : LSq: 7.5849 (-2651.2091) Distance: 4.7855 (-9.5951) Angle: 0.0943 (-11.6260) Dihedral: 2.6408 (+0.6278) Anchor: 0.0643 (-2630.6157) Morse: 0.0000 (+0.0000) 
-xyz: error 7.584882 max(dx) 0.005115 jump 0.7860591477718458 anchor 9.000000
-max(dx) 0.005115 (new) 0.006507 (old) 0.786059[0m (ratio)
-Cnvgd (fev=17) : LSq: 0.4492 (-28.0236) Distance: 0.2830 (-13.3691) Angle: 0.0052 (-12.7656) Dihedral: 0.1611 (-1.8889) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 23.439951 max(dx) 0.146927, trying anchor = 8.000000 Cnvgd (fev=25) : LSq: 132.2480 (-1976.7904) Distance: 5.1517 (-8.5004) Angle: 18.9498 (+6.1791) Dihedral: 2.3739 (+0.3239) Anchor: 99.6263 (-1980.9393) Morse: 6.1463 (+6.1463) 
-jump 15.593570 max(dx) 0.097744, trying anchor = 9.000000 Cnvgd (fev=43) : LSq: 157.2157 (-2504.4729) Distance: 4.8871 (-8.7650) Angle: 33.6948 (+20.9240) Dihedral: 2.7422 (+0.6922) Anchor: 109.9461 (-2523.2697) Morse: 5.9456 (+5.9456) 
-jump 14.752329 max(dx) 0.092471, trying anchor = 10.000000 Cnvgd (fev=15) : LSq: 7.5150 (-3271.8415) Distance: 4.6769 (-8.9752) Angle: 0.1301 (-12.6406) Dihedral: 2.6406 (+0.5906) Anchor: 0.0675 (-3250.8163) Morse: 0.0000 (+0.0000) 
-xyz: error 7.515050 max(dx) 0.004660 jump 0.7435008634876792 anchor 10.000000
-max(dx) 0.004660 (new) 0.006268 (old) 0.743501[0m (ratio)
-Cnvgd (fev=16) : LSq: 0.4294 (-27.4544) Distance: 0.2751 (-12.3195) Angle: 0.0049 (-13.0827) Dihedral: 0.1494 (-2.0522) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.843986 max(dx) 0.145069, trying anchor = 9.000000 Cnvgd (fev=72) : LSq: 7.6342 (-2649.3091) Distance: 4.6704 (-7.9242) Angle: 0.2235 (-12.8641) Dihedral: 2.6323 (+0.4307) Anchor: 0.1080 (-2628.9516) Morse: 0.0000 (+0.0000) 
-xyz: error 7.634181 max(dx) 0.004996 jump 0.8555738675060183 anchor 9.000000
-Working on frame 170 / 303 
-max(dx) 0.004996 (new) 0.005839 (old) 0.855574[0m (ratio)
-Cnvgd (fev=16) : LSq: 0.4104 (-26.9067) Distance: 0.2678 (-11.6899) Angle: 0.0046 (-12.9537) Dihedral: 0.1380 (-2.2631) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.384866 max(dx) 0.145098, trying anchor = 8.000000 Cnvgd (fev=40) : LSq: 7.8018 (-2090.3069) Distance: 4.7462 (-7.2116) Angle: 0.2723 (-12.6860) Dihedral: 2.6536 (+0.2526) Anchor: 0.1298 (-2070.6619) Morse: 0.0000 (+0.0000) 
-xyz: error 7.801840 max(dx) 0.005490 jump 0.8090841051831993 anchor 8.000000
-max(dx) 0.005490 (new) 0.006785 (old) 0.809084[0m (ratio)
-Cnvgd (fev=15) : LSq: 0.3924 (-26.4628) Distance: 0.2611 (-11.1147) Angle: 0.0043 (-12.8578) Dihedral: 0.1269 (-2.4902) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.352441 max(dx) 0.145923, trying anchor = 7.000000 Cnvgd (fev=52) : LSq: 99.0704 (-1507.6795) Distance: 5.4750 (-5.9009) Angle: 12.0671 (-0.7950) Dihedral: 1.8460 (-0.7712) Anchor: 73.9841 (-1505.9108) Morse: 5.6982 (+5.6982) 
-jump 13.316894 max(dx) 0.091008, trying anchor = 8.000000 Cnvgd (fev=26) : LSq: 8.0164 (-2082.3748) Distance: 4.8783 (-6.4975) Angle: 0.3250 (-12.5371) Dihedral: 2.6793 (+0.0621) Anchor: 0.1338 (-2063.4023) Morse: 0.0000 (+0.0000) 
-xyz: error 8.016394 max(dx) 0.005477 jump 0.801410659044778 anchor 8.000000
-max(dx) 0.005477 (new) 0.006834 (old) 0.801411[0m (ratio)
-Cnvgd (fev=14) : LSq: 0.3754 (-26.1263) Distance: 0.2550 (-10.5998) Angle: 0.0040 (-12.7923) Dihedral: 0.1164 (-2.7342) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.192753 max(dx) 0.145853, trying anchor = 7.000000 Cnvgd (fev=31) : LSq: 8.2528 (-1592.2704) Distance: 5.0327 (-5.8221) Angle: 0.3443 (-12.4520) Dihedral: 2.7147 (-0.1359) Anchor: 0.1611 (-1573.8604) Morse: 0.0000 (+0.0000) 
-xyz: error 8.252847 max(dx) 0.005414 jump 0.7866621893734274 anchor 7.000000
-max(dx) 0.005414 (new) 0.006882 (old) 0.786662[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.3596 (-25.9010) Distance: 0.2493 (-10.1508) Angle: 0.0037 (-12.7546) Dihedral: 0.1065 (-2.9956) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.830608 max(dx) 0.144343, trying anchor = 6.000000 Cnvgd (fev=34) : LSq: 74.8227 (-1102.6543) Distance: 5.5615 (-4.8387) Angle: 7.7489 (-5.0094) Dihedral: 1.8648 (-1.2373) Anchor: 55.5847 (-1095.6316) Morse: 4.0627 (+4.0627) 
-jump 13.303757 max(dx) 0.092187, trying anchor = 7.000000 Cnvgd (fev=26) : LSq: 8.5257 (-1584.6682) Distance: 5.2474 (-5.1528) Angle: 0.3692 (-12.3891) Dihedral: 2.7499 (-0.3523) Anchor: 0.1593 (-1566.7741) Morse: 0.0000 (+0.0000) 
-xyz: error 8.525741 max(dx) 0.005383 jump 0.7768259430321159 anchor 7.000000
-max(dx) 0.005383 (new) 0.006929 (old) 0.776826[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.3450 (-25.9549) Distance: 0.2441 (-9.2050) Angle: 0.0035 (-13.4306) Dihedral: 0.0974 (-3.3193) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.740351 max(dx) 0.140862, trying anchor = 6.000000 Cnvgd (fev=35) : LSq: 8.8159 (-1165.5016) Distance: 5.4048 (-4.0443) Angle: 0.4129 (-13.0212) Dihedral: 2.7700 (-0.6466) Anchor: 0.2281 (-1147.7895) Morse: 0.0000 (+0.0000) 
-xyz: error 8.815941 max(dx) 0.005346 jump 0.7492355989267512 anchor 6.000000
-max(dx) 0.005346 (new) 0.007136 (old) 0.749236[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.3317 (-26.8997) Distance: 0.2394 (-8.1861) Angle: 0.0033 (-15.0906) Dihedral: 0.0890 (-3.6230) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.939210 max(dx) 0.136146, trying anchor = 5.000000 Cnvgd (fev=27) : LSq: 52.9950 (-770.2852) Distance: 5.0915 (-3.3341) Angle: 4.3723 (-10.7216) Dihedral: 1.8621 (-1.8499) Anchor: 38.9082 (-757.1405) Morse: 2.7609 (+2.7609) 
-jump 13.033845 max(dx) 0.093695, trying anchor = 6.000000 Cnvgd (fev=28) : LSq: 8.7980 (-1164.7436) Distance: 5.3341 (-3.0915) Angle: 0.4431 (-14.6507) Dihedral: 2.7762 (-0.9358) Anchor: 0.2446 (-1146.0656) Morse: 0.0000 (+0.0000) 
-xyz: error 8.798000 max(dx) 0.005790 jump 0.8054127786341255 anchor 6.000000
-max(dx) 0.005790 (new) 0.007189 (old) 0.805413[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.3198 (-28.1633) Distance: 0.2351 (-7.4156) Angle: 0.0031 (-16.8304) Dihedral: 0.0816 (-3.9173) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.478710 max(dx) 0.125975, trying anchor = 5.000000 Cnvgd (fev=29) : LSq: 50.7847 (-772.2920) Distance: 4.8601 (-2.7906) Angle: 4.5743 (-12.2592) Dihedral: 1.8300 (-2.1689) Anchor: 36.7566 (-757.8371) Morse: 2.7638 (+2.7638) 
-jump 12.606211 max(dx) 0.090857, trying anchor = 6.000000 Cnvgd (fev=25) : LSq: 8.8338 (-1163.8642) Distance: 5.3129 (-2.3378) Angle: 0.4792 (-16.3543) Dihedral: 2.7825 (-1.2164) Anchor: 0.2592 (-1143.9557) Morse: 0.0000 (+0.0000) 
-xyz: error 8.833783 max(dx) 0.005766 jump 0.799984511716253 anchor 6.000000
-max(dx) 0.005766 (new) 0.007207 (old) 0.799985[0m (ratio)
-Cnvgd (fev=13) : LSq: 0.3092 (-29.7346) Distance: 0.2312 (-6.9050) Angle: 0.0029 (-18.6315) Dihedral: 0.0750 (-4.1982) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.005580 max(dx) 0.108435, trying anchor = 5.000000 Cnvgd (fev=32) : LSq: 48.6870 (-774.3984) Distance: 4.7065 (-2.4297) Angle: 4.8699 (-13.7645) Dihedral: 1.8026 (-2.4706) Anchor: 34.5685 (-758.4730) Morse: 2.7395 (+2.7395) 
-jump 12.159755 max(dx) 0.087870, trying anchor = 6.000000 Cnvgd (fev=24) : LSq: 8.9272 (-1163.0964) Distance: 5.3443 (-1.7919) Angle: 0.5187 (-18.1157) Dihedral: 2.7895 (-1.4837) Anchor: 0.2747 (-1141.7051) Morse: 0.0000 (+0.0000) 
-xyz: error 8.927247 max(dx) 0.005750 jump 0.7957164796676269 anchor 6.000000
-max(dx) 0.005750 (new) 0.007226 (old) 0.795716[0m (ratio)
-Cnvgd (fev=38) : LSq: 0.3064 (-31.4504) Distance: 0.2334 (-6.6696) Angle: 0.0032 (-20.3850) Dihedral: 0.0698 (-4.3958) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.220762 max(dx) 0.123738, trying anchor = 5.000000 Cnvgd (fev=36) : LSq: 46.8483 (-775.2719) Distance: 4.6340 (-2.2690) Angle: 5.1788 (-15.2094) Dihedral: 1.7824 (-2.6832) Anchor: 32.5596 (-757.8038) Morse: 2.6935 (+2.6935) 
-jump 11.842113 max(dx) 0.085090, trying anchor = 6.000000 Cnvgd (fev=23) : LSq: 9.0346 (-1160.8455) Distance: 5.4152 (-1.4877) Angle: 0.5416 (-19.8466) Dihedral: 2.8030 (-1.6626) Anchor: 0.2748 (-1137.8486) Morse: 0.0000 (+0.0000) 
-xyz: error 9.034572 max(dx) 0.005179 jump 0.7207703430935413 anchor 6.000000
-max(dx) 0.005179 (new) 0.007185 (old) 0.720770[0m (ratio)
-Cnvgd (fev=33) : LSq: 0.3150 (-32.4673) Distance: 0.2459 (-6.6161) Angle: 0.0033 (-21.7143) Dihedral: 0.0658 (-4.1369) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.192440 max(dx) 0.122252, trying anchor = 5.000000 Cnvgd (fev=36) : LSq: 45.6323 (-769.9685) Distance: 4.5965 (-2.2655) Angle: 5.0892 (-16.6283) Dihedral: 1.7788 (-2.4239) Anchor: 31.5304 (-751.2882) Morse: 2.6375 (+2.6375) 
-jump 9.753425 max(dx) 0.084015, trying anchor = 6.000000 Cnvgd (fev=23) : LSq: 8.9908 (-1151.0503) Distance: 5.4474 (-1.4146) Angle: 0.4873 (-21.2303) Dihedral: 2.8409 (-1.3617) Anchor: 0.2145 (-1127.0443) Morse: 0.0006 (+0.0006) 
-xyz: error 8.990774 max(dx) 0.002670 jump 0.3100084594414299 anchor 6.000000
-Working on frame 180 / 303 
-max(dx) 0.002670 (new) 0.008614 (old) 0.310008[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.3293 (-32.6222) Distance: 0.2632 (-6.6292) Angle: 0.0034 (-22.8354) Dihedral: 0.0627 (-3.1576) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.337154 max(dx) 0.121144, trying anchor = 5.000000 Cnvgd (fev=37) : LSq: 45.0263 (-763.4163) Distance: 4.5828 (-2.3096) Angle: 5.1617 (-17.6771) Dihedral: 1.7754 (-1.4449) Anchor: 30.9102 (-744.5809) Morse: 2.5963 (+2.5963) 
-jump 9.854285 max(dx) 0.083265, trying anchor = 6.000000 Cnvgd (fev=23) : LSq: 8.9681 (-1140.6906) Distance: 5.4676 (-1.4248) Angle: 0.4377 (-22.4011) Dihedral: 2.8805 (-0.3398) Anchor: 0.1804 (-1116.5268) Morse: 0.0020 (+0.0020) 
-xyz: error 8.968125 max(dx) 0.002335 jump 0.2763376650187213 anchor 6.000000
-max(dx) 0.002335 (new) 0.008450 (old) 0.276338[0m (ratio)
-Cnvgd (fev=32) : LSq: 22.6667 (-8.9941) Distance: 5.8887 (-1.0792) Angle: 16.3153 (-7.5832) Dihedral: 0.4627 (-0.3318) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.021314 max(dx) 0.152191, trying anchor = 5.000000 Cnvgd (fev=46) : LSq: 44.6779 (-756.2580) Distance: 4.5993 (-2.3686) Angle: 5.6486 (-18.2499) Dihedral: 1.7732 (+0.9787) Anchor: 30.1136 (-739.1614) Morse: 2.5432 (+2.5432) 
-jump 9.710028 max(dx) 0.082002, trying anchor = 6.000000 Cnvgd (fev=22) : LSq: 8.9922 (-1130.4246) Distance: 5.4967 (-1.4711) Angle: 0.4117 (-23.4867) Dihedral: 2.9137 (+2.1192) Anchor: 0.1673 (-1107.5887) Morse: 0.0027 (+0.0027) 
-xyz: error 8.992227 max(dx) 0.002306 jump 0.2730602123279275 anchor 6.000000
-max(dx) 0.002306 (new) 0.008445 (old) 0.273060[0m (ratio)
-Cnvgd (fev=37) : LSq: 18.7247 (-14.2582) Distance: 5.2977 (-1.7918) Angle: 12.8389 (-12.0546) Dihedral: 0.5881 (-0.4118) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.761937 max(dx) 0.149919, trying anchor = 5.000000 Cnvgd (fev=54) : LSq: 8.9748 (-787.7385) Distance: 5.4790 (-1.6105) Angle: 0.3525 (-24.5410) Dihedral: 2.9521 (+1.9523) Anchor: 0.1891 (-763.5414) Morse: 0.0021 (+0.0021) 
-xyz: error 8.974840 max(dx) 0.002537 jump 0.30054399491237976 anchor 5.000000
-max(dx) 0.002537 (new) 0.008440 (old) 0.300544[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.4205 (-34.4426) Distance: 0.3576 (-6.9019) Angle: 0.0041 (-25.8203) Dihedral: 0.0589 (-1.7204) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.052073 max(dx) 0.118542, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 32.5790 (-486.0632) Distance: 4.4091 (-2.8504) Angle: 2.4674 (-23.3570) Dihedral: 1.7376 (-0.0416) Anchor: 22.5125 (-461.2665) Morse: 1.4524 (+1.4524) 
-jump 10.594717 max(dx) 0.089376, trying anchor = 5.000000 Cnvgd (fev=38) : LSq: 8.9501 (-781.8177) Distance: 5.4713 (-1.7882) Angle: 0.3266 (-25.4978) Dihedral: 2.9808 (+1.2016) Anchor: 0.1696 (-755.7351) Morse: 0.0018 (+0.0018) 
-xyz: error 8.950124 max(dx) 0.002374 jump 0.28136057720133634 anchor 5.000000
-max(dx) 0.002374 (new) 0.008436 (old) 0.281361[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.4670 (-35.8243) Distance: 0.4036 (-7.0769) Angle: 0.0044 (-26.6904) Dihedral: 0.0590 (-2.0571) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.961489 max(dx) 0.117715, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 32.4915 (-482.9711) Distance: 4.4065 (-3.0739) Angle: 2.6459 (-24.0488) Dihedral: 1.7312 (-0.3849) Anchor: 22.2862 (-456.8851) Morse: 1.4216 (+1.4216) 
-jump 10.558803 max(dx) 0.089025, trying anchor = 5.000000 Cnvgd (fev=30) : LSq: 8.9540 (-776.0425) Distance: 5.4718 (-2.0087) Angle: 0.3166 (-26.3782) Dihedral: 3.0036 (+0.8875) Anchor: 0.1603 (-748.5449) Morse: 0.0016 (+0.0016) 
-xyz: error 8.953975 max(dx) 0.002364 jump 0.28040440323997645 anchor 5.000000
-max(dx) 0.002364 (new) 0.008431 (old) 0.280404[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.5214 (-37.0176) Distance: 0.4569 (-7.2988) Angle: 0.0047 (-27.5060) Dihedral: 0.0597 (-2.2129) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.874450 max(dx) 0.116918, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 32.3859 (-480.0782) Distance: 4.4138 (-3.3419) Angle: 2.8767 (-24.6340) Dihedral: 1.7333 (-0.5393) Anchor: 21.9795 (-452.9456) Morse: 1.3825 (+1.3825) 
-jump 10.503962 max(dx) 0.088516, trying anchor = 5.000000 Cnvgd (fev=26) : LSq: 8.9746 (-770.6349) Distance: 5.4799 (-2.2759) Angle: 0.3151 (-27.1956) Dihedral: 3.0227 (+0.7501) Anchor: 0.1554 (-741.9151) Morse: 0.0015 (+0.0015) 
-xyz: error 8.974566 max(dx) 0.002392 jump 0.2838862271153046 anchor 5.000000
-max(dx) 0.002392 (new) 0.008427 (old) 0.283886[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.5838 (-38.1360) Distance: 0.5178 (-7.5716) Angle: 0.0051 (-28.2749) Dihedral: 0.0609 (-2.2896) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.790375 max(dx) 0.116148, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 32.2693 (-477.4759) Distance: 4.4313 (-3.6580) Angle: 3.1595 (-25.1205) Dihedral: 1.7435 (-0.6070) Anchor: 21.5980 (-449.4274) Morse: 1.3370 (+1.3370) 
-jump 10.430089 max(dx) 0.087846, trying anchor = 5.000000 Cnvgd (fev=24) : LSq: 9.0070 (-765.6899) Distance: 5.4955 (-2.5938) Angle: 0.3185 (-27.9615) Dihedral: 3.0392 (+0.6888) Anchor: 0.1525 (-735.8247) Morse: 0.0013 (+0.0013) 
-xyz: error 9.007009 max(dx) 0.002427 jump 0.2881877683714879 anchor 5.000000
-max(dx) 0.002427 (new) 0.008422 (old) 0.288188[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.6304 (-38.6187) Distance: 0.5629 (-7.7688) Angle: 0.0054 (-28.3934) Dihedral: 0.0621 (-2.4565) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.398732 max(dx) 0.115860, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 32.1321 (-477.0170) Distance: 4.3893 (-3.9424) Angle: 3.0703 (-25.3285) Dihedral: 1.7052 (-0.8135) Anchor: 21.6308 (-448.2692) Morse: 1.3365 (+1.3365) 
-jump 11.719712 max(dx) 0.088179, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 8.9152 (-764.5526) Distance: 5.4472 (-2.8845) Angle: 0.2689 (-28.1300) Dihedral: 3.0783 (+0.5596) Anchor: 0.1197 (-734.0990) Morse: 0.0012 (+0.0012) 
-xyz: error 8.915212 max(dx) 0.002448 jump 0.32530494597103554 anchor 5.000000
-max(dx) 0.002448 (new) 0.007524 (old) 0.325305[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.6077 (-38.1948) Distance: 0.5398 (-7.9751) Angle: 0.0054 (-27.4290) Dihedral: 0.0626 (-2.7907) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.360142 max(dx) 0.115608, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 32.0515 (-479.1653) Distance: 4.2337 (-4.2812) Angle: 2.4374 (-24.9970) Dihedral: 1.5993 (-1.2539) Anchor: 22.3824 (-450.0318) Morse: 1.3987 (+1.3987) 
-jump 10.406302 max(dx) 0.090048, trying anchor = 5.000000 Cnvgd (fev=41) : LSq: 8.6764 (-768.2733) Distance: 5.2621 (-3.2528) Angle: 0.1561 (-27.2783) Dihedral: 3.1692 (+0.3159) Anchor: 0.0885 (-738.0587) Morse: 0.0005 (+0.0005) 
-xyz: error 8.676381 max(dx) 0.005525 jump 0.6385234739665324 anchor 5.000000
-max(dx) 0.005525 (new) 0.008653 (old) 0.638523[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.5813 (-38.1547) Distance: 0.5130 (-8.5010) Angle: 0.0053 (-26.4869) Dihedral: 0.0630 (-3.1668) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.905688 max(dx) 0.112919, trying anchor = 4.000000 Cnvgd (fev=23) : LSq: 32.1413 (-484.0157) Distance: 4.1489 (-4.8651) Angle: 2.0898 (-24.4025) Dihedral: 1.5523 (-1.6774) Anchor: 22.9026 (-454.5184) Morse: 1.4477 (+1.4477) 
-jump 10.397316 max(dx) 0.090972, trying anchor = 5.000000 Cnvgd (fev=36) : LSq: 44.1585 (-740.5479) Distance: 4.3142 (-4.6998) Angle: 4.8336 (-21.6587) Dihedral: 1.6332 (-1.5966) Anchor: 30.8965 (-715.0739) Morse: 2.4811 (+2.4811) 
-jump 9.677141 max(dx) 0.084671, trying anchor = 6.000000 Cnvgd (fev=23) : LSq: 8.6162 (-1104.3171) Distance: 5.1879 (-3.8261) Angle: 0.1034 (-26.3888) Dihedral: 3.2504 (+0.0206) Anchor: 0.0744 (-1074.1230) Morse: 0.0002 (+0.0002) 
-xyz: error 8.616228 max(dx) 0.005039 jump 0.5759100680435664 anchor 6.000000
-Working on frame 190 / 303 
-max(dx) 0.005039 (new) 0.008750 (old) 0.575910[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.5581 (-38.5480) Distance: 0.4896 (-9.3653) Angle: 0.0052 (-25.5942) Dihedral: 0.0633 (-3.5885) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.582468 max(dx) 0.110189, trying anchor = 5.000000 Cnvgd (fev=29) : LSq: 44.5666 (-753.1627) Distance: 4.3364 (-5.5186) Angle: 3.9465 (-21.6529) Dihedral: 1.6019 (-2.0499) Anchor: 32.0895 (-726.5335) Morse: 2.5922 (+2.5922) 
-jump 9.865981 max(dx) 0.086399, trying anchor = 6.000000 Cnvgd (fev=26) : LSq: 8.6744 (-1122.8490) Distance: 5.1945 (-4.6605) Angle: 0.0764 (-25.5230) Dihedral: 3.3153 (-0.3365) Anchor: 0.0882 (-1092.3290) Morse: 0.0000 (+0.0000) 
-xyz: error 8.674369 max(dx) 0.005043 jump 0.5758524400501802 anchor 6.000000
-max(dx) 0.005043 (new) 0.008757 (old) 0.575852[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.5381 (-39.3727) Distance: 0.4693 (-10.5768) Angle: 0.0052 (-24.7508) Dihedral: 0.0636 (-4.0451) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.260079 max(dx) 0.107458, trying anchor = 5.000000 Cnvgd (fev=27) : LSq: 44.9180 (-768.9075) Distance: 4.4331 (-6.6130) Angle: 3.4194 (-21.3366) Dihedral: 1.5897 (-2.5190) Anchor: 32.8065 (-741.1081) Morse: 2.6692 (+2.6692) 
-jump 9.963162 max(dx) 0.087326, trying anchor = 6.000000 Cnvgd (fev=32) : LSq: 8.8079 (-1145.5400) Distance: 5.2751 (-5.7709) Angle: 0.0618 (-24.6942) Dihedral: 3.3701 (-0.7387) Anchor: 0.1009 (-1114.3362) Morse: 0.0000 (+0.0000) 
-xyz: error 8.807857 max(dx) 0.005031 jump 0.5739801484144919 anchor 6.000000
-max(dx) 0.005031 (new) 0.008765 (old) 0.573980[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.5209 (-40.6235) Distance: 0.4519 (-12.1436) Angle: 0.0052 (-23.9563) Dihedral: 0.0638 (-4.5236) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.942187 max(dx) 0.104761, trying anchor = 5.000000 Cnvgd (fev=26) : LSq: 45.3205 (-787.6584) Distance: 4.5924 (-8.0031) Angle: 3.0568 (-20.9047) Dihedral: 1.5853 (-3.0021) Anchor: 33.3603 (-758.4741) Morse: 2.7257 (+2.7257) 
-jump 10.031220 max(dx) 0.087997, trying anchor = 6.000000 Cnvgd (fev=43) : LSq: 9.0091 (-1172.3770) Distance: 5.4230 (-7.1725) Angle: 0.0545 (-23.9070) Dihedral: 3.4183 (-1.1691) Anchor: 0.1133 (-1140.1284) Morse: 0.0000 (+0.0000) 
-xyz: error 9.009074 max(dx) 0.005009 jump 0.5710184400462603 anchor 6.000000
-max(dx) 0.005009 (new) 0.008772 (old) 0.571018[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.5064 (-42.2941) Distance: 0.4373 (-14.0736) Angle: 0.0051 (-23.2101) Dihedral: 0.0639 (-5.0103) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.628963 max(dx) 0.102099, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 45.8117 (-809.3430) Distance: 4.8085 (-9.7025) Angle: 2.7924 (-20.4229) Dihedral: 1.5847 (-3.4895) Anchor: 33.8581 (-778.4962) Morse: 2.7681 (+2.7681) 
-jump 10.089798 max(dx) 0.088585, trying anchor = 6.000000 Cnvgd (fev=58) : LSq: 59.8512 (-1152.7393) Distance: 5.1100 (-9.4010) Angle: 6.2848 (-16.9304) Dihedral: 1.5946 (-3.4796) Anchor: 42.7055 (-1127.0846) Morse: 4.1563 (+4.1563) 
-jump 9.393862 max(dx) 0.082475, trying anchor = 7.000000 Cnvgd (fev=25) : LSq: 9.3074 (-1625.7073) Distance: 5.6630 (-8.8480) Angle: 0.0583 (-23.1570) Dihedral: 3.4820 (-1.5922) Anchor: 0.1041 (-1592.1102) Morse: 0.0000 (+0.0000) 
-xyz: error 9.307436 max(dx) 0.004688 jump 0.5339389059929806 anchor 7.000000
-max(dx) 0.004688 (new) 0.008780 (old) 0.533939[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.5056 (-43.8926) Distance: 0.4361 (-16.1520) Angle: 0.0052 (-22.2889) Dihedral: 0.0642 (-5.4517) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.684660 max(dx) 0.099023, trying anchor = 6.000000 Cnvgd (fev=43) : LSq: 60.5873 (-1181.7754) Distance: 5.4166 (-11.1715) Angle: 5.6512 (-16.6429) Dihedral: 1.6003 (-3.9157) Anchor: 43.6903 (-1154.2742) Morse: 4.2289 (+4.2289) 
-jump 9.888897 max(dx) 0.083805, trying anchor = 7.000000 Cnvgd (fev=26) : LSq: 9.6601 (-1665.3009) Distance: 5.9762 (-10.6120) Angle: 0.0610 (-22.2331) Dihedral: 3.5133 (-2.0027) Anchor: 0.1096 (-1630.4532) Morse: 0.0000 (+0.0000) 
-xyz: error 9.660092 max(dx) 0.005107 jump 0.6025813489386374 anchor 7.000000
-max(dx) 0.005107 (new) 0.008475 (old) 0.602581[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.5564 (-40.9367) Distance: 0.4850 (-14.6573) Angle: 0.0056 (-21.2270) Dihedral: 0.0659 (-5.0524) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.222235 max(dx) 0.095279, trying anchor = 6.000000 Cnvgd (fev=21) : LSq: 9.4641 (-1202.9039) Distance: 5.9000 (-9.2423) Angle: 0.0851 (-21.1475) Dihedral: 3.3635 (-1.7548) Anchor: 0.1155 (-1170.7593) Morse: 0.0000 (+0.0000) 
-xyz: error 9.464065 max(dx) 0.005467 jump 0.9308520791103765 anchor 6.000000
-max(dx) 0.005467 (new) 0.005873 (old) 0.930852[0m (ratio)
-Cnvgd (fev=33) : LSq: 0.6133 (-38.1291) Distance: 0.5398 (-13.2934) Angle: 0.0059 (-20.1718) Dihedral: 0.0676 (-4.6639) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.550648 max(dx) 0.096254, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 9.3795 (-821.6077) Distance: 5.7438 (-8.0895) Angle: 0.1631 (-20.0146) Dihedral: 3.2987 (-1.4328) Anchor: 0.1740 (-792.0708) Morse: 0.0000 (+0.0000) 
-xyz: error 9.379546 max(dx) 0.005096 jump 0.8762494810840763 anchor 5.000000
-max(dx) 0.005096 (new) 0.005816 (old) 0.876249[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.6768 (-35.4789) Distance: 0.6010 (-12.0622) Angle: 0.0062 (-19.1297) Dihedral: 0.0696 (-4.2870) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.819412 max(dx) 0.096938, trying anchor = 4.000000 Cnvgd (fev=42) : LSq: 32.6839 (-496.1663) Distance: 4.8230 (-7.8402) Angle: 4.3823 (-14.7536) Dihedral: 1.8339 (-2.5227) Anchor: 20.5451 (-472.1494) Morse: 1.0997 (+1.0997) 
-jump 15.182447 max(dx) 0.087504, trying anchor = 5.000000 Cnvgd (fev=19) : LSq: 9.3123 (-796.6785) Distance: 5.6262 (-7.0370) Angle: 0.2413 (-18.8946) Dihedral: 3.2613 (-1.0953) Anchor: 0.1835 (-769.6516) Morse: 0.0000 (+0.0000) 
-xyz: error 9.312267 max(dx) 0.004743 jump 0.8228780772635861 anchor 5.000000
-max(dx) 0.004743 (new) 0.005763 (old) 0.822878[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.7475 (-32.9960) Distance: 0.6691 (-10.9658) Angle: 0.0065 (-18.1079) Dihedral: 0.0718 (-3.9222) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.052578 max(dx) 0.097482, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 9.1993 (-502.5730) Distance: 5.4670 (-6.1680) Angle: 0.2652 (-17.8493) Dihedral: 3.2526 (-0.7414) Anchor: 0.2145 (-477.8144) Morse: 0.0000 (+0.0000) 
-xyz: error 9.199283 max(dx) 0.004631 jump 0.8101702292099855 anchor 4.000000
-max(dx) 0.004631 (new) 0.005717 (old) 0.810170[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.8261 (-30.6906) Distance: 0.7448 (-10.0069) Angle: 0.0069 (-17.1141) Dihedral: 0.0745 (-3.5696) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.880535 max(dx) 0.097913, trying anchor = 3.000000 Cnvgd (fev=24) : LSq: 22.3965 (-268.8257) Distance: 4.2903 (-6.4613) Angle: 2.1220 (-14.9990) Dihedral: 1.7082 (-1.9359) Anchor: 13.8598 (-245.8457) Morse: 0.4161 (+0.4161) 
-jump 16.372683 max(dx) 0.094967, trying anchor = 4.000000 Cnvgd (fev=22) : LSq: 9.1099 (-484.1054) Distance: 5.3823 (-5.3693) Angle: 0.2960 (-16.8250) Dihedral: 3.2414 (-0.4027) Anchor: 0.1903 (-461.5083) Morse: 0.0000 (+0.0000) 
-xyz: error 9.109944 max(dx) 0.004283 jump 0.7384812065117164 anchor 4.000000
-Working on frame 200 / 303 
-max(dx) 0.004283 (new) 0.005800 (old) 0.738481[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.9138 (-28.5729) Distance: 0.8287 (-9.1884) Angle: 0.0074 (-16.1556) Dihedral: 0.0777 (-3.2289) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.634398 max(dx) 0.098154, trying anchor = 3.000000 Cnvgd (fev=26) : LSq: 22.3660 (-257.5076) Distance: 4.3054 (-5.7117) Angle: 2.5420 (-13.6210) Dihedral: 1.7823 (-1.5242) Anchor: 13.3697 (-237.0173) Morse: 0.3666 (+0.3666) 
-jump 15.862458 max(dx) 0.093599, trying anchor = 4.000000 Cnvgd (fev=20) : LSq: 9.0912 (-465.5278) Distance: 5.3552 (-4.6618) Angle: 0.3294 (-15.8336) Dihedral: 3.2291 (-0.0775) Anchor: 0.1775 (-444.9549) Morse: 0.0000 (+0.0000) 
-xyz: error 9.091195 max(dx) 0.004077 jump 0.6910042317350807 anchor 4.000000
-max(dx) 0.004077 (new) 0.005901 (old) 0.691004[0m (ratio)
-Cnvgd (fev=33) : LSq: 1.0114 (-26.6521) Distance: 0.9218 (-8.5136) Angle: 0.0080 (-15.2393) Dihedral: 0.0816 (-2.8993) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.370688 max(dx) 0.098165, trying anchor = 3.000000 Cnvgd (fev=31) : LSq: 22.3086 (-246.3478) Distance: 4.3825 (-5.0529) Angle: 3.0656 (-12.1817) Dihedral: 1.8810 (-1.0999) Anchor: 12.6638 (-228.3290) Morse: 0.3157 (+0.3157) 
-jump 15.241083 max(dx) 0.091391, trying anchor = 4.000000 Cnvgd (fev=18) : LSq: 9.1272 (-446.9680) Distance: 5.3772 (-4.0582) Angle: 0.3642 (-14.8830) Dihedral: 3.2162 (+0.2353) Anchor: 0.1696 (-428.2621) Morse: 0.0000 (+0.0000) 
-xyz: error 9.127207 max(dx) 0.003902 jump 0.6506509628144607 anchor 4.000000
-max(dx) 0.003902 (new) 0.005996 (old) 0.650651[0m (ratio)
-Cnvgd (fev=30) : LSq: 1.1204 (-24.9362) Distance: 1.0251 (-7.9862) Angle: 0.0087 (-14.3706) Dihedral: 0.0866 (-2.5795) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.094285 max(dx) 0.097972, trying anchor = 3.000000 Cnvgd (fev=121) : LSq: 9.1066 (-248.5643) Distance: 5.3470 (-3.6643) Angle: 0.3383 (-14.0410) Dihedral: 3.2225 (+0.5564) Anchor: 0.1989 (-231.4154) Morse: 0.0000 (+0.0000) 
-xyz: error 9.106633 max(dx) 0.004013 jump 0.6591518939098384 anchor 3.000000
-max(dx) 0.004013 (new) 0.006087 (old) 0.659152[0m (ratio)
-Cnvgd (fev=29) : LSq: 1.2396 (-23.3544) Distance: 1.1372 (-7.6058) Angle: 0.0097 (-13.5024) Dihedral: 0.0927 (-2.2461) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 16.242167 max(dx) 0.097160, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 14.2689 (-107.9816) Distance: 4.2219 (-4.5211) Angle: 1.0551 (-12.4570) Dihedral: 1.2493 (-1.0895) Anchor: 7.6465 (-90.0100) Morse: 0.0961 (+0.0961) 
-jump 16.251520 max(dx) 0.097216, trying anchor = 3.000000 Cnvgd (fev=33) : LSq: 9.1062 (-235.2149) Distance: 5.3728 (-3.3703) Angle: 0.3442 (-13.1679) Dihedral: 3.2159 (+0.8771) Anchor: 0.1733 (-219.5538) Morse: 0.0000 (+0.0000) 
-xyz: error 9.106203 max(dx) 0.003441 jump 0.5751819816207129 anchor 3.000000
-max(dx) 0.003441 (new) 0.005982 (old) 0.575182[0m (ratio)
-Cnvgd (fev=29) : LSq: 1.2778 (-22.0420) Distance: 1.1734 (-7.3672) Angle: 0.0100 (-12.7411) Dihedral: 0.0944 (-1.9337) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.364026 max(dx) 0.097270, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 14.0717 (-102.8601) Distance: 4.1693 (-4.3713) Angle: 1.0459 (-11.7052) Dihedral: 1.1661 (-0.8620) Anchor: 7.5916 (-86.0203) Morse: 0.0987 (+0.0987) 
-jump 18.056949 max(dx) 0.095643, trying anchor = 3.000000 Cnvgd (fev=46) : LSq: 8.9668 (-224.9800) Distance: 5.2976 (-3.2430) Angle: 0.3007 (-12.4504) Dihedral: 3.2406 (+1.2124) Anchor: 0.1279 (-210.4990) Morse: 0.0000 (+0.0000) 
-xyz: error 8.966775 max(dx) 0.002224 jump 0.4198784830372596 anchor 3.000000
-max(dx) 0.002224 (new) 0.005297 (old) 0.419878[0m (ratio)
-Cnvgd (fev=31) : LSq: 1.2623 (-21.0378) Distance: 1.1597 (-7.2323) Angle: 0.0098 (-12.0897) Dihedral: 0.0928 (-1.7158) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.485489 max(dx) 0.096487, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.7989 (-99.2812) Distance: 4.0381 (-4.3538) Angle: 1.0009 (-11.0985) Dihedral: 1.0767 (-0.7319) Anchor: 7.5796 (-83.2005) Morse: 0.1035 (+0.1035) 
-jump 11.258943 max(dx) 0.094584, trying anchor = 3.000000 Cnvgd (fev=108) : LSq: 8.7891 (-217.7662) Distance: 5.1503 (-3.2416) Angle: 0.2529 (-11.8465) Dihedral: 3.2871 (+1.4784) Anchor: 0.0987 (-204.1565) Morse: 0.0000 (+0.0000) 
-xyz: error 8.789063 max(dx) 0.001762 jump 0.20974914216068113 anchor 3.000000
-max(dx) 0.001762 (new) 0.008401 (old) 0.209749[0m (ratio)
-Cnvgd (fev=31) : LSq: 1.2472 (-20.2251) Distance: 1.1465 (-7.1960) Angle: 0.0096 (-11.4824) Dihedral: 0.0911 (-1.5466) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.276727 max(dx) 0.094773, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.6061 (-96.4827) Distance: 3.9238 (-4.4186) Angle: 0.9670 (-10.5251) Dihedral: 1.0405 (-0.5973) Anchor: 7.5670 (-81.0495) Morse: 0.1078 (+0.1078) 
-jump 11.206736 max(dx) 0.094185, trying anchor = 3.000000 Cnvgd (fev=49) : LSq: 21.4026 (-199.4567) Distance: 4.2727 (-4.0698) Angle: 3.7414 (-7.7506) Dihedral: 1.9981 (+0.3604) Anchor: 11.1336 (-188.2534) Morse: 0.2568 (+0.2568) 
-jump 10.153337 max(dx) 0.085332, trying anchor = 4.000000 Cnvgd (fev=42) : LSq: 8.8072 (-367.1309) Distance: 5.1012 (-3.2413) Angle: 0.3381 (-11.1539) Dihedral: 3.2422 (+1.6044) Anchor: 0.1257 (-354.3402) Morse: 0.0000 (+0.0000) 
-xyz: error 8.807201 max(dx) 0.003391 jump 0.40348742678192995 anchor 4.000000
-max(dx) 0.003391 (new) 0.008404 (old) 0.403487[0m (ratio)
-Cnvgd (fev=30) : LSq: 1.2327 (-19.5767) Distance: 1.1338 (-7.2594) Angle: 0.0094 (-10.9130) Dihedral: 0.0894 (-1.4043) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.365065 max(dx) 0.095558, trying anchor = 3.000000 Cnvgd (fev=63) : LSq: 8.6466 (-211.7262) Distance: 4.9727 (-3.4205) Angle: 0.2624 (-10.6601) Dihedral: 3.3123 (+1.8186) Anchor: 0.0992 (-199.4642) Morse: 0.0000 (+0.0000) 
-xyz: error 8.646580 max(dx) 0.002540 jump 0.30209556376454916 anchor 3.000000
-max(dx) 0.002540 (new) 0.008408 (old) 0.302096[0m (ratio)
-Cnvgd (fev=30) : LSq: 1.2187 (-19.0760) Distance: 1.1218 (-7.4238) Angle: 0.0093 (-10.3733) Dihedral: 0.0876 (-1.2790) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.155166 max(dx) 0.093837, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.7212 (-93.6921) Distance: 3.7944 (-4.7512) Angle: 1.0342 (-9.3483) Dihedral: 1.1408 (-0.2258) Anchor: 7.6590 (-79.4596) Morse: 0.0928 (+0.0928) 
-jump 11.404793 max(dx) 0.095937, trying anchor = 3.000000 Cnvgd (fev=62) : LSq: 8.6041 (-207.7074) Distance: 4.8864 (-3.6592) Angle: 0.2981 (-10.0845) Dihedral: 3.2993 (+1.9327) Anchor: 0.1204 (-195.8964) Morse: 0.0000 (+0.0000) 
-xyz: error 8.604098 max(dx) 0.003090 jump 0.3673203199645415 anchor 3.000000
-max(dx) 0.003090 (new) 0.008412 (old) 0.367320[0m (ratio)
-Cnvgd (fev=29) : LSq: 1.2053 (-18.7113) Distance: 1.1103 (-7.6910) Angle: 0.0091 (-9.8543) Dihedral: 0.0858 (-1.1659) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.236036 max(dx) 0.094564, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.9851 (-93.1193) Distance: 3.7436 (-5.0577) Angle: 1.1489 (-8.7146) Dihedral: 1.2812 (+0.0295) Anchor: 7.7366 (-79.4512) Morse: 0.0747 (+0.0747) 
-jump 11.627831 max(dx) 0.097861, trying anchor = 3.000000 Cnvgd (fev=54) : LSq: 8.4667 (-207.6224) Distance: 4.7728 (-4.0286) Angle: 0.2481 (-9.6153) Dihedral: 3.3573 (+2.1056) Anchor: 0.0885 (-196.0841) Morse: 0.0000 (+0.0000) 
-xyz: error 8.466707 max(dx) 0.002370 jump 0.28160566300188583 anchor 3.000000
-Working on frame 210 / 303 
-max(dx) 0.002370 (new) 0.008416 (old) 0.281606[0m (ratio)
-Cnvgd (fev=29) : LSq: 1.1924 (-18.4745) Distance: 1.0994 (-8.0634) Angle: 0.0090 (-9.3483) Dihedral: 0.0839 (-1.0628) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.032030 max(dx) 0.092894, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.7793 (-92.0294) Distance: 3.6552 (-5.5076) Angle: 1.0857 (-8.2716) Dihedral: 1.2300 (+0.0832) Anchor: 7.7263 (-78.4155) Morse: 0.0821 (+0.0821) 
-jump 11.569346 max(dx) 0.097418, trying anchor = 3.000000 Cnvgd (fev=57) : LSq: 8.3746 (-205.1114) Distance: 4.6737 (-4.4892) Angle: 0.2187 (-9.1387) Dihedral: 3.4020 (+2.2553) Anchor: 0.0803 (-193.7388) Morse: 0.0000 (+0.0000) 
-xyz: error 8.374647 max(dx) 0.001775 jump 0.2107566182584066 anchor 3.000000
-max(dx) 0.001775 (new) 0.008420 (old) 0.210757[0m (ratio)
-Cnvgd (fev=29) : LSq: 1.1801 (-18.3617) Distance: 1.0891 (-8.5436) Angle: 0.0089 (-8.8496) Dihedral: 0.0820 (-0.9685) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 10.856574 max(dx) 0.091464, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.6138 (-91.4153) Distance: 3.5757 (-6.0570) Angle: 1.0420 (-7.8166) Dihedral: 1.1908 (+0.1403) Anchor: 7.7180 (-77.7693) Morse: 0.0873 (+0.0873) 
-jump 11.522604 max(dx) 0.097075, trying anchor = 3.000000 Cnvgd (fev=60) : LSq: 8.2994 (-203.5887) Distance: 4.5855 (-5.0471) Angle: 0.1992 (-8.6594) Dihedral: 3.4392 (+2.3886) Anchor: 0.0756 (-192.2709) Morse: 0.0000 (+0.0000) 
-xyz: error 8.299449 max(dx) 0.001484 jump 0.17616367700207927 anchor 3.000000
-max(dx) 0.001484 (new) 0.008425 (old) 0.176164[0m (ratio)
-Cnvgd (fev=30) : LSq: 1.1684 (-18.3726) Distance: 1.0794 (-9.1346) Angle: 0.0089 (-8.3555) Dihedral: 0.0801 (-0.8825) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 10.703649 max(dx) 0.090224, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.4808 (-91.2499) Distance: 3.5043 (-6.7097) Angle: 1.0105 (-7.3539) Dihedral: 1.1623 (+0.1996) Anchor: 7.7131 (-77.4766) Morse: 0.0906 (+0.0906) 
-jump 11.491187 max(dx) 0.096863, trying anchor = 3.000000 Cnvgd (fev=58) : LSq: 8.2357 (-202.9821) Distance: 4.5066 (-5.7074) Angle: 0.1854 (-8.1790) Dihedral: 3.4716 (+2.5089) Anchor: 0.0722 (-191.6047) Morse: 0.0000 (+0.0000) 
-xyz: error 8.235742 max(dx) 0.001411 jump 0.16735848303719847 anchor 3.000000
-max(dx) 0.001411 (new) 0.008429 (old) 0.167358[0m (ratio)
-Cnvgd (fev=31) : LSq: 1.1187 (-17.7301) Distance: 1.0312 (-9.4146) Angle: 0.0087 (-7.4680) Dihedral: 0.0788 (-0.8475) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.666914 max(dx) 0.090123, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 13.3003 (-90.2161) Distance: 3.3735 (-7.0724) Angle: 0.9746 (-6.5021) Dihedral: 1.1323 (+0.2061) Anchor: 7.7262 (-76.9414) Morse: 0.0938 (+0.0938) 
-jump 21.038067 max(dx) 0.096406, trying anchor = 3.000000 Cnvgd (fev=32) : LSq: 9.9893 (-199.3617) Distance: 4.2986 (-6.1472) Angle: 0.0256 (-7.4511) Dihedral: 5.2712 (+4.3449) Anchor: 0.3938 (-190.1084) Morse: 0.0000 (+0.0000) 
-xyz: error 9.989269 max(dx) 0.008338 jump 1.819608023317789 anchor 3.000000
-max(dx) 0.008338 (new) 0.004582 (old) 1.819608[0m (ratio)
-Cnvgd (fev=30) : LSq: 1.0309 (-16.6228) Distance: 0.9464 (-8.8176) Angle: 0.0083 (-6.9070) Dihedral: 0.0761 (-0.8982) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.804623 max(dx) 0.090715, trying anchor = 2.000000 Cnvgd (fev=23) : LSq: 12.9551 (-86.9875) Distance: 3.1103 (-6.6537) Angle: 0.7138 (-6.2015) Dihedral: 0.7323 (-0.2421) Anchor: 8.2500 (-74.0389) Morse: 0.1488 (+0.1488) 
-jump 12.799567 max(dx) 0.098361, trying anchor = 3.000000 Cnvgd (fev=29) : LSq: 21.8789 (-180.9248) Distance: 3.3742 (-6.3897) Angle: 2.6162 (-4.2992) Dihedral: 1.5108 (+0.5364) Anchor: 13.9761 (-171.1739) Morse: 0.4015 (+0.4015) 
-jump 12.329089 max(dx) 0.094745, trying anchor = 4.000000 Cnvgd (fev=19) : LSq: 9.3138 (-337.4954) Distance: 4.0968 (-5.6671) Angle: 0.0426 (-6.8728) Dihedral: 5.0220 (+4.0476) Anchor: 0.1524 (-329.0031) Morse: 0.0000 (+0.0000) 
-xyz: error 9.313825 max(dx) 0.003950 jump 0.5139988728364683 anchor 4.000000
-max(dx) 0.003950 (new) 0.007685 (old) 0.513999[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.9491 (-15.6694) Distance: 0.8674 (-8.3398) Angle: 0.0080 (-6.3624) Dihedral: 0.0737 (-0.9672) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.853575 max(dx) 0.090880, trying anchor = 3.000000 Cnvgd (fev=26) : LSq: 21.8652 (-177.0456) Distance: 3.1493 (-6.0579) Angle: 2.1347 (-4.2357) Dihedral: 1.2321 (+0.1912) Anchor: 14.8660 (-167.4263) Morse: 0.4831 (+0.4831) 
-jump 12.630711 max(dx) 0.096838, trying anchor = 4.000000 Cnvgd (fev=22) : LSq: 8.9372 (-331.7565) Distance: 3.9162 (-5.2910) Angle: 0.0714 (-6.2990) Dihedral: 4.8258 (+3.7850) Anchor: 0.1237 (-323.9514) Morse: 0.0000 (+0.0000) 
-xyz: error 8.937202 max(dx) 0.003967 jump 0.5173764409926143 anchor 4.000000
-max(dx) 0.003967 (new) 0.007667 (old) 0.517376[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.8734 (-14.8743) Distance: 0.7942 (-7.9789) Angle: 0.0078 (-5.8354) Dihedral: 0.0713 (-1.0599) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.885614 max(dx) 0.090919, trying anchor = 3.000000 Cnvgd (fev=24) : LSq: 21.6941 (-173.9966) Distance: 2.9681 (-5.8050) Angle: 1.8088 (-4.0344) Dihedral: 1.0176 (-0.1137) Anchor: 15.3570 (-164.5861) Morse: 0.5425 (+0.5425) 
-jump 12.773847 max(dx) 0.097713, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 8.6230 (-327.0235) Distance: 3.7551 (-5.0180) Angle: 0.0974 (-5.7458) Dihedral: 4.6608 (+3.5296) Anchor: 0.1096 (-319.7892) Morse: 0.0000 (+0.0000) 
-xyz: error 8.622982 max(dx) 0.003935 jump 0.5144130029920517 anchor 4.000000
-max(dx) 0.003935 (new) 0.007649 (old) 0.514413[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.8064 (-14.1436) Distance: 0.7296 (-7.6693) Angle: 0.0076 (-5.3165) Dihedral: 0.0692 (-1.1579) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.969253 max(dx) 0.090831, trying anchor = 3.000000 Cnvgd (fev=23) : LSq: 21.4863 (-171.1873) Distance: 2.8183 (-5.5805) Angle: 1.5890 (-3.7350) Dihedral: 0.8564 (-0.3708) Anchor: 15.6397 (-162.0838) Morse: 0.5828 (+0.5828) 
-jump 12.941361 max(dx) 0.098208, trying anchor = 4.000000 Cnvgd (fev=30) : LSq: 8.3516 (-322.5514) Distance: 3.6154 (-4.7834) Angle: 0.1151 (-5.2090) Dihedral: 4.5195 (+3.2923) Anchor: 0.1016 (-315.8513) Morse: 0.0000 (+0.0000) 
-xyz: error 8.351602 max(dx) 0.003788 jump 0.49918604183032084 anchor 4.000000
-max(dx) 0.003788 (new) 0.007589 (old) 0.499186[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.7616 (-12.9749) Distance: 0.6867 (-7.0826) Angle: 0.0074 (-4.7878) Dihedral: 0.0675 (-1.1045) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.070339 max(dx) 0.090272, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.3746 (-166.0321) Distance: 2.7180 (-5.0513) Angle: 1.5328 (-3.2625) Dihedral: 0.7608 (-0.4112) Anchor: 15.7667 (-157.9034) Morse: 0.5963 (+0.5963) 
-jump 14.328367 max(dx) 0.098960, trying anchor = 4.000000 Cnvgd (fev=32) : LSq: 8.1319 (-314.3515) Distance: 3.5097 (-4.2596) Angle: 0.1096 (-4.6856) Dihedral: 4.4149 (+3.2429) Anchor: 0.0978 (-308.6492) Morse: 0.0000 (+0.0000) 
-xyz: error 8.131930 max(dx) 0.003577 jump 0.517874938757151 anchor 4.000000
-max(dx) 0.003577 (new) 0.006907 (old) 0.517875[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.7323 (-11.6501) Distance: 0.6593 (-6.3768) Angle: 0.0072 (-4.3602) Dihedral: 0.0657 (-0.9130) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.152668 max(dx) 0.089804, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.3043 (-159.6100) Distance: 2.6492 (-4.3870) Angle: 1.5466 (-2.8208) Dihedral: 0.6979 (-0.2809) Anchor: 15.8149 (-152.7170) Morse: 0.5957 (+0.5957) 
-jump 16.793416 max(dx) 0.099529, trying anchor = 4.000000 Cnvgd (fev=31) : LSq: 7.9421 (-304.0525) Distance: 3.4234 (-3.6128) Angle: 0.0956 (-4.2718) Dihedral: 4.3278 (+3.3491) Anchor: 0.0952 (-299.5169) Morse: 0.0000 (+0.0000) 
-xyz: error 7.942070 max(dx) 0.003708 jump 0.6255649979817465 anchor 4.000000
-Working on frame 220 / 303 
-max(dx) 0.003708 (new) 0.005927 (old) 0.625565[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.7038 (-10.4889) Distance: 0.6327 (-5.8126) Angle: 0.0070 (-3.9609) Dihedral: 0.0640 (-0.7154) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.185172 max(dx) 0.089657, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.2214 (-153.7001) Distance: 2.5866 (-3.8588) Angle: 1.5409 (-2.4271) Dihedral: 0.6392 (-0.1402) Anchor: 15.8595 (-147.8693) Morse: 0.5952 (+0.5952) 
-jump 16.884959 max(dx) 0.099692, trying anchor = 4.000000 Cnvgd (fev=31) : LSq: 7.7629 (-294.5032) Distance: 3.3440 (-3.1013) Angle: 0.0874 (-3.8805) Dihedral: 4.2398 (+3.4603) Anchor: 0.0917 (-290.9817) Morse: 0.0000 (+0.0000) 
-xyz: error 7.762929 max(dx) 0.003571 jump 0.6047681848616688 anchor 4.000000
-max(dx) 0.003571 (new) 0.005904 (old) 0.604768[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.6759 (-9.4918) Distance: 0.6068 (-5.3864) Angle: 0.0068 (-3.5858) Dihedral: 0.0623 (-0.5196) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.210829 max(dx) 0.089464, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.1530 (-148.3629) Distance: 2.5300 (-3.4631) Angle: 1.5236 (-2.0689) Dihedral: 0.5846 (+0.0026) Anchor: 15.9184 (-143.4298) Morse: 0.5963 (+0.5963) 
-jump 16.983295 max(dx) 0.099889, trying anchor = 4.000000 Cnvgd (fev=33) : LSq: 7.5944 (-285.8590) Distance: 3.2712 (-2.7219) Angle: 0.0820 (-3.5106) Dihedral: 4.1531 (+3.5711) Anchor: 0.0880 (-283.1976) Morse: 0.0000 (+0.0000) 
-xyz: error 7.594353 max(dx) 0.003432 jump 0.5835003970328075 anchor 4.000000
-max(dx) 0.003432 (new) 0.005882 (old) 0.583500[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.6488 (-8.6757) Distance: 0.5815 (-5.0955) Angle: 0.0067 (-3.2331) Dihedral: 0.0606 (-0.3471) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 15.232384 max(dx) 0.089245, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0998 (-143.6269) Distance: 2.4791 (-3.1980) Angle: 1.4992 (-1.7405) Dihedral: 0.5346 (+0.1268) Anchor: 15.9884 (-139.4137) Morse: 0.5985 (+0.5985) 
-jump 17.087536 max(dx) 0.100114, trying anchor = 4.000000 Cnvgd (fev=33) : LSq: 7.4359 (-278.1591) Distance: 3.2044 (-2.4727) Angle: 0.0783 (-3.1615) Dihedral: 4.0690 (+3.6612) Anchor: 0.0843 (-276.1862) Morse: 0.0000 (+0.0000) 
-xyz: error 7.435932 max(dx) 0.003290 jump 0.56160365009736 anchor 4.000000
-max(dx) 0.003290 (new) 0.005859 (old) 0.561604[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.6296 (-8.0097) Distance: 0.5638 (-5.0305) Angle: 0.0065 (-2.7245) Dihedral: 0.0592 (-0.2548) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.397693 max(dx) 0.088845, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0931 (-139.5826) Distance: 2.4418 (-3.1525) Angle: 1.5125 (-1.2185) Dihedral: 0.4987 (+0.1847) Anchor: 16.0426 (-135.9939) Morse: 0.5975 (+0.5975) 
-jump 16.278337 max(dx) 0.100450, trying anchor = 4.000000 Cnvgd (fev=31) : LSq: 7.2979 (-271.6285) Distance: 3.1472 (-2.4471) Angle: 0.0701 (-2.6609) Dihedral: 3.9974 (+3.6834) Anchor: 0.0832 (-270.2038) Morse: 0.0000 (+0.0000) 
-xyz: error 7.297897 max(dx) 0.003166 jump 0.5131088442214548 anchor 4.000000
-max(dx) 0.003166 (new) 0.006171 (old) 0.513109[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.6225 (-7.5282) Distance: 0.5583 (-5.2267) Angle: 0.0064 (-2.0575) Dihedral: 0.0578 (-0.2439) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.794248 max(dx) 0.088386, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0944 (-136.8658) Distance: 2.4136 (-3.3714) Angle: 1.5403 (-0.5235) Dihedral: 0.4715 (+0.1698) Anchor: 16.0728 (-133.7368) Morse: 0.5961 (+0.5961) 
-jump 13.443661 max(dx) 0.100747, trying anchor = 4.000000 Cnvgd (fev=29) : LSq: 7.1678 (-267.3111) Distance: 3.0915 (-2.6936) Angle: 0.0604 (-2.0034) Dihedral: 3.9331 (+3.6313) Anchor: 0.0827 (-266.2454) Morse: 0.0000 (+0.0000) 
-xyz: error 7.167751 max(dx) 0.003059 jump 0.4082566915669608 anchor 4.000000
-max(dx) 0.003059 (new) 0.007494 (old) 0.408257[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.6166 (-7.2732) Distance: 0.5538 (-5.5379) Angle: 0.0063 (-1.4978) Dihedral: 0.0565 (-0.2375) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.632088 max(dx) 0.088084, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0831 (-134.5656) Distance: 2.3901 (-3.7016) Angle: 1.5549 (+0.0509) Dihedral: 0.4477 (+0.1537) Anchor: 16.0953 (-131.6636) Morse: 0.5951 (+0.5951) 
-jump 13.318367 max(dx) 0.100854, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 7.0457 (-263.5265) Distance: 3.0407 (-3.0511) Angle: 0.0541 (-1.4500) Dihedral: 3.8701 (+3.5761) Anchor: 0.0808 (-262.6016) Morse: 0.0000 (+0.0000) 
-xyz: error 7.045728 max(dx) 0.002877 jump 0.37995020174168037 anchor 4.000000
-max(dx) 0.002877 (new) 0.007573 (old) 0.379950[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.6106 (-7.2349) Distance: 0.5493 (-5.9469) Angle: 0.0062 (-1.0575) Dihedral: 0.0551 (-0.2305) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 11.611614 max(dx) 0.087752, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0767 (-132.6169) Distance: 2.3700 (-4.1263) Angle: 1.5605 (+0.4969) Dihedral: 0.4273 (+0.1418) Anchor: 16.1237 (-129.7244) Morse: 0.5951 (+0.5951) 
-jump 13.362075 max(dx) 0.100980, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 6.9312 (-260.1997) Distance: 2.9935 (-3.5027) Angle: 0.0495 (-1.0141) Dihedral: 3.8098 (+3.5242) Anchor: 0.0785 (-259.2071) Morse: 0.0000 (+0.0000) 
-xyz: error 6.931242 max(dx) 0.002694 jump 0.35653281089496636 anchor 4.000000
-max(dx) 0.002694 (new) 0.007557 (old) 0.356533[0m (ratio)
-Cnvgd (fev=29) : LSq: 0.5920 (-7.1579) Distance: 0.5332 (-6.2083) Angle: 0.0059 (-0.7432) Dihedral: 0.0529 (-0.2064) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.021130 max(dx) 0.088116, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0634 (-129.7493) Distance: 2.3353 (-4.4062) Angle: 1.5648 (+0.8157) Dihedral: 0.4136 (+0.1543) Anchor: 16.1562 (-126.9067) Morse: 0.5935 (+0.5935) 
-jump 13.837797 max(dx) 0.101432, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 6.8033 (-255.2806) Distance: 2.9291 (-3.8124) Angle: 0.0450 (-0.7041) Dihedral: 3.7536 (+3.4942) Anchor: 0.0757 (-254.2583) Morse: 0.0000 (+0.0000) 
-xyz: error 6.803264 max(dx) 0.002675 jump 0.36496735846981626 anchor 4.000000
-max(dx) 0.002675 (new) 0.007330 (old) 0.364967[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.5720 (-7.2261) Distance: 0.5157 (-6.5022) Angle: 0.0057 (-0.5450) Dihedral: 0.0506 (-0.1790) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.274268 max(dx) 0.089752, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.0651 (-126.9890) Distance: 2.3026 (-4.7153) Angle: 1.5660 (+1.0153) Dihedral: 0.4051 (+0.1755) Anchor: 16.1994 (-124.0566) Morse: 0.5921 (+0.5921) 
-jump 13.904246 max(dx) 0.101671, trying anchor = 4.000000 Cnvgd (fev=58) : LSq: 10.1904 (-246.9517) Distance: 3.1805 (-3.8373) Angle: 0.4552 (-0.0955) Dihedral: 4.1197 (+3.8902) Anchor: 2.4349 (-246.9090) Morse: 0.0000 (+0.0000) 
-jump 3.045532 max(dx) 0.022270, trying anchor = 5.000000 Cnvgd (fev=18) : LSq: 6.7108 (-390.6873) Distance: 2.8819 (-4.1360) Angle: 0.0320 (-0.5187) Dihedral: 3.7393 (+3.5098) Anchor: 0.0576 (-389.5424) Morse: 0.0000 (+0.0000) 
-xyz: error 6.710792 max(dx) 0.001779 jump 0.24328708930089818 anchor 5.000000
-max(dx) 0.001779 (new) 0.007312 (old) 0.243287[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.5541 (-7.5194) Distance: 0.5003 (-6.8980) Angle: 0.0056 (-0.4680) Dihedral: 0.0483 (-0.1533) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.415537 max(dx) 0.090820, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 6.6150 (-247.0210) Distance: 2.8218 (-4.5764) Angle: 0.0338 (-0.4398) Dihedral: 3.6809 (+3.4792) Anchor: 0.0785 (-245.4840) Morse: 0.0000 (+0.0000) 
-xyz: error 6.615036 max(dx) 0.002343 jump 0.3202436243176858 anchor 4.000000
-Working on frame 230 / 303 
-max(dx) 0.002343 (new) 0.007315 (old) 0.320244[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.5382 (-8.0459) Distance: 0.4867 (-7.3963) Angle: 0.0054 (-0.5195) Dihedral: 0.0461 (-0.1301) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.673929 max(dx) 0.092726, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.1211 (-123.2648) Distance: 2.2640 (-5.6190) Angle: 1.6223 (+1.0973) Dihedral: 0.4158 (+0.2397) Anchor: 16.2419 (-119.5600) Morse: 0.5772 (+0.5772) 
-jump 13.932410 max(dx) 0.101934, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 6.5071 (-243.5025) Distance: 2.7704 (-5.1126) Angle: 0.0342 (-0.4908) Dihedral: 3.6290 (+3.4528) Anchor: 0.0736 (-241.3519) Morse: 0.0000 (+0.0000) 
-xyz: error 6.507101 max(dx) 0.002248 jump 0.3072874189680029 anchor 4.000000
-max(dx) 0.002248 (new) 0.007316 (old) 0.307287[0m (ratio)
-Cnvgd (fev=28) : LSq: 0.5242 (-8.8135) Distance: 0.4748 (-7.9978) Angle: 0.0054 (-0.7060) Dihedral: 0.0440 (-0.1097) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 12.927943 max(dx) 0.094583, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.1743 (-121.9632) Distance: 2.2483 (-6.2243) Angle: 1.6048 (+0.8935) Dihedral: 0.4162 (+0.2625) Anchor: 16.3267 (-117.4731) Morse: 0.5783 (+0.5783) 
-jump 13.968899 max(dx) 0.102199, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 6.4117 (-240.7923) Distance: 2.7254 (-5.7472) Angle: 0.0340 (-0.6774) Dihedral: 3.5817 (+3.4280) Anchor: 0.0706 (-237.7957) Morse: 0.0000 (+0.0000) 
-xyz: error 6.411693 max(dx) 0.002225 jump 0.30410960656268626 anchor 4.000000
-max(dx) 0.002225 (new) 0.007316 (old) 0.304110[0m (ratio)
-Cnvgd (fev=31) : LSq: 0.5119 (-9.8293) Distance: 0.4646 (-8.7037) Angle: 0.0053 (-1.0330) Dihedral: 0.0420 (-0.0926) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.177980 max(dx) 0.096392, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.2374 (-121.1915) Distance: 2.2380 (-6.9303) Angle: 1.5892 (+0.5509) Dihedral: 0.4209 (+0.2863) Anchor: 16.4103 (-115.6773) Morse: 0.5790 (+0.5790) 
-jump 14.008025 max(dx) 0.102464, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 6.3261 (-238.8377) Distance: 2.6859 (-6.4825) Angle: 0.0336 (-1.0047) Dihedral: 3.5381 (+3.4035) Anchor: 0.0685 (-234.7540) Morse: 0.0000 (+0.0000) 
-xyz: error 6.326069 max(dx) 0.002203 jump 0.30111897110870095 anchor 4.000000
-max(dx) 0.002203 (new) 0.007315 (old) 0.301119[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.5013 (-11.0995) Distance: 0.4558 (-9.5155) Angle: 0.0053 (-1.5050) Dihedral: 0.0402 (-0.0790) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.426751 max(dx) 0.098174, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.3090 (-120.9489) Distance: 2.2323 (-7.7391) Angle: 1.5743 (+0.0640) Dihedral: 0.4290 (+0.3098) Anchor: 16.4941 (-114.1630) Morse: 0.5793 (+0.5793) 
-jump 14.050081 max(dx) 0.102732, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 6.2486 (-237.6315) Distance: 2.6510 (-7.3203) Angle: 0.0332 (-1.4771) Dihedral: 3.4974 (+3.3782) Anchor: 0.0670 (-232.2123) Morse: 0.0000 (+0.0000) 
-xyz: error 6.248596 max(dx) 0.002181 jump 0.2983431019298063 anchor 4.000000
-max(dx) 0.002181 (new) 0.007312 (old) 0.298343[0m (ratio)
-Cnvgd (fev=35) : LSq: 0.4921 (-12.6291) Distance: 0.4485 (-10.4348) Angle: 0.0053 (-2.1250) Dihedral: 0.0384 (-0.0693) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 13.673846 max(dx) 0.099925, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 21.3886 (-121.2381) Distance: 2.2306 (-8.6526) Angle: 1.5595 (-0.5708) Dihedral: 0.4399 (+0.3322) Anchor: 16.5792 (-112.9262) Morse: 0.5793 (+0.5793) 
-jump 14.095379 max(dx) 0.103006, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 6.1781 (-237.1751) Distance: 2.6201 (-8.2631) Angle: 0.0329 (-2.0974) Dihedral: 3.4592 (+3.3514) Anchor: 0.0659 (-230.1660) Morse: 0.0000 (+0.0000) 
-xyz: error 6.178060 max(dx) 0.002160 jump 0.29561449979676296 anchor 4.000000
-max(dx) 0.002160 (new) 0.007308 (old) 0.295614[0m (ratio)
-Cnvgd (fev=38) : LSq: 0.4571 (-12.7396) Distance: 0.4169 (-10.1599) Angle: 0.0052 (-2.5039) Dihedral: 0.0351 (-0.0759) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.745156 max(dx) 0.101867, trying anchor = 3.000000 Cnvgd (fev=21) : LSq: 21.3570 (-117.1331) Distance: 2.1726 (-8.4042) Angle: 1.4227 (-1.0864) Dihedral: 0.4322 (+0.3212) Anchor: 16.7520 (-108.5413) Morse: 0.5776 (+0.5776) 
-jump 20.177943 max(dx) 0.104100, trying anchor = 4.000000 Cnvgd (fev=58) : LSq: 10.3832 (-225.5572) Distance: 2.9745 (-7.6023) Angle: 0.4995 (-2.0096) Dihedral: 4.2215 (+4.1106) Anchor: 2.6877 (-220.0559) Morse: 0.0000 (+0.0000) 
-jump 4.130550 max(dx) 0.021310, trying anchor = 5.000000 Cnvgd (fev=18) : LSq: 6.0427 (-355.1910) Distance: 2.5387 (-8.0380) Angle: 0.0375 (-2.4716) Dihedral: 3.4252 (+3.3142) Anchor: 0.0413 (-347.9956) Morse: 0.0000 (+0.0000) 
-xyz: error 6.042703 max(dx) 0.003203 jump 0.6208159950443887 anchor 5.000000
-max(dx) 0.003203 (new) 0.005159 (old) 0.620816[0m (ratio)
-Cnvgd (fev=56) : LSq: 0.4039 (-12.5023) Distance: 0.3668 (-9.5944) Angle: 0.0049 (-2.8304) Dihedral: 0.0322 (-0.0775) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.930716 max(dx) 0.105579, trying anchor = 4.000000 Cnvgd (fev=38) : LSq: 5.8911 (-222.5188) Distance: 2.4300 (-7.5312) Angle: 0.0679 (-2.7674) Dihedral: 3.3439 (+3.2342) Anchor: 0.0493 (-215.4545) Morse: 0.0000 (+0.0000) 
-xyz: error 5.891094 max(dx) 0.003925 jump 0.7780908781552376 anchor 4.000000
-max(dx) 0.003925 (new) 0.005044 (old) 0.778091[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.3517 (-12.6167) Distance: 0.3166 (-9.2604) Angle: 0.0043 (-3.2854) Dihedral: 0.0308 (-0.0709) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.138851 max(dx) 0.110267, trying anchor = 3.000000 Cnvgd (fev=20) : LSq: 21.5769 (-109.2179) Distance: 2.0801 (-7.4969) Angle: 1.1735 (-2.1162) Dihedral: 0.4124 (+0.3107) Anchor: 17.3428 (-100.4835) Morse: 0.5680 (+0.5680) 
-jump 20.353333 max(dx) 0.106169, trying anchor = 4.000000 Cnvgd (fev=46) : LSq: 34.0335 (-188.4040) Distance: 2.4848 (-7.0922) Angle: 3.9577 (+0.6680) Dihedral: 0.6679 (+0.5662) Anchor: 25.7776 (-183.6914) Morse: 1.1455 (+1.1455) 
-jump 18.953088 max(dx) 0.098865, trying anchor = 5.000000 Cnvgd (fev=20) : LSq: 5.7835 (-334.4804) Distance: 2.3677 (-7.2093) Angle: 0.0854 (-3.2043) Dihedral: 3.2982 (+3.1965) Anchor: 0.0322 (-327.2632) Morse: 0.0000 (+0.0000) 
-xyz: error 5.783462 max(dx) 0.004186 jump 0.8025308421251599 anchor 5.000000
-max(dx) 0.004186 (new) 0.005216 (old) 0.802531[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.3046 (-13.0112) Distance: 0.2714 (-9.0834) Angle: 0.0037 (-3.8640) Dihedral: 0.0295 (-0.0638) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.329709 max(dx) 0.113227, trying anchor = 4.000000 Cnvgd (fev=35) : LSq: 34.5293 (-183.5301) Distance: 2.4606 (-6.8942) Angle: 3.5044 (-0.3634) Dihedral: 0.6268 (+0.5335) Anchor: 26.7761 (-177.9674) Morse: 1.1615 (+1.1615) 
-jump 18.123735 max(dx) 0.100941, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 5.7245 (-327.5031) Distance: 2.3331 (-7.0217) Angle: 0.1020 (-3.7658) Dihedral: 3.2556 (+3.1624) Anchor: 0.0337 (-319.8780) Morse: 0.0000 (+0.0000) 
-xyz: error 5.724509 max(dx) 0.004225 jump 0.7586168832672607 anchor 5.000000
-max(dx) 0.004225 (new) 0.005570 (old) 0.758617[0m (ratio)
-Cnvgd (fev=27) : LSq: 0.2641 (-13.5394) Distance: 0.2326 (-8.9514) Angle: 0.0032 (-4.5254) Dihedral: 0.0282 (-0.0626) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.782328 max(dx) 0.116004, trying anchor = 4.000000 Cnvgd (fev=31) : LSq: 35.0825 (-179.0569) Distance: 2.4848 (-6.6992) Angle: 3.2312 (-1.2974) Dihedral: 0.6066 (+0.5158) Anchor: 27.5973 (-172.7386) Morse: 1.1625 (+1.1625) 
-jump 18.371907 max(dx) 0.102549, trying anchor = 5.000000 Cnvgd (fev=21) : LSq: 5.6913 (-321.1369) Distance: 2.3222 (-6.8618) Angle: 0.1185 (-4.4101) Dihedral: 3.2150 (+3.1242) Anchor: 0.0356 (-312.9892) Morse: 0.0000 (+0.0000) 
-xyz: error 5.691343 max(dx) 0.004236 jump 0.7589428470870672 anchor 5.000000
-Working on frame 240 / 303 
-max(dx) 0.004236 (new) 0.005582 (old) 0.758943[0m (ratio)
-Cnvgd (fev=24) : LSq: 0.2295 (-14.1986) Distance: 0.1996 (-8.8621) Angle: 0.0028 (-5.2687) Dihedral: 0.0270 (-0.0678) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.226912 max(dx) 0.118709, trying anchor = 4.000000 Cnvgd (fev=29) : LSq: 35.6906 (-174.9443) Distance: 2.5426 (-6.5191) Angle: 3.0395 (-2.2320) Dihedral: 0.5963 (+0.5015) Anchor: 28.3575 (-167.8493) Morse: 1.1546 (+1.1546) 
-jump 18.595707 max(dx) 0.103994, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 5.6814 (-315.3199) Distance: 2.3328 (-6.7289) Angle: 0.1348 (-5.1367) Dihedral: 3.1761 (+3.0812) Anchor: 0.0378 (-306.5354) Morse: 0.0000 (+0.0000) 
-xyz: error 5.681437 max(dx) 0.004248 jump 0.7595995432367524 anchor 5.000000
-max(dx) 0.004248 (new) 0.005592 (old) 0.759600[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.2004 (-15.1435) Distance: 0.1721 (-8.9047) Angle: 0.0024 (-6.1503) Dihedral: 0.0259 (-0.0885) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.019477 max(dx) 0.121304, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 36.3334 (-171.5261) Distance: 2.6328 (-6.4440) Angle: 2.9628 (-3.1900) Dihedral: 0.6023 (+0.4879) Anchor: 28.9917 (-163.5238) Morse: 1.1438 (+1.1438) 
-jump 17.365290 max(dx) 0.105222, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 5.6892 (-310.4602) Distance: 2.3627 (-6.7141) Angle: 0.1405 (-6.0123) Dihedral: 3.1449 (+3.0305) Anchor: 0.0411 (-300.7643) Morse: 0.0000 (+0.0000) 
-xyz: error 5.689241 max(dx) 0.004116 jump 0.6793012575959652 anchor 5.000000
-max(dx) 0.004116 (new) 0.006059 (old) 0.679301[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.1761 (-16.4049) Distance: 0.1491 (-9.0915) Angle: 0.0021 (-7.1839) Dihedral: 0.0248 (-0.1295) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.789735 max(dx) 0.123751, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 36.9399 (-168.7652) Distance: 2.7430 (-6.4976) Angle: 2.9602 (-4.2257) Dihedral: 0.6210 (+0.4667) Anchor: 29.4839 (-159.6403) Morse: 1.1317 (+1.1317) 
-jump 16.120983 max(dx) 0.106174, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 5.7086 (-306.3789) Distance: 2.4056 (-6.8351) Angle: 0.1366 (-7.0494) Dihedral: 3.1206 (+2.9663) Anchor: 0.0458 (-295.4607) Morse: 0.0000 (+0.0000) 
-xyz: error 5.708579 max(dx) 0.003940 jump 0.598278525415968 anchor 5.000000
-max(dx) 0.003940 (new) 0.006586 (old) 0.598279[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.1556 (-17.9375) Distance: 0.1300 (-9.3902) Angle: 0.0019 (-8.3516) Dihedral: 0.0238 (-0.1956) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.207741 max(dx) 0.125976, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 37.4795 (-166.5117) Distance: 2.8643 (-6.6559) Angle: 2.9822 (-5.3713) Dihedral: 0.6455 (+0.4261) Anchor: 29.8693 (-156.0289) Morse: 1.1183 (+1.1183) 
-jump 15.449603 max(dx) 0.106893, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 5.7372 (-302.8218) Distance: 2.4578 (-7.0624) Angle: 0.1292 (-8.2243) Dihedral: 3.0990 (+2.8796) Anchor: 0.0511 (-290.4147) Morse: 0.0000 (+0.0000) 
-xyz: error 5.737185 max(dx) 0.003802 jump 0.5494907705967766 anchor 5.000000
-max(dx) 0.003802 (new) 0.006919 (old) 0.549491[0m (ratio)
-Cnvgd (fev=37) : LSq: 0.1383 (-19.6147) Distance: 0.1139 (-9.7278) Angle: 0.0016 (-9.6064) Dihedral: 0.0228 (-0.2804) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.497733 max(dx) 0.127711, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 37.9758 (-164.4458) Distance: 2.9910 (-6.8507) Angle: 2.9720 (-6.6361) Dihedral: 0.6660 (+0.3628) Anchor: 30.2444 (-152.4241) Morse: 1.1023 (+1.1023) 
-jump 15.577270 max(dx) 0.107548, trying anchor = 5.000000 Cnvgd (fev=24) : LSq: 5.7756 (-299.3971) Distance: 2.5193 (-7.3225) Angle: 0.1261 (-9.4820) Dihedral: 3.0750 (+2.7717) Anchor: 0.0552 (-285.3644) Morse: 0.0000 (+0.0000) 
-xyz: error 5.775569 max(dx) 0.003802 jump 0.5506993457866028 anchor 5.000000
-max(dx) 0.003802 (new) 0.006904 (old) 0.550699[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.1242 (-21.4302) Distance: 0.0998 (-10.1051) Angle: 0.0015 (-10.9430) Dihedral: 0.0229 (-0.3821) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.750593 max(dx) 0.129126, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 38.4765 (-162.6447) Distance: 3.1259 (-7.0790) Angle: 2.9422 (-8.0024) Dihedral: 0.6831 (+0.2781) Anchor: 30.6387 (-148.9282) Morse: 1.0867 (+1.0867) 
-jump 15.715204 max(dx) 0.108223, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 5.8243 (-296.3033) Distance: 2.5910 (-7.6139) Angle: 0.1252 (-10.8193) Dihedral: 3.0494 (+2.6444) Anchor: 0.0587 (-280.5145) Morse: 0.0000 (+0.0000) 
-xyz: error 5.824264 max(dx) 0.003810 jump 0.5531922784330846 anchor 5.000000
-max(dx) 0.003810 (new) 0.006886 (old) 0.553192[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.1151 (-23.3231) Distance: 0.0896 (-10.5651) Angle: 0.0016 (-12.2859) Dihedral: 0.0239 (-0.4721) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.725056 max(dx) 0.131737, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 38.9894 (-161.4414) Distance: 3.2716 (-7.3831) Angle: 2.9109 (-9.3765) Dihedral: 0.6998 (+0.2038) Anchor: 31.0342 (-145.9584) Morse: 1.0728 (+1.0728) 
-jump 15.477893 max(dx) 0.108892, trying anchor = 5.000000 Cnvgd (fev=22) : LSq: 5.8836 (-294.1055) Distance: 2.6736 (-7.9811) Angle: 0.1239 (-12.1636) Dihedral: 3.0238 (+2.5278) Anchor: 0.0623 (-276.4887) Morse: 0.0000 (+0.0000) 
-xyz: error 5.883616 max(dx) 0.003818 jump 0.5427276235347687 anchor 5.000000
-max(dx) 0.003818 (new) 0.007035 (old) 0.542728[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.1112 (-23.8858) Distance: 0.0859 (-10.9353) Angle: 0.0016 (-12.5652) Dihedral: 0.0237 (-0.3853) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.797005 max(dx) 0.134393, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 39.4253 (-161.7756) Distance: 3.3358 (-7.6854) Angle: 2.8117 (-9.7551) Dihedral: 0.7033 (+0.2942) Anchor: 31.4995 (-145.7045) Morse: 1.0751 (+1.0751) 
-jump 15.232799 max(dx) 0.108910, trying anchor = 5.000000 Cnvgd (fev=23) : LSq: 5.8840 (-294.9941) Distance: 2.7032 (-8.3180) Angle: 0.1267 (-12.4401) Dihedral: 2.9910 (+2.5820) Anchor: 0.0631 (-276.8180) Morse: 0.0000 (+0.0000) 
-xyz: error 5.884005 max(dx) 0.002479 jump 0.34671115659752344 anchor 5.000000
-max(dx) 0.002479 (new) 0.007150 (old) 0.346711[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.1092 (-24.3566) Distance: 0.0835 (-11.3071) Angle: 0.0016 (-12.7436) Dihedral: 0.0241 (-0.3060) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.472570 max(dx) 0.136312, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 39.8194 (-161.9523) Distance: 3.3945 (-7.9960) Angle: 2.7208 (-10.0244) Dihedral: 0.7075 (+0.3774) Anchor: 31.9132 (-145.3928) Morse: 1.0834 (+1.0834) 
-jump 14.065921 max(dx) 0.109735, trying anchor = 5.000000 Cnvgd (fev=24) : LSq: 5.8736 (-295.6327) Distance: 2.7228 (-8.6677) Angle: 0.1261 (-12.6191) Dihedral: 2.9598 (+2.6297) Anchor: 0.0649 (-276.9756) Morse: 0.0000 (+0.0000) 
-xyz: error 5.873632 max(dx) 0.002618 jump 0.3355733982859203 anchor 5.000000
-max(dx) 0.002618 (new) 0.007801 (old) 0.335573[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.1106 (-25.3137) Distance: 0.0830 (-11.7265) Angle: 0.0018 (-13.3033) Dihedral: 0.0258 (-0.2839) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.401545 max(dx) 0.138296, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 40.1939 (-161.2222) Distance: 3.4863 (-8.3232) Angle: 2.6529 (-10.6522) Dihedral: 0.7157 (+0.4061) Anchor: 32.2487 (-143.7431) Morse: 1.0902 (+1.0902) 
-jump 15.533152 max(dx) 0.110722, trying anchor = 5.000000 Cnvgd (fev=26) : LSq: 5.8845 (-294.5270) Distance: 2.7622 (-9.0473) Angle: 0.1219 (-13.1832) Dihedral: 2.9322 (+2.6226) Anchor: 0.0682 (-274.9190) Morse: 0.0000 (+0.0000) 
-xyz: error 5.884543 max(dx) 0.003438 jump 0.48227244685044285 anchor 5.000000
-Working on frame 250 / 303 
-max(dx) 0.003438 (new) 0.007128 (old) 0.482272[0m (ratio)
-Cnvgd (fev=26) : LSq: 0.1172 (-26.4421) Distance: 0.0868 (-12.1876) Angle: 0.0020 (-13.9730) Dihedral: 0.0283 (-0.2816) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.384299 max(dx) 0.140685, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 40.5455 (-160.3422) Distance: 3.5899 (-8.6845) Angle: 2.5838 (-11.3911) Dihedral: 0.7227 (+0.4128) Anchor: 32.5533 (-141.7751) Morse: 1.0958 (+1.0958) 
-jump 16.126462 max(dx) 0.111299, trying anchor = 5.000000 Cnvgd (fev=27) : LSq: 5.9063 (-293.0411) Distance: 2.8120 (-9.4624) Angle: 0.1183 (-13.8567) Dihedral: 2.9048 (+2.5949) Anchor: 0.0712 (-272.3169) Morse: 0.0000 (+0.0000) 
-xyz: error 5.906283 max(dx) 0.003787 jump 0.5486405636486591 anchor 5.000000
-max(dx) 0.003787 (new) 0.006902 (old) 0.548641[0m (ratio)
-Cnvgd (fev=25) : LSq: 0.1266 (-27.3594) Distance: 0.0933 (-12.5095) Angle: 0.0023 (-14.5567) Dihedral: 0.0310 (-0.2932) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.607309 max(dx) 0.143217, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 40.8789 (-158.6899) Distance: 3.6824 (-8.9205) Angle: 2.4825 (-12.0764) Dihedral: 0.7204 (+0.3962) Anchor: 32.8896 (-139.1932) Morse: 1.1040 (+1.1040) 
-jump 17.642250 max(dx) 0.111763, trying anchor = 5.000000 Cnvgd (fev=31) : LSq: 5.9224 (-290.4429) Distance: 2.8576 (-9.7452) Angle: 0.1192 (-14.4397) Dihedral: 2.8731 (+2.5489) Anchor: 0.0725 (-268.8068) Morse: 0.0000 (+0.0000) 
-xyz: error 5.922408 max(dx) 0.003955 jump 0.6243542090600313 anchor 5.000000
-max(dx) 0.003955 (new) 0.006335 (old) 0.624354[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.1367 (-27.8858) Distance: 0.1008 (-12.5653) Angle: 0.0025 (-15.0020) Dihedral: 0.0334 (-0.3185) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 25.433706 max(dx) 0.145815, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 41.2086 (-155.5751) Distance: 3.7584 (-8.9077) Angle: 2.3499 (-12.6547) Dihedral: 0.7067 (+0.3548) Anchor: 33.2771 (-135.4841) Morse: 1.1165 (+1.1165) 
-jump 19.583185 max(dx) 0.112273, trying anchor = 5.000000 Cnvgd (fev=35) : LSq: 5.9273 (-285.7845) Distance: 2.8936 (-9.7725) Angle: 0.1257 (-14.8788) Dihedral: 2.8356 (+2.4837) Anchor: 0.0724 (-263.6169) Morse: 0.0000 (+0.0000) 
-xyz: error 5.927314 max(dx) 0.004253 jump 0.741820473279556 anchor 5.000000
-max(dx) 0.004253 (new) 0.005733 (old) 0.741820[0m (ratio)
-Cnvgd (fev=32) : LSq: 0.1502 (-28.2872) Distance: 0.1115 (-12.5635) Angle: 0.0028 (-15.3747) Dihedral: 0.0360 (-0.3490) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 26.894529 max(dx) 0.148477, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 41.5532 (-152.2058) Distance: 3.8377 (-8.8374) Angle: 2.2326 (-13.1449) Dihedral: 0.6923 (+0.3074) Anchor: 33.6632 (-131.6584) Morse: 1.1275 (+1.1275) 
-jump 20.417800 max(dx) 0.112721, trying anchor = 5.000000 Cnvgd (fev=46) : LSq: 5.9353 (-280.8172) Distance: 2.9324 (-9.7426) Angle: 0.1330 (-15.2444) Dihedral: 2.7976 (+2.4127) Anchor: 0.0722 (-258.2429) Morse: 0.0000 (+0.0000) 
-xyz: error 5.935262 max(dx) 0.004303 jump 0.7793563325510995 anchor 5.000000
-max(dx) 0.004303 (new) 0.005521 (old) 0.779356[0m (ratio)
-Cnvgd (fev=30) : LSq: 0.1675 (-28.6463) Distance: 0.1258 (-12.5654) Angle: 0.0030 (-15.6990) Dihedral: 0.0387 (-0.3819) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 27.837286 max(dx) 0.151137, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 41.9061 (-148.9329) Distance: 3.9224 (-8.7689) Angle: 2.1387 (-13.5633) Dihedral: 0.6793 (+0.2587) Anchor: 34.0313 (-127.9939) Morse: 1.1344 (+1.1344) 
-jump 20.834859 max(dx) 0.113118, trying anchor = 5.000000 Cnvgd (fev=71) : LSq: 60.0570 (-221.9212) Distance: 4.5417 (-8.1495) Angle: 5.6148 (-10.0873) Dihedral: 0.8483 (+0.4277) Anchor: 47.1994 (-205.9649) Morse: 1.8529 (+1.8529) 
-jump 19.632048 max(dx) 0.106588, trying anchor = 6.000000 Cnvgd (fev=12) : LSq: 5.9711 (-387.3994) Distance: 3.0130 (-9.6782) Angle: 0.1276 (-15.5744) Dihedral: 2.7740 (+2.3534) Anchor: 0.0565 (-364.5001) Morse: 0.0000 (+0.0000) 
-xyz: error 5.971106 max(dx) 0.004382 jump 0.8071288996997372 anchor 6.000000
-max(dx) 0.004382 (new) 0.005429 (old) 0.807129[0m (ratio)
-Cnvgd (fev=34) : LSq: 0.1862 (-28.8797) Distance: 0.1418 (-12.4993) Angle: 0.0033 (-15.9635) Dihedral: 0.0411 (-0.4168) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 29.676012 max(dx) 0.153283, trying anchor = 5.000000 Cnvgd (fev=15) : LSq: 5.9925 (-271.6658) Distance: 3.0424 (-9.5987) Angle: 0.1405 (-15.8264) Dihedral: 2.7331 (+2.2752) Anchor: 0.0765 (-248.5159) Morse: 0.0000 (+0.0000) 
-xyz: error 5.992524 max(dx) 0.004510 jump 0.8730861686065533 anchor 5.000000
-max(dx) 0.004510 (new) 0.005165 (old) 0.873086[0m (ratio)
-Cnvgd (fev=41) : LSq: 0.2026 (-28.8964) Distance: 0.1563 (-12.2806) Angle: 0.0035 (-16.1631) Dihedral: 0.0428 (-0.4527) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 32.681456 max(dx) 0.156059, trying anchor = 4.000000 Cnvgd (fev=29) : LSq: 42.4868 (-141.7417) Distance: 4.0953 (-8.3416) Angle: 2.0303 (-14.1363) Dihedral: 0.6526 (+0.1571) Anchor: 34.5874 (-120.5421) Morse: 1.1212 (+1.1212) 
-jump 23.798294 max(dx) 0.113641, trying anchor = 5.000000 Cnvgd (fev=12) : LSq: 5.9756 (-265.5133) Distance: 3.0557 (-9.3812) Angle: 0.1566 (-16.0101) Dihedral: 2.6910 (+2.1955) Anchor: 0.0723 (-242.3175) Morse: 0.0000 (+0.0000) 
-xyz: error 5.975603 max(dx) 0.004861 jump 1.018078098377459 anchor 5.000000
-max(dx) 0.004861 (new) 0.004775 (old) 1.018078[0m (ratio)
-Cnvgd (fev=49) : LSq: 0.1961 (-27.6334) Distance: 0.1518 (-11.8822) Angle: 0.0034 (-15.2690) Dihedral: 0.0409 (-0.4822) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.665358 max(dx) 0.158942, trying anchor = 4.000000 Cnvgd (fev=33) : LSq: 42.8537 (-138.4110) Distance: 4.1295 (-7.9045) Angle: 2.0124 (-13.2600) Dihedral: 0.6487 (+0.1255) Anchor: 34.9511 (-118.4841) Morse: 1.1120 (+1.1120) 
-jump 17.644844 max(dx) 0.113702, trying anchor = 5.000000 Cnvgd (fev=12) : LSq: 5.9310 (-261.6410) Distance: 3.0412 (-8.9927) Angle: 0.1651 (-15.1073) Dihedral: 2.6526 (+2.1295) Anchor: 0.0720 (-239.6705) Morse: 0.0000 (+0.0000) 
-xyz: error 5.931020 max(dx) 0.003951 jump 0.6131451696795523 anchor 5.000000
-max(dx) 0.003951 (new) 0.006444 (old) 0.613145[0m (ratio)
-Cnvgd (fev=63) : LSq: 0.1955 (-27.2706) Distance: 0.1521 (-11.3620) Angle: 0.0034 (-15.4002) Dihedral: 0.0399 (-0.5084) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 37.969844 max(dx) 0.161450, trying anchor = 4.000000 Cnvgd (fev=16) : LSq: 5.8130 (-174.6012) Distance: 2.9207 (-8.5935) Angle: 0.2285 (-15.1751) Dihedral: 2.5846 (+2.0364) Anchor: 0.0792 (-152.8690) Morse: 0.0000 (+0.0000) 
-xyz: error 5.813014 max(dx) 0.003960 jump 0.9313875143766481 anchor 4.000000
-max(dx) 0.003960 (new) 0.004252 (old) 0.931388[0m (ratio)
-Cnvgd (fev=48) : LSq: 0.1428 (-26.4173) Distance: 0.1087 (-10.5188) Angle: 0.0026 (-15.3596) Dihedral: 0.0315 (-0.5389) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 37.092799 max(dx) 0.162805, trying anchor = 3.000000 Cnvgd (fev=23) : LSq: 27.4933 (-84.2497) Distance: 3.7134 (-6.9141) Angle: 0.9921 (-14.3701) Dihedral: 0.5505 (-0.0199) Anchor: 21.9198 (-63.2631) Morse: 0.3175 (+0.3175) 
-jump 26.135013 max(dx) 0.114710, trying anchor = 4.000000 Cnvgd (fev=22) : LSq: 5.6241 (-172.3723) Distance: 2.7466 (-7.8809) Angle: 0.2735 (-15.0887) Dihedral: 2.5406 (+1.9702) Anchor: 0.0635 (-151.3729) Morse: 0.0000 (+0.0000) 
-xyz: error 5.624115 max(dx) 0.005056 jump 1.1520221231412564 anchor 4.000000
-Working on frame 260 / 303 
-max(dx) 0.005056 (new) 0.004389 (old) 1.152022[0m (ratio)
-Cnvgd (fev=44) : LSq: 0.0864 (-25.3402) Distance: 0.0632 (-9.8637) Angle: 0.0017 (-14.9109) Dihedral: 0.0215 (-0.5656) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 41.920361 max(dx) 0.162980, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 28.0391 (-83.2677) Distance: 3.6224 (-6.3045) Angle: 1.0897 (-13.8230) Dihedral: 0.6101 (+0.0230) Anchor: 22.4511 (-63.4291) Morse: 0.2659 (+0.2659) 
-jump 30.070655 max(dx) 0.116910, trying anchor = 4.000000 Cnvgd (fev=30) : LSq: 44.8105 (-133.2920) Distance: 3.8186 (-6.1083) Angle: 2.5606 (-12.3520) Dihedral: 0.6906 (+0.1035) Anchor: 36.9661 (-115.7098) Morse: 0.7746 (+0.7746) 
-jump 29.205610 max(dx) 0.113547, trying anchor = 5.000000 Cnvgd (fev=12) : LSq: 5.4443 (-258.5384) Distance: 2.6031 (-7.3238) Angle: 0.2739 (-14.6388) Dihedral: 2.5269 (+1.9398) Anchor: 0.0405 (-238.5157) Morse: 0.0000 (+0.0000) 
-xyz: error 5.444316 max(dx) 0.005029 jump 1.2934381226722544 anchor 5.000000
-max(dx) 0.005029 (new) 0.003888 (old) 1.293438[0m (ratio)
-Cnvgd (fev=50) : LSq: 0.0554 (-24.1592) Distance: 0.0403 (-9.3232) Angle: 0.0010 (-14.2535) Dihedral: 0.0141 (-0.5825) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 35.994409 max(dx) 0.162223, trying anchor = 4.000000 Cnvgd (fev=28) : LSq: 45.4158 (-134.4847) Distance: 3.7402 (-5.6232) Angle: 2.7303 (-11.5242) Dihedral: 0.7376 (+0.1410) Anchor: 37.5228 (-118.1630) Morse: 0.6848 (+0.6848) 
-jump 25.495276 max(dx) 0.114905, trying anchor = 5.000000 Cnvgd (fev=13) : LSq: 5.2935 (-262.1803) Distance: 2.4719 (-6.8916) Angle: 0.2671 (-13.9874) Dihedral: 2.5145 (+1.9178) Anchor: 0.0401 (-243.2191) Morse: 0.0000 (+0.0000) 
-xyz: error 5.293512 max(dx) 0.005517 jump 1.2242210831008726 anchor 5.000000
-max(dx) 0.005517 (new) 0.004507 (old) 1.224221[0m (ratio)
-Cnvgd (fev=12) : LSq: 0.0474 (-22.9508) Distance: 0.0364 (-8.7976) Angle: 0.0007 (-13.5566) Dihedral: 0.0104 (-0.5965) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 34.795255 max(dx) 0.166320, trying anchor = 4.000000 Cnvgd (fev=27) : LSq: 45.9481 (-135.9681) Distance: 3.6625 (-5.1715) Angle: 2.8898 (-10.6675) Dihedral: 0.7765 (+0.1696) Anchor: 38.0138 (-120.9041) Morse: 0.6055 (+0.6055) 
-jump 24.266943 max(dx) 0.115995, trying anchor = 5.000000 Cnvgd (fev=13) : LSq: 5.1587 (-266.1488) Distance: 2.3576 (-6.4764) Angle: 0.2621 (-13.2952) Dihedral: 2.4996 (+1.8927) Anchor: 0.0394 (-248.2699) Morse: 0.0000 (+0.0000) 
-xyz: error 5.158736 max(dx) 0.005652 jump 1.1824371800223699 anchor 5.000000
-max(dx) 0.005652 (new) 0.004780 (old) 1.182437[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0454 (-21.7583) Distance: 0.0349 (-8.3051) Angle: 0.0007 (-12.8419) Dihedral: 0.0099 (-0.6113) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 34.462919 max(dx) 0.164621, trying anchor = 4.000000 Cnvgd (fev=26) : LSq: 46.4391 (-137.7537) Distance: 3.6006 (-4.7394) Angle: 3.0492 (-9.7933) Dihedral: 0.8140 (+0.1929) Anchor: 38.4467 (-123.9424) Morse: 0.5286 (+0.5286) 
-jump 24.480509 max(dx) 0.116937, trying anchor = 5.000000 Cnvgd (fev=14) : LSq: 5.0483 (-270.4884) Distance: 2.2675 (-6.0725) Angle: 0.2575 (-12.5850) Dihedral: 2.4845 (+1.8633) Anchor: 0.0388 (-253.6942) Morse: 0.0000 (+0.0000) 
-xyz: error 5.048302 max(dx) 0.005630 jump 1.1785567575029436 anchor 5.000000
-max(dx) 0.005630 (new) 0.004777 (old) 1.178557[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0434 (-20.5718) Distance: 0.0334 (-7.8384) Angle: 0.0006 (-12.1068) Dihedral: 0.0094 (-0.6265) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 32.972049 max(dx) 0.162594, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 46.8852 (-139.7669) Distance: 3.5438 (-4.3280) Angle: 3.2007 (-8.9067) Dihedral: 0.8455 (+0.2096) Anchor: 38.8352 (-127.2018) Morse: 0.4600 (+0.4600) 
-jump 23.880027 max(dx) 0.117759, trying anchor = 5.000000 Cnvgd (fev=15) : LSq: 4.9530 (-275.0949) Distance: 2.1932 (-5.6786) Angle: 0.2536 (-11.8538) Dihedral: 2.4682 (+1.8323) Anchor: 0.0379 (-259.3947) Morse: 0.0000 (+0.0000) 
-xyz: error 4.952978 max(dx) 0.005686 jump 1.1531404020073452 anchor 5.000000
-max(dx) 0.005686 (new) 0.004931 (old) 1.153140[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0414 (-19.3994) Distance: 0.0319 (-7.3986) Angle: 0.0006 (-11.3588) Dihedral: 0.0089 (-0.6420) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 31.955876 max(dx) 0.160590, trying anchor = 4.000000 Cnvgd (fev=25) : LSq: 47.2840 (-142.0012) Distance: 3.4933 (-3.9371) Angle: 3.3448 (-8.0146) Dihedral: 0.8719 (+0.2209) Anchor: 39.1754 (-130.6689) Morse: 0.3985 (+0.3985) 
-jump 23.571494 max(dx) 0.118455, trying anchor = 5.000000 Cnvgd (fev=16) : LSq: 4.8728 (-279.9498) Distance: 2.1346 (-5.2959) Angle: 0.2503 (-11.1091) Dihedral: 2.4510 (+1.8000) Anchor: 0.0370 (-265.3447) Morse: 0.0000 (+0.0000) 
-xyz: error 4.872797 max(dx) 0.005696 jump 1.1334062821786413 anchor 5.000000
-max(dx) 0.005696 (new) 0.005025 (old) 1.133406[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0395 (-18.2463) Distance: 0.0305 (-6.9828) Angle: 0.0006 (-10.6067) Dihedral: 0.0084 (-0.6569) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 30.872183 max(dx) 0.158654, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 47.6313 (-144.4344) Distance: 3.4469 (-3.5664) Angle: 3.4799 (-7.1274) Dihedral: 0.8926 (+0.2273) Anchor: 39.4674 (-134.3124) Morse: 0.3445 (+0.3445) 
-jump 23.162748 max(dx) 0.119035, trying anchor = 5.000000 Cnvgd (fev=18) : LSq: 4.8050 (-285.0118) Distance: 2.0888 (-4.9245) Angle: 0.2474 (-10.3599) Dihedral: 2.4329 (+1.7675) Anchor: 0.0360 (-271.4950) Morse: 0.0000 (+0.0000) 
-xyz: error 4.804973 max(dx) 0.005708 jump 1.1107299910740887 anchor 5.000000
-max(dx) 0.005708 (new) 0.005139 (old) 1.110730[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0376 (-17.0991) Distance: 0.0290 (-6.5850) Angle: 0.0006 (-9.8512) Dihedral: 0.0080 (-0.6628) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 29.372354 max(dx) 0.157389, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 47.9037 (-146.8931) Distance: 3.3905 (-3.2235) Angle: 3.6008 (-6.2510) Dihedral: 0.8997 (+0.2289) Anchor: 39.7112 (-137.9489) Morse: 0.3015 (+0.3015) 
-jump 22.290122 max(dx) 0.119440, trying anchor = 5.000000 Cnvgd (fev=19) : LSq: 4.7402 (-289.9904) Distance: 2.0463 (-4.5678) Angle: 0.2479 (-9.6039) Dihedral: 2.4115 (+1.7407) Anchor: 0.0345 (-277.5594) Morse: 0.0000 (+0.0000) 
-xyz: error 4.740247 max(dx) 0.005675 jump 1.0589982766377035 anchor 5.000000
-max(dx) 0.005675 (new) 0.005358 (old) 1.058998[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0357 (-15.9964) Distance: 0.0277 (-6.2105) Angle: 0.0005 (-9.1195) Dihedral: 0.0076 (-0.6664) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 28.665745 max(dx) 0.155854, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 48.1170 (-149.5300) Distance: 3.3397 (-2.8985) Angle: 3.7167 (-5.4033) Dihedral: 0.9028 (+0.2288) Anchor: 39.8953 (-141.7196) Morse: 0.2626 (+0.2626) 
-jump 22.021954 max(dx) 0.119732, trying anchor = 5.000000 Cnvgd (fev=19) : LSq: 4.6873 (-295.1182) Distance: 2.0151 (-4.2230) Angle: 0.2491 (-8.8709) Dihedral: 2.3899 (+1.7159) Anchor: 0.0332 (-283.7401) Morse: 0.0000 (+0.0000) 
-xyz: error 4.687289 max(dx) 0.005627 jump 1.035040705042913 anchor 5.000000
-max(dx) 0.005627 (new) 0.005437 (old) 1.035041[0m (ratio)
-Cnvgd (fev=12) : LSq: 0.0339 (-14.9678) Distance: 0.0263 (-5.8498) Angle: 0.0005 (-8.4491) Dihedral: 0.0071 (-0.6690) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 26.122431 max(dx) 0.153818, trying anchor = 4.000000 Cnvgd (fev=24) : LSq: 48.3152 (-152.2129) Distance: 3.3128 (-2.5633) Angle: 3.8378 (-4.6118) Dihedral: 0.9138 (+0.2377) Anchor: 40.0305 (-145.4958) Morse: 0.2203 (+0.2203) 
-jump 20.393367 max(dx) 0.120083, trying anchor = 5.000000 Cnvgd (fev=35) : LSq: 69.8561 (-235.0305) Distance: 3.2539 (-2.6221) Angle: 8.0467 (-0.4029) Dihedral: 0.9218 (+0.2457) Anchor: 57.2590 (-232.6259) Morse: 0.3747 (+0.3747) 
-jump 19.582952 max(dx) 0.115311, trying anchor = 6.000000 Cnvgd (fev=12) : LSq: 4.6645 (-427.7714) Distance: 2.0205 (-3.8555) Angle: 0.2433 (-8.2063) Dihedral: 2.3757 (+1.6996) Anchor: 0.0250 (-417.4092) Morse: 0.0000 (+0.0000) 
-xyz: error 4.664499 max(dx) 0.005796 jump 0.9842330865668885 anchor 6.000000
-Working on frame 270 / 303 
-max(dx) 0.005796 (new) 0.005888 (old) 0.984233[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0322 (-14.0225) Distance: 0.0250 (-5.5322) Angle: 0.0005 (-7.8174) Dihedral: 0.0067 (-0.6730) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.376418 max(dx) 0.151274, trying anchor = 5.000000 Cnvgd (fev=32) : LSq: 69.9745 (-240.1948) Distance: 3.2546 (-2.3025) Angle: 8.2690 (+0.4511) Dihedral: 0.9326 (+0.2529) Anchor: 57.2080 (-238.9066) Morse: 0.3103 (+0.3103) 
-jump 18.608896 max(dx) 0.115482, trying anchor = 6.000000 Cnvgd (fev=12) : LSq: 4.6670 (-435.7926) Distance: 2.0418 (-3.5153) Angle: 0.2341 (-7.5838) Dihedral: 2.3643 (+1.6846) Anchor: 0.0268 (-426.3782) Morse: 0.0000 (+0.0000) 
-xyz: error 4.667034 max(dx) 0.005998 jump 0.96647392864866 anchor 6.000000
-max(dx) 0.005998 (new) 0.006206 (old) 0.966474[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0304 (-13.1661) Distance: 0.0236 (-5.2630) Angle: 0.0005 (-7.2246) Dihedral: 0.0063 (-0.6785) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.515898 max(dx) 0.148608, trying anchor = 5.000000 Cnvgd (fev=30) : LSq: 70.0867 (-245.6880) Distance: 3.2775 (-2.0092) Angle: 8.4917 (+1.2666) Dihedral: 0.9507 (+0.2659) Anchor: 57.1186 (-245.4596) Morse: 0.2482 (+0.2482) 
-jump 17.525063 max(dx) 0.115668, trying anchor = 6.000000 Cnvgd (fev=12) : LSq: 4.6874 (-444.2217) Distance: 2.0816 (-3.2050) Angle: 0.2209 (-7.0042) Dihedral: 2.3563 (+1.6715) Anchor: 0.0286 (-435.6839) Morse: 0.0000 (+0.0000) 
-xyz: error 4.687358 max(dx) 0.006256 jump 0.9478442016912957 anchor 6.000000
-max(dx) 0.006256 (new) 0.006600 (old) 0.947844[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0287 (-12.3639) Distance: 0.0224 (-5.0248) Angle: 0.0004 (-6.6542) Dihedral: 0.0059 (-0.6849) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.254214 max(dx) 0.145833, trying anchor = 5.000000 Cnvgd (fev=28) : LSq: 70.1838 (-251.4895) Distance: 3.3254 (-1.7217) Angle: 8.6989 (+2.0442) Dihedral: 0.9673 (+0.2765) Anchor: 56.9992 (-252.2815) Morse: 0.1929 (+0.1929) 
-jump 17.655427 max(dx) 0.115697, trying anchor = 6.000000 Cnvgd (fev=13) : LSq: 4.7252 (-453.0316) Distance: 2.1384 (-2.9087) Angle: 0.2092 (-6.4455) Dihedral: 2.3477 (+1.6568) Anchor: 0.0300 (-445.3342) Morse: 0.0000 (+0.0000) 
-xyz: error 4.725213 max(dx) 0.006192 jump 0.9449440841867159 anchor 6.000000
-max(dx) 0.006192 (new) 0.006553 (old) 0.944944[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0271 (-11.7145) Distance: 0.0211 (-4.8723) Angle: 0.0004 (-6.1784) Dihedral: 0.0056 (-0.6638) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.785647 max(dx) 0.143259, trying anchor = 5.000000 Cnvgd (fev=28) : LSq: 70.2419 (-258.1570) Distance: 3.3526 (-1.5408) Angle: 8.8972 (+2.7184) Dihedral: 0.9770 (+0.3077) Anchor: 56.8677 (-259.7897) Morse: 0.1473 (+0.1473) 
-jump 17.591702 max(dx) 0.115680, trying anchor = 6.000000 Cnvgd (fev=13) : LSq: 4.7555 (-462.9726) Distance: 2.1884 (-2.7050) Angle: 0.1974 (-5.9814) Dihedral: 2.3391 (+1.6698) Anchor: 0.0307 (-455.9559) Morse: 0.0000 (+0.0000) 
-xyz: error 4.755546 max(dx) 0.005980 jump 0.9093842430246656 anchor 6.000000
-max(dx) 0.005980 (new) 0.006576 (old) 0.909384[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0254 (-11.3698) Distance: 0.0199 (-4.8577) Angle: 0.0004 (-5.9038) Dihedral: 0.0052 (-0.6084) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.163931 max(dx) 0.143170, trying anchor = 5.000000 Cnvgd (fev=27) : LSq: 70.2020 (-265.3884) Distance: 3.3347 (-1.5428) Angle: 9.0553 (+3.1511) Dihedral: 0.9720 (+0.3585) Anchor: 56.7247 (-267.4703) Morse: 0.1152 (+0.1152) 
-jump 16.314874 max(dx) 0.115841, trying anchor = 6.000000 Cnvgd (fev=13) : LSq: 4.7453 (-473.4909) Distance: 2.1989 (-2.6786) Angle: 0.1855 (-5.7187) Dihedral: 2.3302 (+1.7166) Anchor: 0.0308 (-466.8101) Morse: 0.0000 (+0.0000) 
-xyz: error 4.745276 max(dx) 0.004697 jump 0.6614563065502794 anchor 6.000000
-max(dx) 0.004697 (new) 0.007100 (old) 0.661456[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0239 (-11.0171) Distance: 0.0186 (-4.7719) Angle: 0.0004 (-5.6345) Dihedral: 0.0048 (-0.6108) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.990218 max(dx) 0.143819, trying anchor = 5.000000 Cnvgd (fev=26) : LSq: 70.1685 (-270.9840) Distance: 3.3747 (-1.4159) Angle: 9.2527 (+3.6179) Dihedral: 0.9860 (+0.3704) Anchor: 56.4772 (-273.6344) Morse: 0.0780 (+0.0780) 
-jump 17.714369 max(dx) 0.115854, trying anchor = 6.000000 Cnvgd (fev=19) : LSq: 4.7882 (-481.6135) Distance: 2.2592 (-2.5313) Angle: 0.1706 (-5.4642) Dihedral: 2.3266 (+1.7110) Anchor: 0.0317 (-475.3290) Morse: 0.0000 (+0.0000) 
-xyz: error 4.788161 max(dx) 0.005554 jump 0.8491695639531869 anchor 6.000000
-max(dx) 0.005554 (new) 0.006540 (old) 0.849170[0m (ratio)
-Cnvgd (fev=11) : LSq: 0.0223 (-10.6074) Distance: 0.0175 (-4.6458) Angle: 0.0004 (-5.3182) Dihedral: 0.0045 (-0.6434) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.778106 max(dx) 0.142714, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 70.1787 (-275.9043) Distance: 3.4668 (-1.1964) Angle: 9.4884 (+4.1699) Dihedral: 1.0149 (+0.3670) Anchor: 56.1657 (-279.2875) Morse: 0.0428 (+0.0428) 
-jump 15.222174 max(dx) 0.115689, trying anchor = 6.000000 Cnvgd (fev=30) : LSq: 93.2586 (-400.4239) Distance: 3.0604 (-1.6029) Angle: 19.4883 (+14.1698) Dihedral: 0.9667 (+0.3188) Anchor: 69.7416 (-413.3111) Morse: 0.0015 (+0.0015) 
-jump 14.238184 max(dx) 0.108211, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.8979 (-663.2203) Distance: 2.3907 (-2.2725) Angle: 0.1505 (-5.1680) Dihedral: 2.3302 (+1.6823) Anchor: 0.0264 (-657.4620) Morse: 0.0000 (+0.0000) 
-xyz: error 4.897944 max(dx) 0.006606 jump 0.869194653594692 anchor 7.000000
-max(dx) 0.006606 (new) 0.007600 (old) 0.869195[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.0211 (-10.2407) Distance: 0.0166 (-4.5624) Angle: 0.0003 (-5.0013) Dihedral: 0.0042 (-0.6770) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.859706 max(dx) 0.142977, trying anchor = 6.000000 Cnvgd (fev=32) : LSq: 93.0398 (-408.2520) Distance: 3.1260 (-1.4530) Angle: 20.0993 (+15.0977) Dihedral: 0.9916 (+0.3104) Anchor: 68.8229 (-422.2071) Morse: 0.0000 (+0.0000) 
-jump 14.214408 max(dx) 0.107761, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 5.0358 (-673.5723) Distance: 2.5399 (-2.0391) Angle: 0.1333 (-4.8683) Dihedral: 2.3333 (+1.6522) Anchor: 0.0293 (-668.3170) Morse: 0.0000 (+0.0000) 
-xyz: error 5.035826 max(dx) 0.006557 jump 0.8648581566770233 anchor 7.000000
-max(dx) 0.006557 (new) 0.007581 (old) 0.864858[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.0211 (-9.9553) Distance: 0.0169 (-4.5071) Angle: 0.0003 (-4.7319) Dihedral: 0.0039 (-0.7163) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.320583 max(dx) 0.144010, trying anchor = 6.000000 Cnvgd (fev=36) : LSq: 92.7485 (-415.9271) Distance: 3.1652 (-1.3588) Angle: 20.7870 (+16.0548) Dihedral: 1.0198 (+0.2996) Anchor: 67.7765 (-430.9227) Morse: 0.0000 (+0.0000) 
-jump 15.129820 max(dx) 0.107223, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 5.1748 (-683.5867) Distance: 2.6881 (-1.8360) Angle: 0.1170 (-4.6152) Dihedral: 2.3379 (+1.6177) Anchor: 0.0317 (-678.7533) Morse: 0.0000 (+0.0000) 
-xyz: error 5.174754 max(dx) 0.006097 jump 0.8603858775496761 anchor 7.000000
-max(dx) 0.006097 (new) 0.007087 (old) 0.860386[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.0187 (-9.6340) Distance: 0.0149 (-4.0599) Angle: 0.0003 (-4.8856) Dihedral: 0.0036 (-0.6884) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.530438 max(dx) 0.145956, trying anchor = 6.000000 Cnvgd (fev=20) : LSq: 4.9729 (-494.0469) Distance: 2.5024 (-1.5725) Angle: 0.1238 (-4.7620) Dihedral: 2.3076 (+1.6156) Anchor: 0.0391 (-489.3279) Morse: 0.0000 (+0.0000) 
-xyz: error 4.972948 max(dx) 0.006911 jump 0.8773683654333545 anchor 6.000000
-Working on frame 280 / 303 
-max(dx) 0.006911 (new) 0.007877 (old) 0.877368[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.0170 (-9.2807) Distance: 0.0135 (-3.7879) Angle: 0.0003 (-4.8530) Dihedral: 0.0033 (-0.6398) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 19.442800 max(dx) 0.145442, trying anchor = 5.000000 Cnvgd (fev=24) : LSq: 69.5944 (-275.2362) Distance: 3.4162 (-0.3852) Angle: 10.0574 (+5.2042) Dihedral: 1.0124 (+0.3693) Anchor: 55.1066 (-280.4263) Morse: 0.0017 (+0.0017) 
-jump 15.703639 max(dx) 0.117471, trying anchor = 6.000000 Cnvgd (fev=19) : LSq: 4.8009 (-487.6642) Distance: 2.3586 (-1.4427) Angle: 0.1149 (-4.7383) Dihedral: 2.2891 (+1.6460) Anchor: 0.0383 (-483.1291) Morse: 0.0000 (+0.0000) 
-xyz: error 4.800934 max(dx) 0.006336 jump 0.847042548136873 anchor 6.000000
-max(dx) 0.006336 (new) 0.007481 (old) 0.847043[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.0156 (-8.8596) Distance: 0.0124 (-3.6890) Angle: 0.0002 (-4.5987) Dihedral: 0.0030 (-0.5720) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.903745 max(dx) 0.144291, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 69.2228 (-273.3479) Distance: 3.3525 (-0.3489) Angle: 9.9295 (+5.3306) Dihedral: 1.0225 (+0.4475) Anchor: 54.9151 (-278.7803) Morse: 0.0032 (+0.0032) 
-jump 17.020994 max(dx) 0.117490, trying anchor = 6.000000 Cnvgd (fev=26) : LSq: 4.6588 (-484.7378) Distance: 2.2434 (-1.4579) Angle: 0.0927 (-4.5062) Dihedral: 2.2820 (+1.7070) Anchor: 0.0407 (-480.4807) Morse: 0.0000 (+0.0000) 
-xyz: error 4.658772 max(dx) 0.005577 jump 0.8079513001272384 anchor 6.000000
-max(dx) 0.005577 (new) 0.006903 (old) 0.807951[0m (ratio)
-Cnvgd (fev=18) : LSq: 0.0145 (-8.4985) Distance: 0.0115 (-3.6795) Angle: 0.0002 (-4.3085) Dihedral: 0.0027 (-0.5104) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.979723 max(dx) 0.142463, trying anchor = 5.000000 Cnvgd (fev=25) : LSq: 68.7564 (-272.1995) Distance: 3.3217 (-0.3694) Angle: 9.7549 (+5.4462) Dihedral: 1.0480 (+0.5348) Anchor: 54.6260 (-277.8168) Morse: 0.0057 (+0.0057) 
-jump 17.268382 max(dx) 0.117261, trying anchor = 6.000000 Cnvgd (fev=36) : LSq: 91.0685 (-396.1621) Distance: 2.7475 (-0.9435) Angle: 20.7785 (+16.4698) Dihedral: 0.9881 (+0.4749) Anchor: 66.5544 (-412.1633) Morse: 0.0000 (+0.0000) 
-jump 16.046000 max(dx) 0.108960, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.5573 (-655.5437) Distance: 2.1705 (-1.5206) Angle: 0.0649 (-4.2438) Dihedral: 2.2851 (+1.7720) Anchor: 0.0368 (-651.5512) Morse: 0.0000 (+0.0000) 
-xyz: error 4.557297 max(dx) 0.005092 jump 0.7498643491407807 anchor 7.000000
-max(dx) 0.005092 (new) 0.006790 (old) 0.749864[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.0137 (-8.3628) Distance: 0.0111 (-3.6426) Angle: 0.0002 (-4.2382) Dihedral: 0.0025 (-0.4820) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 23.648309 max(dx) 0.140381, trying anchor = 6.000000 Cnvgd (fev=35) : LSq: 90.4511 (-391.3345) Distance: 2.8119 (-0.8417) Angle: 19.9115 (+15.6732) Dihedral: 1.0315 (+0.5470) Anchor: 66.6961 (-406.7129) Morse: 0.0000 (+0.0000) 
-jump 18.351545 max(dx) 0.108938, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.4921 (-648.2467) Distance: 2.1170 (-1.5366) Angle: 0.0473 (-4.1911) Dihedral: 2.2851 (+1.8006) Anchor: 0.0427 (-644.3196) Morse: 0.0000 (+0.0000) 
-xyz: error 4.492108 max(dx) 0.005055 jump 0.8514814839807011 anchor 7.000000
-max(dx) 0.005055 (new) 0.005936 (old) 0.851481[0m (ratio)
-Cnvgd (fev=22) : LSq: 0.0135 (-8.4230) Distance: 0.0111 (-3.6043) Angle: 0.0002 (-4.3424) Dihedral: 0.0022 (-0.4763) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.678735 max(dx) 0.138334, trying anchor = 6.000000 Cnvgd (fev=37) : LSq: 89.7853 (-384.2978) Distance: 2.8640 (-0.7514) Angle: 19.4226 (+15.0800) Dihedral: 1.0754 (+0.5969) Anchor: 66.4233 (-399.2233) Morse: 0.0000 (+0.0000) 
-jump 19.371157 max(dx) 0.108583, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.4478 (-637.7856) Distance: 2.0815 (-1.5339) Angle: 0.0357 (-4.3069) Dihedral: 2.2828 (+1.8043) Anchor: 0.0478 (-633.7490) Morse: 0.0000 (+0.0000) 
-xyz: error 4.447786 max(dx) 0.005023 jump 0.8960256911635206 anchor 7.000000
-max(dx) 0.005023 (new) 0.005605 (old) 0.896026[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.0141 (-8.3909) Distance: 0.0119 (-3.5452) Angle: 0.0002 (-4.3758) Dihedral: 0.0020 (-0.4699) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 26.257517 max(dx) 0.136347, trying anchor = 6.000000 Cnvgd (fev=39) : LSq: 89.1476 (-377.6887) Distance: 2.8860 (-0.6711) Angle: 19.2057 (+14.8298) Dihedral: 1.1044 (+0.6325) Anchor: 65.9516 (-392.4798) Morse: 0.0000 (+0.0000) 
-jump 20.786625 max(dx) 0.107938, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.4108 (-627.9702) Distance: 2.0550 (-1.5021) Angle: 0.0285 (-4.3475) Dihedral: 2.2759 (+1.8040) Anchor: 0.0514 (-623.9247) Morse: 0.0000 (+0.0000) 
-xyz: error 4.410769 max(dx) 0.004572 jump 0.8804911222096408 anchor 7.000000
-max(dx) 0.004572 (new) 0.005193 (old) 0.880491[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.0168 (-6.7064) Distance: 0.0148 (-2.7588) Angle: 0.0003 (-3.4978) Dihedral: 0.0018 (-0.4498) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 17.208558 max(dx) 0.134957, trying anchor = 6.000000 Cnvgd (fev=40) : LSq: 88.5412 (-369.7116) Distance: 2.5073 (-0.2663) Angle: 21.4162 (+17.9181) Dihedral: 0.9639 (+0.5123) Anchor: 63.6538 (-387.8757) Morse: 0.0000 (+0.0000) 
-jump 13.305340 max(dx) 0.104346, trying anchor = 7.000000 Cnvgd (fev=11) : LSq: 4.3130 (-616.9921) Distance: 1.9975 (-0.7760) Angle: 0.0420 (-3.4561) Dihedral: 2.2321 (+1.7805) Anchor: 0.0414 (-614.5405) Morse: 0.0000 (+0.0000) 
-xyz: error 4.312988 max(dx) 0.003050 jump 0.38894828135712695 anchor 7.000000
-max(dx) 0.003050 (new) 0.007842 (old) 0.388948[0m (ratio)
-Cnvgd (fev=21) : LSq: 0.0189 (-5.2649) Distance: 0.0171 (-2.1301) Angle: 0.0003 (-2.6992) Dihedral: 0.0016 (-0.4356) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 18.623571 max(dx) 0.135283, trying anchor = 6.000000 Cnvgd (fev=18) : LSq: 4.2438 (-449.6590) Distance: 1.9476 (-0.1996) Angle: 0.0665 (-2.6330) Dihedral: 2.1839 (+1.7467) Anchor: 0.0458 (-448.5732) Morse: 0.0000 (+0.0000) 
-xyz: error 4.243791 max(dx) 0.003035 jump 0.4177442726003219 anchor 6.000000
-max(dx) 0.003035 (new) 0.007264 (old) 0.417744[0m (ratio)
-Cnvgd (fev=23) : LSq: 0.0090 (-4.7484) Distance: 0.0076 (-2.0915) Angle: 0.0001 (-2.2746) Dihedral: 0.0013 (-0.3822) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 31.820578 max(dx) 0.137245, trying anchor = 5.000000 Cnvgd (fev=27) : LSq: 66.5427 (-252.7466) Distance: 2.9389 (+0.8399) Angle: 10.2067 (+7.9319) Dihedral: 0.9106 (+0.5270) Anchor: 52.4865 (-262.0454) Morse: 0.0000 (+0.0000) 
-jump 26.271193 max(dx) 0.113310, trying anchor = 6.000000 Cnvgd (fev=18) : LSq: 4.2027 (-453.4807) Distance: 1.9382 (-0.1608) Angle: 0.0749 (-2.1999) Dihedral: 2.1438 (+1.7602) Anchor: 0.0458 (-452.8802) Morse: 0.0000 (+0.0000) 
-xyz: error 4.202697 max(dx) 0.003128 jump 0.725136493985148 anchor 6.000000
-max(dx) 0.003128 (new) 0.004313 (old) 0.725136[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.0073 (-5.1180) Distance: 0.0060 (-2.2319) Angle: 0.0001 (-2.5332) Dihedral: 0.0011 (-0.3529) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.248482 max(dx) 0.136985, trying anchor = 5.000000 Cnvgd (fev=14) : LSq: 3.9740 (-312.4224) Distance: 1.7449 (-0.4930) Angle: 0.0698 (-2.4634) Dihedral: 2.0984 (+1.7443) Anchor: 0.0609 (-311.2103) Morse: 0.0000 (+0.0000) 
-xyz: error 3.973981 max(dx) 0.005143 jump 0.7601688624230328 anchor 5.000000
-Working on frame 290 / 303 
-max(dx) 0.005143 (new) 0.006765 (old) 0.760169[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.0068 (-5.3636) Distance: 0.0057 (-2.1046) Angle: 0.0001 (-2.9557) Dihedral: 0.0010 (-0.3034) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.364197 max(dx) 0.134835, trying anchor = 4.000000 Cnvgd (fev=15) : LSq: 3.6867 (-192.6579) Distance: 1.4984 (-0.6119) Angle: 0.1006 (-2.8551) Dihedral: 2.0224 (+1.7181) Anchor: 0.0653 (-190.9089) Morse: 0.0000 (+0.0000) 
-xyz: error 3.686735 max(dx) 0.006275 jump 0.9941793968956407 anchor 4.000000
-max(dx) 0.006275 (new) 0.006311 (old) 0.994179[0m (ratio)
-Cnvgd (fev=20) : LSq: 0.0057 (-5.8560) Distance: 0.0048 (-1.9405) Angle: 0.0001 (-3.6562) Dihedral: 0.0008 (-0.2593) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.287953 max(dx) 0.132164, trying anchor = 3.000000 Cnvgd (fev=31) : LSq: 3.4455 (-104.4404) Distance: 1.2933 (-0.6520) Angle: 0.1554 (-3.5009) Dihedral: 1.9388 (+1.6787) Anchor: 0.0580 (-101.9661) Morse: 0.0000 (+0.0000) 
-xyz: error 3.445468 max(dx) 0.005469 jump 1.0051099201086529 anchor 3.000000
-max(dx) 0.005469 (new) 0.005442 (old) 1.005110[0m (ratio)
-Cnvgd (fev=19) : LSq: 0.0042 (-6.2836) Distance: 0.0034 (-1.7093) Angle: 0.0001 (-4.3419) Dihedral: 0.0007 (-0.2324) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 23.550999 max(dx) 0.130644, trying anchor = 2.000000 Cnvgd (fev=24) : LSq: 13.1292 (-36.3483) Distance: 1.3455 (-0.3672) Angle: 0.7384 (-3.6036) Dihedral: 0.3627 (+0.1296) Anchor: 10.6826 (-32.5071) Morse: 0.0000 (+0.0000) 
-jump 21.438486 max(dx) 0.118925, trying anchor = 3.000000 Cnvgd (fev=14) : LSq: 3.2904 (-100.1744) Distance: 1.1757 (-0.5370) Angle: 0.2049 (-4.1371) Dihedral: 1.8696 (+1.6365) Anchor: 0.0401 (-97.1368) Morse: 0.0000 (+0.0000) 
-xyz: error 3.290382 max(dx) 0.004577 jump 0.82504649968787 anchor 3.000000
-max(dx) 0.004577 (new) 0.005547 (old) 0.825046[0m (ratio)
-Cnvgd (fev=10) : LSq: 0.0029 (-5.4637) Distance: 0.0023 (-1.2485) Angle: 0.0001 (-3.9974) Dihedral: 0.0005 (-0.2178) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.905132 max(dx) 0.130734, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 12.7802 (-35.4051) Distance: 1.2301 (-0.0207) Angle: 0.8211 (-3.1763) Dihedral: 0.3275 (+0.1093) Anchor: 10.4014 (-32.3173) Morse: 0.0000 (+0.0000) 
-jump 18.491719 max(dx) 0.115641, trying anchor = 3.000000 Cnvgd (fev=14) : LSq: 3.2486 (-98.3351) Distance: 1.1484 (-0.1024) Angle: 0.2505 (-3.7470) Dihedral: 1.8175 (+1.5992) Anchor: 0.0322 (-96.0849) Morse: 0.0000 (+0.0000) 
-xyz: error 3.248598 max(dx) 0.002877 jump 0.4601021776735529 anchor 3.000000
-max(dx) 0.002877 (new) 0.006254 (old) 0.460102[0m (ratio)
-Cnvgd (fev= 8) : LSq: 0.0022 (-5.8362) Distance: 0.0018 (-1.2425) Angle: 0.0000 (-4.3935) Dihedral: 0.0004 (-0.2002) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 24.181381 max(dx) 0.133028, trying anchor = 2.000000 Cnvgd (fev=26) : LSq: 12.8012 (-35.3010) Distance: 1.2459 (+0.0016) Angle: 0.7879 (-3.6057) Dihedral: 0.3760 (+0.1754) Anchor: 10.3914 (-31.8723) Morse: 0.0000 (+0.0000) 
-jump 21.588964 max(dx) 0.118766, trying anchor = 3.000000 Cnvgd (fev=14) : LSq: 3.1871 (-97.7447) Distance: 1.1343 (-0.1100) Angle: 0.2129 (-4.1806) Dihedral: 1.8134 (+1.6128) Anchor: 0.0265 (-95.0668) Morse: 0.0000 (+0.0000) 
-xyz: error 3.187138 max(dx) 0.003732 jump 0.6783015172177128 anchor 3.000000
-max(dx) 0.003732 (new) 0.005501 (old) 0.678302[0m (ratio)
-Cnvgd (fev= 8) : LSq: 0.0017 (-4.3676) Distance: 0.0013 (-1.0142) Angle: 0.0000 (-3.2044) Dihedral: 0.0003 (-0.1490) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.608858 max(dx) 0.133808, trying anchor = 2.000000 Cnvgd (fev=23) : LSq: 12.9541 (-35.2734) Distance: 1.2251 (+0.2095) Angle: 0.7708 (-2.4336) Dihedral: 0.4279 (+0.2786) Anchor: 10.5302 (-33.3280) Morse: 0.0000 (+0.0000) 
-jump 19.303736 max(dx) 0.119534, trying anchor = 3.000000 Cnvgd (fev=15) : LSq: 3.1857 (-99.8646) Distance: 1.1570 (+0.1414) Angle: 0.1970 (-3.0074) Dihedral: 1.8079 (+1.6586) Anchor: 0.0237 (-98.6573) Morse: 0.0000 (+0.0000) 
-xyz: error 3.185668 max(dx) 0.002140 jump 0.34566137403262165 anchor 3.000000
-max(dx) 0.002140 (new) 0.006192 (old) 0.345661[0m (ratio)
-Cnvgd (fev= 8) : LSq: 0.0012 (-2.6291) Distance: 0.0009 (-0.6928) Angle: 0.0000 (-1.8368) Dihedral: 0.0002 (-0.0995) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 14.825677 max(dx) 0.132592, trying anchor = 2.000000 Cnvgd (fev=21) : LSq: 13.2218 (-35.4815) Distance: 1.2258 (+0.5320) Angle: 0.7631 (-1.0737) Dihedral: 0.4918 (+0.3921) Anchor: 10.7411 (-35.3318) Morse: 0.0000 (+0.0000) 
-jump 13.644805 max(dx) 0.122031, trying anchor = 3.000000 Cnvgd (fev=23) : LSq: 3.2356 (-103.0588) Distance: 1.2211 (+0.5274) Angle: 0.1840 (-1.6529) Dihedral: 1.8065 (+1.7068) Anchor: 0.0240 (-103.6401) Morse: 0.0000 (+0.0000) 
-xyz: error 3.235593 max(dx) 0.002908 jump 0.32513079517515786 anchor 3.000000
-max(dx) 0.002908 (new) 0.008943 (old) 0.325131[0m (ratio)
-Cnvgd (fev= 7) : LSq: 0.0008 (-1.7251) Distance: 0.0006 (-0.5057) Angle: 0.0000 (-1.1640) Dihedral: 0.0001 (-0.0554) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 20.347708 max(dx) 0.131707, trying anchor = 2.000000 Cnvgd (fev=20) : LSq: 13.3770 (-35.8085) Distance: 1.2134 (+0.7071) Angle: 0.7499 (-0.4141) Dihedral: 0.5218 (+0.4662) Anchor: 10.8919 (-36.5677) Morse: 0.0000 (+0.0000) 
-jump 19.146757 max(dx) 0.123934, trying anchor = 3.000000 Cnvgd (fev=36) : LSq: 25.8701 (-82.6400) Distance: 1.8792 (+1.3729) Angle: 2.4352 (+1.2711) Dihedral: 0.6263 (+0.5708) Anchor: 20.9295 (-85.8547) Morse: 0.0000 (+0.0000) 
-jump 17.499998 max(dx) 0.113274, trying anchor = 4.000000 Cnvgd (fev=14) : LSq: 3.2256 (-188.3389) Distance: 1.2396 (+0.7333) Angle: 0.1552 (-1.0088) Dihedral: 1.8155 (+1.7599) Anchor: 0.0153 (-189.8233) Morse: 0.0000 (+0.0000) 
-xyz: error 3.225555 max(dx) 0.001719 jump 0.26558309952549314 anchor 4.000000
-max(dx) 0.001719 (new) 0.006473 (old) 0.265583[0m (ratio)
-Cnvgd (fev= 7) : LSq: 0.0004 (-0.9685) Distance: 0.0003 (-0.3087) Angle: 0.0000 (-0.6297) Dihedral: 0.0001 (-0.0300) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.112812 max(dx) 0.131117, trying anchor = 3.000000 Cnvgd (fev=26) : LSq: 26.0986 (-84.0620) Distance: 1.8293 (+1.5202) Angle: 2.3667 (+1.7370) Dihedral: 0.6567 (+0.6265) Anchor: 21.2460 (-87.9457) Morse: 0.0000 (+0.0000) 
-jump 19.525726 max(dx) 0.115777, trying anchor = 4.000000 Cnvgd (fev=17) : LSq: 3.2496 (-191.8379) Distance: 1.2729 (+0.9639) Angle: 0.1410 (-0.4887) Dihedral: 1.8180 (+1.7879) Anchor: 0.0176 (-194.1010) Morse: 0.0000 (+0.0000) 
-xyz: error 3.249573 max(dx) 0.001678 jump 0.2829567618524026 anchor 4.000000
-max(dx) 0.001678 (new) 0.005929 (old) 0.282957[0m (ratio)
-Cnvgd (fev= 7) : LSq: 0.0002 (-0.4218) Distance: 0.0002 (-0.1349) Angle: 0.0000 (-0.2706) Dihedral: 0.0000 (-0.0163) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 22.543312 max(dx) 0.132462, trying anchor = 3.000000 Cnvgd (fev=23) : LSq: 26.2977 (-85.8496) Distance: 1.7831 (+1.6480) Angle: 2.3883 (+2.1177) Dihedral: 0.6767 (+0.6604) Anchor: 21.4495 (-90.2757) Morse: 0.0000 (+0.0000) 
-jump 19.939717 max(dx) 0.117164, trying anchor = 4.000000 Cnvgd (fev=22) : LSq: 3.2994 (-195.7453) Distance: 1.3284 (+1.1933) Angle: 0.1376 (-0.1330) Dihedral: 1.8138 (+1.7975) Anchor: 0.0196 (-198.6030) Morse: 0.0000 (+0.0000) 
-xyz: error 3.299400 max(dx) 0.002399 jump 0.4083164854456318 anchor 4.000000
-Working on frame 300 / 303 
-max(dx) 0.002399 (new) 0.005876 (old) 0.408316[0m (ratio)
-Cnvgd (fev= 6) : LSq: 0.0000 (-0.0971) Distance: 0.0000 (-0.0229) Angle: 0.0000 (-0.0716) Dihedral: 0.0000 (-0.0026) Anchor: 0.0000 (+0.0000) Morse: 0.0000 (+0.0000) 
-jump 21.140386 max(dx) 0.134352, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 26.3244 (-88.6030) Distance: 1.7455 (+1.7225) Angle: 2.5378 (+2.4662) Dihedral: 0.6523 (+0.6498) Anchor: 21.3887 (-93.4414) Morse: 0.0000 (+0.0000) 
-jump 18.362415 max(dx) 0.116697, trying anchor = 4.000000 Cnvgd (fev=20) : LSq: 3.3353 (-200.9044) Distance: 1.3794 (+1.3565) Angle: 0.1527 (+0.0811) Dihedral: 1.7829 (+1.7803) Anchor: 0.0202 (-204.1223) Morse: 0.0000 (+0.0000) 
-xyz: error 3.335278 max(dx) 0.002435 jump 0.38311035683527045 anchor 4.000000
-max(dx) 0.002435 (new) 0.006355 (old) 0.383110[0m (ratio)
-Cnvgd (fev= 2) : LSq: 0.0000 (+0.0000) Distance: 0.0000 (+0.0000) Angle: 0.0000 (+0.0000) Dihedral: 0.0000 (+0.0000) Anchor: 0.0000 (+0.0000) 
-jump 31.589572 max(dx) 0.134964, trying anchor = 3.000000 Cnvgd (fev=22) : LSq: 26.3543 (-91.4647) Distance: 1.7495 (+1.7495) Angle: 2.5151 (+2.5151) Dihedral: 0.6719 (+0.6719) Anchor: 21.4178 (-96.4012) 
-jump 27.669862 max(dx) 0.118217, trying anchor = 4.000000 Cnvgd (fev=23) : LSq: 3.3446 (-206.1115) Distance: 1.4092 (+1.4092) Angle: 0.1353 (+0.1353) Dihedral: 1.7789 (+1.7789) Anchor: 0.0212 (-209.4348) 
-xyz: error 3.344591 max(dx) 0.001360 jump 0.3183869920502735 anchor 4.000000
-max(dx) 0.001360 (new) 0.004272 (old) 0.318387[0m (ratio)
-[1;91mRedoing reverse path![0m (errors[-1]=3.344591)
-Cnvgd (fev= 2) : LSq: 0.0000 (+0.0000) Distance: 0.0000 (+0.0000) Angle: 0.0000 (+0.0000) Dihedral: 0.0000 (+0.0000) 
-Interpolator failed due to error - copying input to output instead.

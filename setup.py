@@ -1,49 +1,47 @@
 """
 setup.py: Install QCArchive Workflow script.  
 """
+import versioneer
+from setuptools import setup, find_packages
 
-VERSION = 1.1
-__author__ = "Heejune Park"
-__version__ = "%.1f"%VERSION
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-import os, sys
-from distutils.core import setup#, Extension
-import numpy
-import glob
-
-requirements = ['numpy', 'networkx', 'qcelemental', 'qcfractal', 'qcportal', 'qcengine', 'geometric', 'psi4']
-    
-def buildKeywordDictionary():
-    setupKeywords = {}
-    setupKeywords["name"]              = "QCARWorkflow"
-    setupKeywords["version"]           = "%.1f" %VERSION
-    setupKeywords["author"]            = __author__
-    setupKeywords["author_email"]      = "heepark@ucdavis.edu"
-    setupKeywords["packages"]          = ["QCARWorkflow", "nebterpolator", "nebterpolator.io", "nebterpolator.core"]
-    setupKeywords["package_dir"]       = {"QCARWorkflow": "src"}
-    setupKeywords["scripts"]           = glob.glob("bin/*.py")# + glob.glob("bin/*.sh") + glob.glob("bin/*.exe") + glob.glob("bin/*.vmd")
-    setupKeywords["platforms"]         = ["Linux"]
-    setupKeywords["description"]       = " An automated workflow that can refine reaction pathways from MD simulation trajectories."
-    outputString=""
-    firstTab     = 40
-    secondTab    = 60
-    for key in sorted( setupKeywords.keys() ):
-         value         = setupKeywords[key]
-         outputString += key.rjust(firstTab) + str( value ).rjust(secondTab) + "\n"
-    print("%s" % outputString)
-    return setupKeywords
-    
-
-def main():
-    setup_keywords = buildKeywordDictionary()
-    setup(**setup_keywords)
-    for requirement in requirements:
-      try:
-          exec('import %s' % requirement)
-      except ImportError as e:
-          print('\nWarning:%s' % e, file=sys.stderr)
-          print('Warning: Some package functionality may not work', file=sys.stderr)
-
-if __name__ == '__main__':
-    main()
+setup(
+    name='qcarw',
+    description='An automated workflow that can refine MD simulation trajectories.',
+    url='https://github.com/hjnpark/QCARWorkflow',
+    author='Heejune Park',
+    packages=find_packages(),
+    package_data={'': ['*.ini']},
+    include_package_data=True,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    scripts=['bin/Nebterpolate.py'],
+    entry_points={'console_scripts': [
+        'qcarw-refine = qcarw.refine:main',
+        'qcarw-dsoptimize = qcarw.dsopt:main',
+        'qcarw-smooth = qcarw.smooth:main',
+        'qcarw-optimize = qcarw.opt:main',
+        'qcarw-neb = qcarw.neb:main',
+    ]},
+    install_requires=[
+        'numpy>=1.11',
+        'networkx',
+        'scipy>=1.6',
+        'matplotlib',
+    ],
+    tests_require=[
+        'pytest',
+        'pytest-cov',
+    ],
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Science/Research',
+        'Programming Language :: Python :: 3',
+    ],
+    zip_safe=True,
+)
 
