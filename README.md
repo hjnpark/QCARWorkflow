@@ -1,11 +1,12 @@
 <img src="images/QCARW.png" width = "700">
-QCArchive Reaction Workflow (QCARWorkflow) can process molecular dynamic (MD) simulation trajectories and generate optimized reactants, products, and transition state structures.[1] It employs QCArchive Infrastructure to achieve efficient data storage and computing resource distribution.[2] QCARWorkflow can communicate with geomeTRIC[3] and Psi4[4] to refine MD simulation trajectories. The workflow is consist of four main functions, `dsoptimize`, `smoothing`, `neb`, and `optimize`. The first function `dsoptimize` locates minima on potential energy surfaces (PES) by optimizing molecular geometries of evenly sampled initial MD trajectories. `smoothing` function will detect potential reaction pathways from the result of `dsoptimize` and smooth them to provide good initial inputs for the nudged elastic band (NEB) method.[5] `neb` performs the NEB method to locate a rough transition state (TS) structure. The `optimize` function then optimizes the gussed TS structures (NEB results) to locate the first order saddle points. Last step is optimizations of reactants and products from the NEB input with same electronic structure theory and basis set as TS-optimization step. Note that the Intrinsic Reaction Coordinate (IRC) method to confirm the optimized TS structure has not been implemented yet.   
+QCArchive Reaction Workflow (QCARWorkflow) can process molecular dynamic (MD) simulation trajectories and generate optimized reactants, products, and transition state structures.[1] It employs QCArchive Infrastructure to achieve efficient data storage and computing resource distribution.[2] QCARWorkflow can communicate with geomeTRIC[3] and Psi4[4] to refine MD simulation trajectories. The workflow is consist of four main functions, `dsoptimize`, `smoothing`, `neb`, and `optimize`. The first function `dsoptimize` locates minima on potential energy surfaces (PES) by optimizing molecular geometries of evenly sampled initial MD trajectories. `smoothing` function will detect potential reaction pathways from the result of `dsoptimize` and smooth them to provide good initial inputs for the nudged elastic band (NEB) method.[5] `neb` performs the NEB method to locate a rough transition state (TS) structure. The `optimize` function then optimizes the gussed TS structures (NEB results) to locate the first order saddle points. The next step is the Intrinsic Reaction Coordinate method starting with the optimized TS structure to confirm its validity.[6] Finally, two end points of the IRC (reactant and product) will be optimized.    
 
 [1] Wang, L.-P.; McGibbon, R. T.; Pande, V. S.; Martinez, T.J. Automated Discovery and Refinement of Reactive Molecular Dynamics Pathways. *J. Chem. Theory Comput.* **2016**, 12(2), 638–649.[https://pubs.acs.org/doi/abs/10.1021/acs.jctc.5b00830](https://pubs.acs.org/doi/abs/10.1021/acs.jctc.5b00830) 
 [2] Smith, D. G. A.; Altarawy, D.; Burns, L. A.; Welborn, M.;Naden, L. N.; Ward, L.; Ellis, S.; Pritchard, B. P.; Crawford,T. D. The MOLSSI QCARCHIVE Project: An Open‐source Platform to Compute, Organize, and Share Quantum Chemistry Data. *WIREs Comput. Mol. Sci.* **2020**.[https://doi.org/10.1002/wcms.1491](https://doi.org/10.1002/wcms.1491)   
 [3] Wang, L.-P.; Song, C. Geometry Optimization Made Simple with Translation and Rotation Coordinates. *J. Chem. Phys.* **2016**, 144 (21), 214108.[https://doi.org/10.1063/1.4952956](https://doi.org/10.1063/1.4952956)  
 [4] Turney, J.M.; Simmonett, A.C.; Parrish, R.M.; Hohenstein, E.G.; Evangelista, F.A.; Fermann, J.T.; Mintz, B.J.; Burns, L.A.; Wilke, J.J.; Abrams, M.L.; Russ, N.J.; Leininger, M.L.; Janssen, C.L.; Seidl, E.T.; Allen, W.D.; Schaefer, H.F.; King, R.A.; Valeev, E.F.; Sherrill, C.D.; Crawford, T.D. Psi4: an open‐source ab initio electronic structure program. *WIREs Comput. Mol. Sci.* **2012** 2: 556-565.[https://doi.org/10.1002/wcms.93](https://doi.org/10.1002/wcms.93)
 [5] Henkelman, G.; Uberuaga B.P.; Jonsson H. A climbing image nudged elastic band method for finding saddle points and minimum energy paths. *J. Chem. Phys.* **2000**, 113 (22).[https://doi.org/10.1063/1.1329672](https://doi.org/10.1063/1.1329672)
+[6] Gonzalez, C.; Schlegel H. B. An improved algorithm for reaction path following. *J. Chem. Phys.* **1989**, 90 (4), 2154-2161.[https://doi.org/10.1063/1.456010](https://doi.org/10.1063/1.456010) 
 
 Author: Heejune Park
 
@@ -34,13 +35,13 @@ Now we need to install geomeTRIC and QCARWorkflow.
 
 Install geomeTRIC from the `neb` branch of a forked github repository:
 [https://github.com/hjnpark/geomeTRIC/tree/neb](https://github.com/hjnpark/geomeTRIC/tree/neb)
+
 The following command will clone the specific branch.
 ```shell
 git clone -b neb git@github.com:hjnpark/geomeTRIC.git
 ```
-This branch of geomeTRIC can perform the NEB method.
-It will be merged into the master branch once some of the functions in neb.py are updated.
-
+This branch of geomeTRIC can perform the NEB and IRC method.
+It will be merged into the master branch in the future.
 
 ### 3. Installing QCARWorkflow
 
@@ -91,6 +92,7 @@ qcarw-dsoptimize initial_MD.xyz --user User1 --password 1234
 qcarw-smooth initial_MD.xyz --user User1 --password 1234
 qcarw-neb neb_input.xyz --user User1 --password 1234
 qcarw-optimize opt_input.xyz --user User1 --password 1234
+qcarw-irc ts.xyz --user User1 --password 1234
 ```
 `qcarw-[function] -h` will show all the parameters that can be modified.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-qcarw.py
+refine.py
 
 """
 import os, sys, subprocess, time, shutil, socket
@@ -287,7 +287,7 @@ class Workflow(object):
    #     return ds_sp 
         
 
-    def dsoptimize(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31g(d)', subsample=10, maxiter=500, coordsys='tric', compute=False, spec_overwrite=True): 
+    def dsoptimize(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31g(d)', subsample=10, maxiter=100, coordsys='tric', compute=False, spec_overwrite=True): 
         """
         This function converts the xyz file to QCAI molecule objects and sets up optimization jobs.          
 
@@ -391,7 +391,6 @@ class Workflow(object):
             record = self.ds.get_record(name, self.spec_name)
             init_M = record.get_initial_molecule()
             geo_M = qc_to_geo(init_M, b2a = True) 
-        
             input_check = np.allclose(geo_M.xyzs[0], M[frm].xyzs[0])
             if not input_check:
                 print('Please double check your MD trajectory (xyz file) and dataset name.')
@@ -483,7 +482,7 @@ class Workflow(object):
         return neb_inputs
         
 
-    def neb(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d)', images=21, coordsys='cart', ew = False, nebk = 1, avgg=0.025, maxg=0.05, guessk=0.01, guessw=0.5, tmpdir=None):
+    def neb(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', images=21, coordsys='cart', ew = False, nebk = 1, avgg=0.025, maxg=0.05, guessk=0.01, guessw=0.5, tmpdir=None):
         """
         This function will run NEB calculations to locate rough transition state structures.          
 
@@ -567,7 +566,7 @@ class Workflow(object):
         neb_procedure = qcng.compute_procedure(neb_input, 'geometric')
         return neb_procedure
 
-    def optimize(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d)', coordsys='tric', maxiter=500, ts=False):
+    def optimize(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', coordsys='tric', maxiter=500, ts=False):
         """
         This function will run a single optimization procedure        
 
@@ -581,6 +580,14 @@ class Workflow(object):
 
         method, basis : string
             Electron structure method and basis sets
+
+        coordsys : str
+            'cart': Cartesian Coordinates
+            'prim': Primitive (a.k.a. redundant) Coordinates
+            'tric': Translation-Rotational Coordinates
+            'dlc' : Delocalized Internal Coordinates
+            'hdlc': Hybrid Delocalized Internal Coordinates
+
 
         maxiter : int
             Maximum iteration number for scf calculations.
@@ -598,13 +605,13 @@ class Workflow(object):
         if ts:
             method = 'ts-' + method
         if isinstance(initial, str):
-            init = Molecule(initial) 
+            M = Molecule(initial) 
         elif isinstance(initial, Molecule):
-            init = initial
+            M = initial
         else:
             raise OptimizeInputError('Please provide either xyz file name or a geomeTRIC Molecule object.')
 
-        qcel_mol = qcel.models.Molecule(**{'symbols': init.elem, 'geometry': np.array(init.xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
+        qcel_mol = qcel.models.Molecule(**{'symbols': M.elem, 'geometry': np.array(M.xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
         if not self.client:
             """
             Optimization calculation will be carried locally
@@ -674,6 +681,71 @@ class Workflow(object):
  
         return M_qc, M_geo, energy
 
+    def irc(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', coordsys='cart', trust=0.2):
+        """
+        This function will perfrom the IRC method
+
+        Parameters
+        -----------
+        initial : str or geomeTRIC Molecule object
+            Name of the xyz file containing the initial transition structure.
+
+        charge, mult : int
+            Molecular charge and multiplicity
+
+        method, basis : string
+            Electron structure method and basis sets
+
+        coordsys : str
+            'cart': Cartesian Coordinates
+            'prim': Primitive (a.k.a. redundant) Coordinates
+            'tric': Translation-Rotational Coordinates
+            'dlc' : Delocalized Internal Coordinates
+            'hdlc': Hybrid Delocalized Internal Coordinates
+    
+        trust : float
+            Trust radius for the IRC iterations
+
+        Return
+        ----------
+        irc_progress : Molecule object consist of the IRC results <- needs to be modified
+
+        """  
+        if isinstance(initial, str):
+            M = Molecule(initial) 
+        elif isinstance(initial, Molecule):
+            M = initial
+        else:
+            raise OptimizeInputError('Please provide either xyz file name or a geomeTRIC Molecule object.')
+        
+        qcel_mol = qcel.models.Molecule(**{'symbols': M.elem, 'geometry': np.array(M.xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
+
+        irc_input = {
+            'keywords' : {
+                'program' : 'psi4',
+                'coordsys': coordsys,
+                'engine': 'qcengine',
+                'client': self.client, 
+                'irc': True,
+                'trust': trust
+                        },
+
+                
+            'input_specification':{
+                'driver': 'gradient',
+                'model' : {
+                    'method': method,
+                    'basis': basis
+                    },
+                                    },
+            'initial_molecule':qcel_mol
+            }
+
+
+        irc_procedure = qcng.compute_procedure(irc_input, 'geometric')
+        print('compute procedure done.')
+        return irc_procedure
+
 def main():
     args_dict = parse_refine_args(sys.argv[1:])
 
@@ -693,20 +765,22 @@ def main():
     charge      = args_dict.get('charge'    , 0)
     mult        = args_dict.get('mult'      , 1)
     subsample   = args_dict.get('subsample' , 10)
-    maxiter     = args_dict.get('maxiter'   , 500)
+    maxiter     = args_dict.get('maxiter'   , 100)
     optmethod   = args_dict.get('optmethod' , 'b3lyp')
     optbasis    = args_dict.get('optbasis'  , '6-31g(d)')
     optcrdsys   = args_dict.get('optcrdsys' , 'tric')
     tsmethod    = args_dict.get('tsmethod'  , 'b3lyp')
-    tsbasis     = args_dict.get('tsbasis'   , '6-31+g(d)')
+    tsbasis     = args_dict.get('tsbasis'   , '6-31+g(d,p)')
     images      = args_dict.get('images'    , 21)
     nebmethod   = args_dict.get('nebmethod' , 'b3lyp')
-    nebbasis    = args_dict.get('nebbasis'  , '6-31+g(d)')
+    nebbasis    = args_dict.get('nebbasis'  , '6-31+g(d,p)')
     nebcrdsys   = args_dict.get('nebcrdsys' , 'cart')
     nebk        = args_dict.get('nebk'      , 1)
     avgg        = args_dict.get('avgg'      , 0.025)
     maxg        = args_dict.get('maxg'      , 0.05)
     ew          = args_dict.get('ew'        , False)
+    #irccrdsys   = args_dict.get('irccrdsys' , 'cart')
+    trust       = args_dict.get('ircstep'   , 0.2)
 
     client = User(user, password).server()
     
@@ -715,6 +789,7 @@ def main():
     ds, Mmass =wf.dsoptimize(initial=initial, charge=charge, mult=mult, method=optmethod, basis=optbasis, subsample=subsample, coordsys=optcrdsys, compute = True)
     
     cycle = 0
+    error = 0
     while True: 
         ds = Dataset(dataset, client).setting('load')
         if cycle % 10 == 0 :
@@ -729,26 +804,37 @@ def main():
             stat = opt.status.upper().split('.')[-1]
             if stat == 'ERROR':
                 client.modify_tasks('restart', opt.id)
+                error += 1
             if stat == 'COMPLETE':
                 comp += 1
         
-        if comp == num_opt or comp/num_opt> 0.8:
-            print('Optimization step is completed.')
-            break
+        
         print("%i/%i calculations are completed" %(comp,num_opt)) 
         wait = (num_opt-comp)*int(Mmass*0.5)
+
+        if comp == num_opt or comp/num_opt> 0.80:
+            time.sleep(wait)
+            print('Optimization step is completed.')
+            break
+
         print("Molecular mass = %.2f / Waiting %i seconds" %(Mmass, wait))
         time.sleep(wait) 
 
-        if cycle > 1000:
-            raise RuntimeError('Stuck in a while loop checking OptimizationDataset status.')
+        if cycle > 100:
+            print("Iteration went over 100. Rest of the procedure will be performed based on the successfully optimized geometries.")
+            break
 
         if comp == 0 and cycle > 10 :
             raise QCFractalError('Jobs are not recognized by QCFractal server. Try to restart the server and manager')
+        
+        if error > 10:
+            print("There are optimizations that can't be converged. Rest of the procedure will be performed based on the successfully optimized geometries.")
+            break
+
         cycle += 1
 
     smoothed = wf.smoothing(initial=initial)
-    time.sleep(30)
+    time.sleep(10)
     neb_num = len(smoothed)
     print("Number of reactions detected: %i" %neb_num)
     smoothed_list = list(smoothed.values()) 
@@ -777,16 +863,24 @@ def main():
         tmp_list.append(tmp_name)
     
     for i, ts in enumerate(guess_ts_list):
-        if os.path.exists(ts): #Sometimes the smoothing function won't be able to smooth the pass. If there are paths that were not smoothed, it will just skip them.
+        if os.path.exists(ts): #Sometimes the smoothing function won't be able to smooth a given rxn path. If there are paths that were not smoothed, it will just skip them.
             pass
         else:
             continue 
         inp = '~/' + '/'.join(('.'.join(tmp_list[i].split('.')[:-1]) + '.xyz').split('/')[-3:-1])
-        print(inp)
+
         tmp_dir = '/'.join(tmp_list[i].split('/')[:-1])
         M_qc_ts, M_geo_ts, E_ts= wf.optimize(ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, ts=True)
         M_geo_ts.write(tmp_dir +'/ts.xyz')
-        M = Molecule(tmp_list[i]+'/chain_0000.xyz')
+
+        wf.irc(initial=M_geo_ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, coordsys='cart', trust=trust) 
+
+        irc_results = ['forward.xyz','backward.xyz','IRC_%.2f.xyz'%trust]
+
+        for f in irc_results:
+            shutil.move(f, tmp_dir+'/')
+       
+        M = Molecule(tmp_dir+'/IRC_%.2f.xyz'%trust)
         reac = M[0]
         prod = M[-1]
         M_qc_reac, M_geo_reac, E_reac = wf.optimize(reac, charge=charge, mult=mult, method=tsmethod, basis=tsbasis)
@@ -800,7 +894,7 @@ def main():
         ax.plot(x, y, marker = '_', markersize = 50, linestyle='dotted')
         ax.set_ylabel('Energy (kcal/mol)', size = 12)
         ax.text(0.5, y[1], 'Ea=' + str(np.round(y[1], 1)) + 'kcal/mol', size = 12)
-        ax.text(1.5, y[-1], 'Ea=' + str(np.round(y[-1], 1)) + 'kcal/mol', size = 12)
+        ax.text(1.5, y[-1], 'Erxn=' + str(np.round(y[-1], 1)) + 'kcal/mol', size = 12)
         fig.savefig(tmp_dir+'/result.png') 
     print("All the detected reactions were optimized.")
          

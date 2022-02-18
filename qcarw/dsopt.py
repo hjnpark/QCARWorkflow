@@ -23,7 +23,7 @@ def main():
     charge      = args_dict.get('charge'    , 0)
     mult        = args_dict.get('mult'      , 1)
     subsample   = args_dict.get('subsample' , 10)
-    maxiter     = args_dict.get('maxiter'   , 500)
+    maxiter     = args_dict.get('maxiter'   , 100)
     optmethod   = args_dict.get('method'    , 'b3lyp')
     optbasis    = args_dict.get('basis'     , '6-31g(d)')
     coordsys    = args_dict.get('coordsys'  , 'tric')

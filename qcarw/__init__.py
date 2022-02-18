@@ -1,4 +1,5 @@
 from . import refine
+from . import irc
 from . import dsopt
 from . import opt
 from . import neb

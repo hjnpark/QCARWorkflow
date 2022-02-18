@@ -12,7 +12,7 @@ def main():
     user        = args_dict.get('user'      , None)
     password    = args_dict.get('passowrd'  , None)
     method      = args_dict.get('method'    , 'b3lyp')
-    basis       = args_dict.get('basis'     , '6-31+g(d)')
+    basis       = args_dict.get('basis'     , '6-31+g(d,p)')
     coordsys    = args_dict.get('coordsys'  , 'tric')
     maxiter     = args_dict.get('maxiter'   , 500)
     charge      = args_dict.get('charge'    , 0)

@@ -11,7 +11,7 @@ def main():
     user        = args_dict.get('user'      , None)
     password    = args_dict.get('passowrd'  , None)
     method      = args_dict.get('method'    , 'b3lyp')
-    basis       = args_dict.get('basis'     , '6-31+g(d)')
+    basis       = args_dict.get('basis'     , '6-31+g(d,p)')
     images      = args_dict.get('images'    , '21')
     coordsys    = args_dict.get('coordsys'  , 'cart')
     nebk        = args_dict.get('nebk'      , 1)

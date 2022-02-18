@@ -24,6 +24,7 @@ setup(
         'qcarw-smooth = qcarw.smooth:main',
         'qcarw-optimize = qcarw.opt:main',
         'qcarw-neb = qcarw.neb:main',
+        'qcarw-irc = qcarw.irc:main',
     ]},
     install_requires=[
         'numpy>=1.11',
