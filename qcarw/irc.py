@@ -10,12 +10,12 @@ def main():
     initial     = args_dict.get('input')
     user        = args_dict.get('user'      , None)
     password    = args_dict.get('passowrd'  , None)
-    charge      = args_dict.get('mult'      , 0)
-    mult        = args_dict.get('charge'    , 1)
+    charge      = args_dict.get('charge'    , 0)
+    mult        = args_dict.get('mult'      , 1)
     method      = args_dict.get('method'    , 'b3lyp')
     basis       = args_dict.get('basis'     , '6-31+g(d)')
     coordsys    = args_dict.get('coordsys'  , 'cart')
-    trust       = args_dict.get('trust'     , 0.2)
+    trust       = args_dict.get('trust'     , 0.1)
 
 
     client = User(user, password).server()

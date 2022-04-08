@@ -22,7 +22,7 @@ def formula(M):
         
     Parameters
     ----------
-    M : Molecular object
+    M : Molecule object
 
     Return
     ------
@@ -39,6 +39,20 @@ def formula(M):
     for key, val in name.items():
         formula += key + str(val)
     return formula
+
+def equal(m1, m2):
+        """
+        To see whether the two Molecule objects have the same geometry
+
+        Parameters
+        ----------
+        m1, m2: Molecule Object
+
+        Return
+        ----------
+        True or False
+        """
+        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
 
 def qc_to_geo(qc_M, comment='', b2a=False):
     """
@@ -62,7 +76,7 @@ def qc_to_geo(qc_M, comment='', b2a=False):
     geo_M.comms = [comment]
     geo_M.elem = list(qc_M.symbols)
     geom = np.array(qc_M.geometry, dtype = np.float64).reshape(-1, 3)
-    if b2a == True:
+    if b2a:
         geom *= bohr2ang 
     geo_M.xyzs = [geom]
     geo_M.build_bonds()
@@ -78,6 +92,92 @@ def resubmit_all(client):
         client.modify_tasks('restart', errors[i].base_result)
     print ('All the failed calculations were submitted again.')
 
+def compare_rxns(rxn1, rxn2):
+    """
+    Checking to see whether two reaction pathways are the same.
+
+    parameters
+    ----------
+    rxn1, rxn2: Molecule object
+        Molecule objects consist of reactant, TS, and product.
+
+    Return
+    ----------
+    "True" if they are identical.  
+    "False" if they are different.
+    """
+    # TODO: this needs to be generalized.. 
+    r1=rxn1[0]
+    t1=rxn1[1]
+    p1=rxn1[2]
+    r2=rxn2[0]
+    t2=rxn2[1]
+    p2=rxn2[2]
+    if equal(r1, r2):
+        if equal(p1, p2):
+            if equal(t1, t2):
+                return True
+
+    elif equal(r1, p1):
+        if equal(p1, r2):
+            if equal(t1, t2):
+                return True
+    else:
+        return False
+
+def connect_rxns(M_info):
+    """
+    This function will connect unit reactions.
+    
+    Parameters
+    ----------
+    M_info : OrderedDict
+        OrderedDict with frames in key and Molcule objects (reactant, TS, product) 
+
+    Return
+    ----------
+    rxns : OrderedDict
+        Molecule objects consist of unit reactions 
+    """
+    rxns = OrderedDict()  
+    connect = 0
+    for i, (k1, v1) in enumerate(M_info.items()):
+        for j, (k2, v2) in enumerate(M_info.items()):
+            if j > i:
+                if len(v1) == 3 and len(v2) == 3:
+                    if compare_rxns(v1, v2):
+                        continue    
+                reac1 = v1[0]
+                #num1 = str(k1[0])
+                prod1 = v1[-1]
+                #num2 = str(k1[-1])
+                reac2 = v2[0]
+                #num3 = str(k2[0])
+                prod2 = v2[-1]
+                #num4 = str(v2[-1])
+                frm = k1 + k2
+                if equal(reac1, reac2):
+                    print(k1, k2,'reac1 reac2 same')
+                    rxns[frm]=v1[::-1] + v2
+                    connect += 1
+                elif equal(reac1, prod2):
+                    print(k1, k2, 'reac1 prod2 same')
+                    rxns[frm]=v1[::-1] + v2[::-1]
+                    connect += 1
+                elif equal(prod1, reac2):
+                    print(k1, k2, 'prod1 reac2 same')
+                    rxns[frm]=v1 + v2
+                    connect += 1
+                elif equal(prod1, prod2):
+                    print(k1, k2, 'prod1 prod2 same')
+                    rxns[frm]=v1 + v2[::-1]
+                    connect += 1
+
+    if connect == 0:
+        return rxns
+    else: 
+        return connect_rxns(rxns)        
+ 
 class User(object):
     """
     This class helps users to connect to the server.
@@ -88,7 +188,7 @@ class User(object):
         ----------
         user : user ID for QCFractal server
     
-        password ; password for QCFractal server
+        password : password for QCFractal server
         """
         self.user = user
         self.password = password
@@ -105,8 +205,6 @@ class User(object):
         info = os.popen('qcfractal-server info').readlines()
         host = socket.gethostname()
         for line in info:
-           # if 'host' in line:
-           #     host = line.strip().split(' ')[-1]
             if 'port' in line:
                 port = int(line.strip().split(' ')[-1])
         try:
@@ -232,9 +330,7 @@ class Workflow(object):
                 self.client.modify_tasks('restart', opts[i].id)
         print ("%i failed jobs in \'%s\' dataset with \'%s\' specfication have been submitted again." %(num, self.ds.name, self.spec_name))
 
-    def equal(self, m1, m2):
-        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
-
+    
    # def energy(self, method=None, basis=None, compute=False):
    #     """
    #     This function converts xyz file to QCAI molecule objects and creates single point energy calculation jobs.          
@@ -414,7 +510,7 @@ class Workflow(object):
         path_initial = [] 
         path_final = []
         for fi, fj in zip(list(OptMols.keys())[:-1], list(OptMols.keys())[1:]): 
-            if not self.equal(OptMols[fi], OptMols[fj]): 
+            if not equal(OptMols[fi], OptMols[fj]): 
                 path_initial.append(fi)
                 path_final.append(fj)
 
@@ -423,16 +519,16 @@ class Workflow(object):
             
         for fi in path_initial:
             for fj in path_final:
-                if fj > fi and (not self.equal(OptMols[fi], OptMols[fj])):
+                if fj > fi and (not equal(OptMols[fi], OptMols[fj])):
                     if (fj - fi) > 1000: continue
                     NewPair = True
-                    for imp, (m1, m2) in enumerate(MolPairs):
-                        if self.equal(OptMols[fi], m1) and self.equal(OptMols[fj], m2):
-                            FramePairs[imp].append((fi, fj))
+                    for i, (m1, m2) in enumerate(MolPairs):
+                        if equal(OptMols[fi], m1) and equal(OptMols[fj], m2):
+                            FramePairs[i].append((fi, fj))
                             NewPair = False
                             break
-                        elif self.equal(OptMols[fi], m2) and self.equal(OptMols[fj], m1):
-                            FramePairs[imp].append((fi, fj))
+                        elif equal(OptMols[fi], m2) and equal(OptMols[fj], m1):
+                            FramePairs[i].append((fi, fj))
                             NewPair = False
                             break
                     if NewPair:
@@ -449,7 +545,7 @@ class Workflow(object):
             shutil.rmtree(path) 
         os.mkdir(path)
         neb_inputs = {}
-
+        frames = []
         for i in range(len(MolPairs)): 
             (a,b) = FramePairs[i][np.argmin([(jb-ja) for (ja, jb) in FramePairs[i]])]
             qc_mol_Traj1 = self.ds.get_record(mol_name + '_' + str(a), self.spec_name).get_molecular_trajectory()
@@ -464,14 +560,15 @@ class Workflow(object):
                 geo_mol_Traj += qc_to_geo(qc_mol_Traj2[k], b2a = True)    
             
             fnum =  str(a) + '-' + str(b)
+            frames.append([a,b])
             #fname = str(mol_name +'_'+ fnum)
             path = './%s/' %(mol_name)
             
             NEB_path = path + fnum
             os.mkdir(NEB_path)
             geo_mol_Traj.write(os.path.join(path + fnum,'connected.xyz'))
-            equal = EqualSpacing(geo_mol_Traj, dx = 0.05) 
-            equal.write(os.path.join(path + fnum, 'spaced.xyz'))
+            equal_spc = EqualSpacing(geo_mol_Traj, dx = 0.05) 
+            equal_spc.write(os.path.join(path + fnum, 'spaced.xyz'))
             geo_mol_Traj = None 
             command ='Nebterpolate.py --morse 1e-2 --repulsive --allpairs --anchor 2 %s/spaced.xyz %s/NEB_ready.xyz &> %s/interpolate.log' %(NEB_path, NEB_path, NEB_path)
             log = open('%s/interpolate.log' %NEB_path, 'a')
@@ -479,7 +576,7 @@ class Workflow(object):
             subprocess.Popen(command, shell = True, stdout = log, stderr = log)
             neb_inputs[i] = NEB_path + '/NEB_ready.xyz'
         print("Smoothing Procedure is running on the local machine. NEB ready xyz files will be generated once the smoothing procedure is done.")
-        return neb_inputs
+        return neb_inputs, frames
         
 
     def neb(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', images=21, coordsys='cart', ew = False, nebk = 1, avgg=0.025, maxg=0.05, guessk=0.01, guessw=0.5, tmpdir=None):
@@ -528,25 +625,26 @@ class Workflow(object):
 
         """  
         band = Molecule(initial) 
-        inp = '.'.join(initial.split('.')[:-1])
+        #inp = '.'.join(initial.split('.')[:-1])
         
         qcel_mol = qcel.models.Molecule(**{'symbols': band.elem, 'geometry': np.array(band[0].xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
 
         neb_input = {
             'keywords' : {
                 'program' : 'psi4',
+                'neb' : True,
                 'images': images,
                 'avgg' : avgg,
                 'maxg' : maxg,
                 'nebk' : nebk, 
-                'maxcyc' : 200,
+                'maxcyc' : 100,
                 'guessk' : guessk,
                 'guessw' : guessw,
                 'coords': initial,
                 'coordsys': coordsys,
                 'engine': 'qcengine',
                 'client': self.client, 
-                'input': inp
+                'prefix': tmpdir
                         },
 
                 
@@ -562,7 +660,7 @@ class Workflow(object):
 
 
         if ew:
-            neb_input['keywords']['ew'] = 'yes'
+            neb_input['keywords']['nebew'] = 'yes'
         neb_procedure = qcng.compute_procedure(neb_input, 'geometric')
         return neb_procedure
 
@@ -640,6 +738,7 @@ class Workflow(object):
                 energy = opt_result.energies[-1]
                 M_qc = opt_result.final_molecule
                 M_geo = qc_to_geo(M_qc, comment='Energy : %.7f Hartree' %energy, b2a=True)
+                M_geo.qm_energies = [energy]
         else:
             """
             Optimization will be carried with QCFractal server
@@ -674,6 +773,7 @@ class Workflow(object):
                     energy = proc.get_final_energy()
                     M_qc = proc.get_final_molecule()
                     M_geo = qc_to_geo(M_qc, comment= 'Energy : %.7f Hartree' %energy, b2a=True)     
+                    M_geo.qm_energies = [energy]
                     print("QCAI Optimization is done.")
                     break
                 if loop > 1000:
@@ -681,7 +781,7 @@ class Workflow(object):
  
         return M_qc, M_geo, energy
 
-    def irc(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', coordsys='cart', trust=0.2):
+    def irc(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', coordsys='cart', trust=0.1, tmpdir=None):
         """
         This function will perfrom the IRC method
 
@@ -706,6 +806,9 @@ class Workflow(object):
         trust : float
             Trust radius for the IRC iterations
 
+        tmpdir : str
+            Temporary diretory for the IRC results
+
         Return
         ----------
         irc_progress : Molecule object consist of the IRC results <- needs to be modified
@@ -727,7 +830,8 @@ class Workflow(object):
                 'engine': 'qcengine',
                 'client': self.client, 
                 'irc': True,
-                'trust': trust
+                'trust': trust,
+                'prefix': tmpdir
                         },
 
                 
@@ -743,7 +847,6 @@ class Workflow(object):
 
 
         irc_procedure = qcng.compute_procedure(irc_input, 'geometric')
-        print('compute procedure done.')
         return irc_procedure
 
 def main():
@@ -765,7 +868,7 @@ def main():
     charge      = args_dict.get('charge'    , 0)
     mult        = args_dict.get('mult'      , 1)
     subsample   = args_dict.get('subsample' , 10)
-    maxiter     = args_dict.get('maxiter'   , 100)
+    maxiter     = args_dict.get('scf_iter'   , 100)
     optmethod   = args_dict.get('optmethod' , 'b3lyp')
     optbasis    = args_dict.get('optbasis'  , '6-31g(d)')
     optcrdsys   = args_dict.get('optcrdsys' , 'tric')
@@ -780,17 +883,20 @@ def main():
     maxg        = args_dict.get('maxg'      , 0.05)
     ew          = args_dict.get('ew'        , False)
     #irccrdsys   = args_dict.get('irccrdsys' , 'cart')
-    trust       = args_dict.get('ircstep'   , 0.2)
+    trust       = args_dict.get('ircstep'   , 0.1)
+    analyze     = args_dict.get('analyze'   , False)
 
     client = User(user, password).server()
     
     ds = Dataset(dataset, client).setting('make')
     wf = Workflow(ds=ds, client=client, spec_name=spec_name)
-    ds, Mmass =wf.dsoptimize(initial=initial, charge=charge, mult=mult, method=optmethod, basis=optbasis, subsample=subsample, coordsys=optcrdsys, compute = True)
+    ds, Mmass =wf.dsoptimize(initial=initial, charge=charge, mult=mult, method=optmethod, maxiter=maxiter,basis=optbasis, subsample=subsample, coordsys=optcrdsys, compute = True)
     
     cycle = 0
-    error = 0
     while True: 
+        
+        error = 0
+
         ds = Dataset(dataset, client).setting('load')
         if cycle % 10 == 0 :
             print('Dataset Status')
@@ -813,7 +919,6 @@ def main():
         wait = (num_opt-comp)*int(Mmass*0.5)
 
         if comp == num_opt or comp/num_opt> 0.80:
-            time.sleep(wait)
             print('Optimization step is completed.')
             break
 
@@ -827,13 +932,14 @@ def main():
         if comp == 0 and cycle > 10 :
             raise QCFractalError('Jobs are not recognized by QCFractal server. Try to restart the server and manager')
         
-        if error > 10:
-            print("There are optimizations that can't be converged. Rest of the procedure will be performed based on the successfully optimized geometries.")
+        if error/num_opt > 0.2 and cycle > 30:
+            print("There are optimizations that could not be converged. Rest of the procedure will be performed based on the successfully optimized geometries.")
             break
 
         cycle += 1
 
-    smoothed = wf.smoothing(initial=initial)
+    smoothed, frames = wf.smoothing(initial=initial)
+    print('frames', frames)
     time.sleep(10)
     neb_num = len(smoothed)
     print("Number of reactions detected: %i" %neb_num)
@@ -855,38 +961,42 @@ def main():
                 smoothing_cycle += 1
                 time.sleep(Mmass*0.5)
         print("NEB method will be used to refine %s initial chain" %neb)
-        wf.neb(initial=neb, charge=charge, mult=mult, method=nebmethod, basis=nebbasis, images=images, coordsys=nebcrdsys, ew=ew, nebk=nebk, avgg=avgg, maxg=maxg) 
+        wf.neb(initial=neb, charge=charge, mult=mult, method=nebmethod, basis=nebbasis, images=images, coordsys=nebcrdsys, ew=ew, nebk=nebk, avgg=avgg, maxg=maxg, tmpdir=inp) 
         print("%s initial chain is processed." %neb) 
         ts_name = inp + '.tsClimb.xyz'
         tmp_name = inp + '.tmp'
         guess_ts_list.append(ts_name)
         tmp_list.append(tmp_name)
-    
+    #E_info = OrderedDict() #Energy info 
+    M_info = OrderedDict() #Molecule info
     for i, ts in enumerate(guess_ts_list):
-        if os.path.exists(ts): #Sometimes the smoothing function won't be able to smooth a given rxn path. If there are paths that were not smoothed, it will just skip them.
-            pass
-        else:
-            continue 
+        if not os.path.exists(ts): #Sometimes the smoothing function won't be able to smooth a given rxn path. If there are paths that were not smoothed, it will just skip them.
+            continue
         inp = '~/' + '/'.join(('.'.join(tmp_list[i].split('.')[:-1]) + '.xyz').split('/')[-3:-1])
 
         tmp_dir = '/'.join(tmp_list[i].split('/')[:-1])
         M_qc_ts, M_geo_ts, E_ts= wf.optimize(ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, ts=True)
-        M_geo_ts.write(tmp_dir +'/ts.xyz')
+        M_geo_ts.write(os.path.join(tmp_dir,'ts.xyz'))
 
-        wf.irc(initial=M_geo_ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, coordsys='cart', trust=trust) 
+        wf.irc(initial=M_geo_ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, coordsys='cart', trust=trust, tmpdir=tmp_dir) 
 
-        irc_results = ['forward.xyz','backward.xyz','IRC_%.2f.xyz'%trust]
+        #irc_results = ['forward.xyz','backward.xyz','IRC_%.2f.xyz'%trust]
 
-        for f in irc_results:
-            shutil.move(f, tmp_dir+'/')
+        #for f in irc_results:
+        #    shutil.move(f, tmp_dir+'/')
        
-        M = Molecule(tmp_dir+'/IRC_%.2f.xyz'%trust)
+        M = Molecule(os.path.join(tmp_dir, 'IRC_%.2f.xyz'%trust))
         reac = M[0]
         prod = M[-1]
         M_qc_reac, M_geo_reac, E_reac = wf.optimize(reac, charge=charge, mult=mult, method=tsmethod, basis=tsbasis)
-        M_geo_reac.write(tmp_dir +'/reactant.xyz')
+        M_geo_reac.write(os.path.join(tmp_dir, 'reactant.xyz'))
         M_qc_prod, M_geo_prod, E_prod = wf.optimize(prod, charge=charge, mult=mult, method=tsmethod, basis=tsbasis)
-        M_geo_prod.write(tmp_dir + '/product.xyz')
+        M_geo_prod.write(os.path.join(tmp_dir, 'product.xyz'))
+        
+        frame = str(frames[i][0]) + '-' + str(frames[i][-1])
+        #E_info[frame]=[E_reac, E_ts, E_prod]
+        M_info[frame]=M_geo_reac + M_geo_ts + M_geo_prod
+        
         x = ['Reactant', 'Transition', 'Product']
         y = [0, (E_ts - E_reac)*au2kcal, (E_prod-E_reac)*au2kcal]
         fig, ax = plt.subplots()
@@ -895,9 +1005,20 @@ def main():
         ax.set_ylabel('Energy (kcal/mol)', size = 12)
         ax.text(0.5, y[1], 'Ea=' + str(np.round(y[1], 1)) + 'kcal/mol', size = 12)
         ax.text(1.5, y[-1], 'Erxn=' + str(np.round(y[-1], 1)) + 'kcal/mol', size = 12)
-        fig.savefig(tmp_dir+'/result.png') 
+        fig.savefig(os.path.join(tmp_dir,'result.png')) 
     print("All the detected reactions were optimized.")
-         
+    #if analyze:
+  #  start_frm = min(frames[0]) 
+  #  end_frm = max(frames[-1])
+  #  print(start_frm, end_frm)
+  #  print(M_info)
+  #  connected = connect_rxns(M_info)
+  #  print(connected)
+  #  cwd = os.getcwd()
+  #  for k, v in connected.items():
+  #      v.write(os.path.join(cwd,'%s.xyz' %k))
+    
+   
  
 if __name__ == '__main__':
     main()

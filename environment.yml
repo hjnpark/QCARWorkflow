@@ -126,7 +126,6 @@ dependencies:
   - nest-asyncio=1.5.4=pyhd8ed1ab_0
   - networkx=2.6.3=pyhd3eb1b0_0
   - nglview=3.0.3=pyh8a188c0_0
-  - notebook=6.4.7=pyha770c72_0
   - numexpr=2.7.3=py38h43a58ef_1
   - numpy=1.22.0=py38h6ae9a64_0
   - openssl=1.1.1m=h7f8727e_0

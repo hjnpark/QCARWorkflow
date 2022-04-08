@@ -60,7 +60,7 @@ def parse_refine_args(*args):
     grp_optparam.add_argument('--charge', type=int, help='Molecular charge, default = 0\n')
     grp_optparam.add_argument('--mult', type=int, help='Spin multiplicity, default = 1\n')
     grp_optparam.add_argument('--subsample', type=int, help='Frame interval for subsampling trajectories, default = 10\n')
-    grp_optparam.add_argument('--maxiter', type=int, help='Maximum number of optimization steps, default = 100\n')
+    grp_optparam.add_argument('--scf_iter', type=int, help='Maximum number of scf iterations, default = 100\n')
     grp_optparam.add_argument('--optcrdsys',  type=str, help='Coordinate system for geometry optimization:\n' 
                           '"cart" = Cartesian coordinate system\n'
                           '"tric" for Translation-Rotation Internal Coordinates (default)\n'
@@ -92,6 +92,7 @@ def parse_refine_args(*args):
     grp_ircparam = parser.add_argument_group('ircparam', 'The Intrinsic Reaction Coordinate method parameters')
     #grp_ircparam.add_argument('--irccrdsys', type=str, help='Coordinate sustem for IRC. Only Cartesian is supported for now\n')
     grp_ircparam.add_argument('--ircstep', type=float, help='A step size that the IRC method will take, default = 0.2\n')
+    grp_ircparam.add_argument('--analyze', type=str2bool, help='Provide "Yes" to analyze the result. It will provide an overall energy 2D graph\n')
 
     grp_help = parser.add_argument_group('help', 'Get help')
     grp_help.add_argument('-h', '--help', action='help', help='Show this help message and exit')
@@ -127,7 +128,7 @@ def parse_dsopt_args(*args):
     grp_optparam.add_argument('--charge', type=int, help='Molecular charge, default = 0\n')
     grp_optparam.add_argument('--mult', type=int, help='Spin multiplicity, default = 1\n')
     grp_optparam.add_argument('--subsample', type=int, help='Frame interval for subsampling trajectories, default = 10\n')
-    grp_optparam.add_argument('--maxiter', type=int, help='Maximum number of optimization steps, default = 500\n')
+    grp_optparam.add_argument('--scf_iter', type=int, help='Maximum number of scf iterations, default = 500\n')
     grp_optparam.add_argument('--coordsys',  type=str, help='Coordinate system for geometry optimization:\n' 
                           '"cart" = Cartesian coordinate system\n'
                           '"tric" for Translation-Rotation Internal Coordinates (default)\n'
