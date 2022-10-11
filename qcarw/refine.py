@@ -12,47 +12,173 @@ import matplotlib.pyplot as plt
 import numpy as np
 from .params import parse_refine_args
 from .molecule import PeriodicTable, Molecule, EqualSpacing, TopEqual, MolEqual
-from collections import OrderedDict
+from collections import OrderedDict, Counter
 from .errors import NoDatasetError, InvalidCommandError, QCFractalError, QCEngineError, OptimizeInputError
 from .constant import bohr2ang, au2kcal
 
-def formula(M):
-    """
-    Provides a molecular formula
-        
+def find_groups(sl1, sl2):
+    """ 
+    [This function is copied from https://github.com/leeping/nanoreactor/src/rxndb.py]
+    Given two lists of atom lists, find the groups of sets in each
+    list that only contain each others' elements (i.e. if somehow we
+    have two parallel reactions in one.)
+    
     Parameters
     ----------
-    M : Molecule object
+    sl1, sl2 : list of lists
+        List of lists of atom indices corresponding to molecules.
 
-    Return
-    ------
-    formula : string
+    Returns
+    -------
+    list of lists
+        Atom indices corresponding to separately reacting groups of molecules.
     """
-    elem_list = M.elem
-    name = OrderedDict()
-    for elem in elem_list:
-        if not elem in name.keys():
-            name[elem] = 0
-        name[elem] += 1
+    # Convert to sets
+    sl1c = [set(s) for s in sl1]
+    sl2c = [set(s) for s in sl2]
+    # Iterate this while loop until we find a single set of atom groups
+    while set([tuple(sorted(list(s))) for s in sl1c]) != set([tuple(sorted(list(s))) for s in sl2c]):
+        # Double loop over molecule atom indices
+        for s1 in sl1c:
+            for s2 in sl2c:
+                # For any pair of molecules that have any overlapping atoms,
+                # add all atoms in each atom set to the other.
+                if len(s1.intersection(s2)) > 0:
+                    s1.update(s2)
+                    s2.update(s1)
+    result = sorted([list(t) for t in list(set([tuple(sorted(list(s))) for s in sl1c]))])
+    return result
 
-    formula = ''
-    for key, val in name.items():
-        formula += key + str(val)
-    return formula
+def find_reacting_groups(m1, m2):
+    """
+    [This function is copied from https://github.com/leeping/nanoreactor/src/rxndb.py]
+    Given two Molecule objects, determine the groups of atoms that
+    reacted with each other (i.e. formed different molecules.)  This will
+    remove spectator atoms (ones that didn't react at all) and separate 
+    concurrent reactions occuring in different places.
+
+    Parameters
+    ----------
+    m1, m2 : Molecule
+        Length-1 Molecule objects corresponding to reactant and product
+        frames.  For the sake of future electronic structure calculations,
+        these objects must have qm_mulliken_charges and qm_mulliken_spins.
+
+    Returns
+    -------
+    extracts: list of 3-tuple of list, int, int
+        Each 3-tuple is a group of atoms that reacted, and their associated
+        charge / multiplicity.
+    """
+    if not isinstance(m1, Molecule) or len(m1) != 1:
+        raise RuntimeError("Please only pass length-1 Molecule objects")
+    if not isinstance(m2, Molecule) or len(m2) != 1:
+        raise RuntimeError("Please only pass length-1 Molecule objects")
+
+
+    # Get a list of atom indices belonging to each molecule.
+    m1_mol_atoms = [g.L() for g in m1.molecules]
+    m2_mol_atoms = [g.L() for g in m2.molecules]
+    # Count the number of atoms in spectator molecules that don't
+    # react at all, and store their molecular formulas (for public
+    # shaming).
+    n_spectator_atoms = 0
+    spectator_formulas = []
+    strrxns = []
+    # The results: extract groups of atoms to extract corresponding to
+    # individual reaction pathways, and the net charge / multiplicity
+    # belonging to 
+    extract_groups = []
+    extract_charges = []
+    extract_mults = []
+    # Separate atoms into groups of separately reacting molecules.
+    # This is also effective at finding spectator molecules that don't react at all.
+    do_extract = False
+    for atom_group in find_groups(m1_mol_atoms, m2_mol_atoms):
+        m1g = m1.atom_select(atom_group)
+        m2g = m2.atom_select(atom_group)
+        spectator_atoms = []
+        print("atom group: %s" % str(atom_group))
+        print("m1 molecules: %s" % str([[atom_group[i] for i in g.L()] for g in m1g.molecules]))
+        print("m2 molecules: %s" % str([[atom_group[i] for i in g.L()] for g in m2g.molecules]))
+        for g1 in m1g.molecules:
+            print("atoms in molecule: %s" % str(g1.L()))
+            for g2 in m2g.molecules:
+                # Graphs are usually compared by comparing elements and
+                # topology, but a spectator molecule also has the same
+                # atom numbers.
+                if g1 == g2 and g1.L() == g2.L():
+                    spectator_atoms += g1.L()
+        # Since we already separated the atoms into groups of separately reacting ones,
+        # any atom group with spectator atoms is expected to be a single spectator molecule.
+        if len(spectator_atoms) > 0:
+            print("spectator atoms: %s" % str([atom_group[i] for i in spectator_atoms]))
+
+
+        if len(spectator_atoms) == m1g.na:
+            if len(m1g.molecules) != 1:
+                raise RuntimeError("I expected an atom group with all spectators to be a single molecule")
+            n_spectator_atoms += len(spectator_atoms)
+            spectator_formulas.append(m1g.molecules[0].ef())
+            continue
+        elif len(spectator_atoms) > 0:
+            raise RuntimeError("I expected an atom group with any spectators to be a single molecule")
+        else:
+            strrxn = ' + '.join(['%s%s' % (str(j) if j>1 else '', i) for i, j in list(Counter([m.ef() for m in m1g.molecules]).items())])
+            strrxn += ' -> '
+            strrxn += ' + '.join(['%s%s' % (str(j) if j>1 else '', i) for i, j in list(Counter([m.ef() for m in m2g.molecules]).items())])
+            strrxns.append(strrxn)
+ 
+        # Now we have a group of reacting atoms that we can extract from the
+        # pathway, but we should perform some sanity checks first.
+        mjoin = m1g + m2g
+        # A bit of code copied from extract_pop.  Verify that the reacting
+        # atoms have consistent charge and spin in the two passed Molecule
+        # objects.  If not consistent, then we cannot extract spectator atoms.
+        Chgs = np.array([sum(i) for i in mjoin.qm_mulliken_charges])
+        SpnZs = np.array([sum(i) for i in mjoin.qm_mulliken_spins])
+        chg, chgpass = extract_int(Chgs, 0.3, 1.0, label="charge")
+        spn, spnpass = extract_int(abs(SpnZs), 0.3, 1.0, label="spin-z")
+        nproton = sum([Elements.index(i) for i in m1g.elem])
+        nelectron = nproton + chg
+        # If the sanity checks fail, then do not extract the spectator atoms
+        # and simply return a list of all the atoms at the end.
+        do_extract = True
+        if ((nelectron-spn)//2)*2 != (nelectron-spn):
+            print("\x1b[91mThe number of electrons (%i; charge %i) is inconsistent with the spin-z (%i)\x1b[0m" % (nelectron, chg, spn))
+            do_extract = False
+            break
+        if (not chgpass or not spnpass):
+            print("\x1b[91mCannot determine a consistent set of spins/charges after extracting spectators\x1b[0m")
+            do_extract = False
+            break
+        extract_groups.append(np.array(atom_group))
+        extract_charges.append(chg)
+        extract_mults.append(abs(spn)+1)
+    if do_extract:
+        message = "Initial Reaction : " + ' ; '.join(strrxns)
+        if n_spectator_atoms > 0:
+            # I know it's supposed to be spelled 'spectator', but it's fun to say 'speculator' :)
+            message += " ; Speculators (removed) : \x1b[91m%s\x1b[0m" % (' + '.join(['%s%s' % (str(j) if j>1 else '', i) for i, j in list(Counter(spectator_formulas).items())]))
+        print(message)
+        return list(zip(extract_groups, extract_charges, extract_mults))
+    else:
+        print("Unable to split reaction pathway into groups")
+        return list(zip([np.arange(m1.na)], [m1.charge], [m1.mult]))
 
 def equal(m1, m2):
-        """
-        To see whether the two Molecule objects have the same geometry
+    """
+    To see whether the two Molecule objects have the same geometry
 
-        Parameters
-        ----------
-        m1, m2: Molecule Object
+    Parameters
+    ----------
+    m1, m2: Molecule Object
 
-        Return
-        ----------
-        True or False
-        """
-        return TopEqual(m1, m2) if True else MolEqual(m1, m2)
+    Return
+    ----------
+    True or False
+    """
+    return TopEqual(m1, m2) if True else MolEqual(m1, m2)
 
 def qc_to_geo(qc_M, comment='', b2a=False):
     """
@@ -72,6 +198,7 @@ def qc_to_geo(qc_M, comment='', b2a=False):
     ----------
     geo_M : geomeTRIC molecule object
     """
+
     geo_M = Molecule()
     geo_M.comms = [comment]
     geo_M.elem = list(qc_M.symbols)
@@ -92,92 +219,6 @@ def resubmit_all(client):
         client.modify_tasks('restart', errors[i].base_result)
     print ('All the failed calculations were submitted again.')
 
-def compare_rxns(rxn1, rxn2):
-    """
-    Checking to see whether two reaction pathways are the same.
-
-    parameters
-    ----------
-    rxn1, rxn2: Molecule object
-        Molecule objects consist of reactant, TS, and product.
-
-    Return
-    ----------
-    "True" if they are identical.  
-    "False" if they are different.
-    """
-    # TODO: this needs to be generalized.. 
-    r1=rxn1[0]
-    t1=rxn1[1]
-    p1=rxn1[2]
-    r2=rxn2[0]
-    t2=rxn2[1]
-    p2=rxn2[2]
-    if equal(r1, r2):
-        if equal(p1, p2):
-            if equal(t1, t2):
-                return True
-
-    elif equal(r1, p1):
-        if equal(p1, r2):
-            if equal(t1, t2):
-                return True
-    else:
-        return False
-
-def connect_rxns(M_info):
-    """
-    This function will connect unit reactions.
-    
-    Parameters
-    ----------
-    M_info : OrderedDict
-        OrderedDict with frames in key and Molcule objects (reactant, TS, product) 
-
-    Return
-    ----------
-    rxns : OrderedDict
-        Molecule objects consist of unit reactions 
-    """
-    rxns = OrderedDict()  
-    connect = 0
-    for i, (k1, v1) in enumerate(M_info.items()):
-        for j, (k2, v2) in enumerate(M_info.items()):
-            if j > i:
-                if len(v1) == 3 and len(v2) == 3:
-                    if compare_rxns(v1, v2):
-                        continue    
-                reac1 = v1[0]
-                #num1 = str(k1[0])
-                prod1 = v1[-1]
-                #num2 = str(k1[-1])
-                reac2 = v2[0]
-                #num3 = str(k2[0])
-                prod2 = v2[-1]
-                #num4 = str(v2[-1])
-                frm = k1 + k2
-                if equal(reac1, reac2):
-                    print(k1, k2,'reac1 reac2 same')
-                    rxns[frm]=v1[::-1] + v2
-                    connect += 1
-                elif equal(reac1, prod2):
-                    print(k1, k2, 'reac1 prod2 same')
-                    rxns[frm]=v1[::-1] + v2[::-1]
-                    connect += 1
-                elif equal(prod1, reac2):
-                    print(k1, k2, 'prod1 reac2 same')
-                    rxns[frm]=v1 + v2
-                    connect += 1
-                elif equal(prod1, prod2):
-                    print(k1, k2, 'prod1 prod2 same')
-                    rxns[frm]=v1 + v2[::-1]
-                    connect += 1
-
-    if connect == 0:
-        return rxns
-    else: 
-        return connect_rxns(rxns)        
- 
 class User(object):
     """
     This class helps users to connect to the server.
@@ -202,29 +243,30 @@ class User(object):
         client : client object 
             With the client object, users can create/access dataset
         """
-        info = os.popen('qcfractal-server info').readlines()
-        host = socket.gethostname()
-        for line in info:
-            if 'port' in line:
-                port = int(line.strip().split(' ')[-1])
-        try:
-            client = ptl.FractalClient('%s:%i'%(host, port), verify = False, username = self.user, password = self.password)
-        except:
-            client = None
-            for i in range(3):
-                try:
-                    subprocess.run('qcfractal-server start &', shell = True, stdout = subprocess.DEVNULL)
-                    time.sleep(3.0)
-                    client = ptl.FractalClient('%s:%i'%(host, port), verify = False, username = self.user, password = self.password)
-                except:
-                    if client != None:
-                        break 
-                    else:
-                        continue
-            print("Server is running") 
+        client = None
+        #info = os.popen('qcfractal-server info').readlines()
+        #for line in info:
+        #    if 'port' in line:
+        #        port = int(line.strip().split(' ')[-1])
+        #host = socket.gethostname()
+        client = ptl.PortalClient('http://%s:%i'%('localhost', 7777), username = self.user, password = self.password, verify = False)
+        #try:
+        #    client = ptl.PortalClient('%s:%i'%('localhost', port), username = self.user, password = self.password, verify = False)
+        #except:
+        #    client = ptl.PortalClient('%s:%i'%(host, port), username = self.user, password = self.password, verify = False)
 
-            if client == None:
-                raise QCFractalError("Client could not be claimed properly. Try to restart the qcfractal-server.")
+          #for i in range(3):
+          #    try:
+          #        subprocess.run('qcfractal-server start &', shell = True, stdout = subprocess.DEVNULL)
+          #        time.sleep(3.0)
+          #        client = ptl.PortalClient('%s:%i'%(host, port), username = self.user, password = self.password, verify = False)
+          #    except:
+          #        if client != None:
+          #            break 
+          #        else:
+          #            continue
+        if client is None:
+            raise QCFractalError("Client could not be claimed properly. Make sure to run the server \'qcfractal-server start\'.")
  
         print("Client is ready")
        
@@ -264,9 +306,9 @@ class Dataset(object):
         if command == 'make':
             try:
                 if self.ds_type == 'OptimizationDataset':
-                    new_ds = ptl.collections.OptimizationDataset(name = self.name, client = self.client)            
+                    new_ds = ptl.add_dataset.OptimizationDataset(name = self.name, client = self.client)            
                 elif self.ds_type == 'Dataset':
-                    new_ds = ptl.collections.Dataset(name = self.name, client = self.client)    
+                    new_ds = ptl.add_collections.Dataset(name = self.name, client = self.client)    
                 new_ds.save()        
                 ds = self.client.get_collection(self.ds_type, name = self.name)
             except:
@@ -301,10 +343,15 @@ class Workflow(object):
     """
     This class perfroms the automated reaction refinement workflow using QCArchive Infrastructure
     """
-    def __init__(self, client=False, ds=None, spec_name=None):
+    def __init__(self, initial, charge=0, mult=1, client=False, ds=None, spec_name=None):
         """
         Parameters
         ----------
+        initial : string
+            MD trajectory (xyz file name) that needs to be refined
+
+        charge, mult: int
+            Molecular charge and multiplicity
         ds : Dataset object
             Dataset object created from the Dataset class
 
@@ -313,7 +360,9 @@ class Workflow(object):
 
         client : client object
         """
-        
+        self.initial = Molecule(initial)
+        self.charge = charge
+        self.mult = mult
         self.client = client
         self.ds = ds
         self.spec_name = spec_name
@@ -330,85 +379,20 @@ class Workflow(object):
                 self.client.modify_tasks('restart', opts[i].id)
         print ("%i failed jobs in \'%s\' dataset with \'%s\' specfication have been submitted again." %(num, self.ds.name, self.spec_name))
 
-    
-   # def energy(self, method=None, basis=None, compute=False):
-   #     """
-   #     This function converts xyz file to QCAI molecule objects and creates single point energy calculation jobs.          
-
-   #     Parameters
-   #     -----------
-   #     method, basis : string
-   #         Electron structure method and basis sets
-
-   #     compute : boolean
-   #         'compute = False' will only save the molecules in the given dataset and specfication. 'compute = True' will submit the jobs to server.
-
-   #     spec_overwrite : boolean
-   #         'spec_overwrite = True' will overwrite the spec if the same name spec exists
-
-   #     Return
-   #     ----------
-   #     ds_sp : dataset object
-   #         print(ds_opt.status(collapse = False)) will show the dataset's status 
-
-   #     """  
-   #     ds_sp = self.ds 
-   #     M = self.M 
-   #     key = ptl.models.KeywordSet(values = {'maxiter':1000,
-   #                                          'e_convergence': 1e-6,
-   #                                          'guess' : 'sad',
-   #                                          'scf_type' : 'df'})        
-   #     ds_sp.add_keywords(self.spec_name, 'psi4', key)
-
-   #     spec = {
-   #             'program' : 'psi4',
-   #             'method' : method,
-   #             'basis' : basis,
-   #             'keywords': self.spec_name,
-   #             'tag' : None}
-   #     frames = list(range(len(M)))
-
-   #     for frm in frames:               
-   #         mol = qcel.models.Molecule(**{'symbols': M[frm].elem, 'geometry': np.array(M[frm].xyzs)/0.529177210, 'molecular_charge' : self.charge, 'molecular_multiplicity' : self.mult}) 
-   #         #if len(M[frm].comms[0]) == 0 or len(M[frm].comms[0]) > 10:
-   #         #    raise RuntimeError('Please provide a short name, less than 10 letters, of the molecule in comment line in the input xyz file (between number of atoms and coordinates).')
-   #         try:
-   #             ds_sp.add_entry('%s_%s' %(formula(M[frm])+str(frm)), mol)
-   #         except:
-   #             pass 
-   #     ds_sp.save()
-   #     if compute:
-   #         ds_sp.compute(**spec)
-   #         print ("Single point energy calculations in %s have been submitted. Run the QCFractal manager to carry the calculations." %(ds_sp.name))
-   #     return ds_sp 
-        
-
-    def dsoptimize(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31g(d)', subsample=10, maxiter=100, coordsys='tric', compute=False, spec_overwrite=True): 
+    def dsoptimize(self, method='b3lyp', basis='6-31g(d)', subsample=10, maxiter=100, coordsys='tric'): 
         """
         This function converts the xyz file to QCAI molecule objects and sets up optimization jobs.          
 
         Parameters
         -----------
-        initial : string
-            MD trajectory (xyz file name) that needs to be refined
-    
-        charge, mult : int
-            Molecular charge and multiplicity
-            
         method, basis : string
             Electron structure method and basis sets
 
         subsample : int
             Frame interval for subsampling trajectories
 
-        compute : boolean
-            'compute = False' will only save the molecules in the given dataset and specfication. 'compute = True' will submit the jobs to server.
-
         maxiter : int
             maximum scf iteration number
-
-        spec_overwrite : boolean
-            'spec_overwrite = True' will overwrite the spec if the same name spec exists
 
         Return
         ----------
@@ -419,23 +403,23 @@ class Workflow(object):
             Molecular mass
         """  
 
-        M = Molecule(initial) 
+        M = self.initial
         ds_opt = self.ds
-        key = [ptl.models.KeywordSet(values = {'maxiter':maxiter})]        
+        key = [ptl.models.KeywordSet(values = {'maxiter':maxiter, 'properties':'mulliken_charges'})]        
         key_id = self.client.add_keywords(key)[0]
         optimize = {
             'name' : self.spec_name,
             'optimization_spec' : {'program': 'geometric', 'keywords': {'coordsys': coordsys}},
             'qc_spec' : {
+                    'program': 'psi4',
                     'driver': 'gradient', 
                     'method': method, 
                     'basis': basis,
-                    'keywords': key_id,
-                    'program': 'psi4'
+                    'keywords': key_id
                      }
                        }
         try:
-            ds_opt.add_specification(**optimize, overwrite = spec_overwrite)
+            ds_opt.add_specification(**optimize, overwrite = True)
             print("Specification %s was added into %s" %(self.spec_name, ds_opt))
         except:
             print("Specification %s is either already added or it has key values that are not allowed" %self.spec_name)
@@ -446,29 +430,30 @@ class Workflow(object):
         if (len(M)-1) not in frames:
             frames.append(len(M)-1)
         for frm in frames:               
-            mol = qcel.models.Molecule(**{'symbols': M[frm].elem, 'geometry': np.array(M[frm].xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
+            print('1')
+            mol = qcel.models.Molecule(**{'symbols': M[frm].elem, 'geometry': np.array(M[frm].xyzs)/bohr2ang,  'molecular_charge' : self.charge, 'molecular_multiplicity' : self.mult}) 
+            print('2')
             try:
-                ds_opt.add_entry('%s_%i' %(initial.split('.')[0], frm), mol, save = False)
-            except:
-                pass 
-        ds_opt.save()
-        if compute:
-            ds_opt.compute(self.spec_name)
-            print ("Calculations in \'%s\' with \'%s\' specification have been submitted. Run the QCFractal manager to carry the calculations." %(ds_opt.name, self.spec_name))
-        return ds_opt, mass
-
     
-    def smoothing(self, initial):
+                print('3')
+                ds_opt.add_entries('%s_%i' %(self.initial.split('.')[0], frm), mol, save = False)
+            except:
+                print('4')
+                pass 
+
+        print('Optimization dataset saved')
+        ds_opt.save()
+        ds_opt.compute(self.spec_name)
+        print ("Calculations in \'%s\' with \'%s\' specification have been submitted. Run the QCFractal manager to carry the calculations." %(ds_opt.name, self.spec_name))
+        return ds_opt, mass
+    
+    def smoothing(self):
         """
         Once the optimization is done, smoothing function will detect reactions and smooth them for the NEB calculation. 
-
         Parameters
         -----------
-        initial : string
-            MD trajectory (xyz file name) that was refined with the dataset
- 
         """
-        M = Molecule(initial)
+        M = self.initial
         opt = self.ds.status(self.spec_name, collapse = False)
         opts = self.ds.df[self.spec_name].tolist()
         stats = [opt.status for opt in opts] 
@@ -485,7 +470,9 @@ class Workflow(object):
                 err += 1
                 continue
             record = self.ds.get_record(name, self.spec_name)
+    
             init_M = record.get_initial_molecule()
+            print("extraaa", record.keywords)
             geo_M = qc_to_geo(init_M, b2a = True) 
             input_check = np.allclose(geo_M.xyzs[0], M[frm].xyzs[0])
             if not input_check:
@@ -553,11 +540,11 @@ class Workflow(object):
 
             for j in range(len(qc_mol_Traj1)-1):
                 if geo_mol_Traj == None:
-                    geo_mol_Traj = qc_to_geo(qc_mol_Traj1[-1], b2a = True)
-                geo_mol_Traj += qc_to_geo(qc_mol_Traj1[::-1][j+1], b2a = True) 
+                    geo_mol_Traj = qc_to_geo(qc_mol_Traj1[-1], b2a = True).without('qm_mulliken_charges', 'qm_mulliken_spins')
+                geo_mol_Traj += qc_to_geo(qc_mol_Traj1[::-1][j+1], b2a = True).without('qm_mulliken_charges', 'qm_mulliken_spins') 
             geo_mol_Traj += M[a:b]
             for k in range(len(qc_mol_Traj2)):
-                geo_mol_Traj += qc_to_geo(qc_mol_Traj2[k], b2a = True)    
+                geo_mol_Traj += qc_to_geo(qc_mol_Traj2[k], b2a = True).without('qm_mulliken_charges', 'qm_mulliken_spins')    
             
             fnum =  str(a) + '-' + str(b)
             frames.append([a,b])
@@ -566,9 +553,16 @@ class Workflow(object):
             
             NEB_path = path + fnum
             os.mkdir(NEB_path)
-            geo_mol_Traj.write(os.path.join(path + fnum,'connected.xyz'))
-            equal_spc = EqualSpacing(geo_mol_Traj, dx = 0.05) 
-            equal_spc.write(os.path.join(path + fnum, 'spaced.xyz'))
+            
+            reacting_groups = find_reacting_groups(OptMols[a][-1], OptMols[b][-1]) 
+            for rgrp, (ratoms, rcharge, rmult) in enumerate(reacting_groups):
+                Joined = geo_mol_Traj.atom_select(ratoms)
+                Spaced = EqualSpacing(geo_mol_Traj, dx = 0.05)
+                pathname = path + fnum
+                Joined.write(os.path.join(pathname, 'connected.xyz'))
+                Spaced.write(os.path.join(pathname, 'spaced.xyz'))
+        
+
             geo_mol_Traj = None 
             command ='Nebterpolate.py --morse 1e-2 --repulsive --allpairs --anchor 2 %s/spaced.xyz %s/NEB_ready.xyz &> %s/interpolate.log' %(NEB_path, NEB_path, NEB_path)
             log = open('%s/interpolate.log' %NEB_path, 'a')
@@ -579,18 +573,12 @@ class Workflow(object):
         return neb_inputs, frames
         
 
-    def neb(self, initial, charge=0, mult=1, method='b3lyp', basis='6-31+g(d,p)', images=21, coordsys='cart', ew = False, nebk = 1, avgg=0.025, maxg=0.05, guessk=0.01, guessw=0.5, tmpdir=None):
+    def neb(self, method='b3lyp', basis='6-31+g(d,p)', images=21, coordsys='cart', ew = False, nebk = 1, avgg=0.025, maxg=0.05, guessk=0.01, guessw=0.5, tmpdir=None):
         """
         This function will run NEB calculations to locate rough transition state structures.          
 
         Parameters
         -----------
-        initial : str
-            Name of the neb ready xyz file.
-        
-        charge, mult : int
-            Molecular charge and multiplicity
-
         method, basis : string
             Electron structure method and basis sets
 
@@ -624,10 +612,10 @@ class Workflow(object):
         it will write each iterated chains in .tmp directory and final transition state geometries.
 
         """  
-        band = Molecule(initial) 
+        band = self.initial 
         #inp = '.'.join(initial.split('.')[:-1])
         
-        qcel_mol = qcel.models.Molecule(**{'symbols': band.elem, 'geometry': np.array(band[0].xyzs)/bohr2ang,  'molecular_charge' : charge, 'molecular_multiplicity' : mult}) 
+        qcel_mol = qcel.models.Molecule(**{'symbols': band.elem, 'geometry': np.array(band[0].xyzs)/bohr2ang,  'molecular_charge' : self.charge, 'molecular_multiplicity' : self.mult}) 
 
         neb_input = {
             'keywords' : {
@@ -725,7 +713,6 @@ class Workflow(object):
                         'method': method,
                         'basis': basis
                         }
-                    
                     },
                 'initial_molecule':qcel_mol
                 }
@@ -889,8 +876,8 @@ def main():
     client = User(user, password).server()
     
     ds = Dataset(dataset, client).setting('make')
-    wf = Workflow(ds=ds, client=client, spec_name=spec_name)
-    ds, Mmass =wf.dsoptimize(initial=initial, charge=charge, mult=mult, method=optmethod, maxiter=maxiter,basis=optbasis, subsample=subsample, coordsys=optcrdsys, compute = True)
+    wf = Workflow(initial=initial, charge=charge, mult=mult, ds=ds, client=client, spec_name=spec_name)
+    ds, Mmass =wf.dsoptimize(method=optmethod, maxiter=maxiter,basis=optbasis, subsample=subsample, coordsys=optcrdsys)
     
     cycle = 0
     while True: 
@@ -938,7 +925,7 @@ def main():
 
         cycle += 1
 
-    smoothed, frames = wf.smoothing(initial=initial)
+    smoothed, frames = wf.smoothing()
     print('frames', frames)
     time.sleep(10)
     neb_num = len(smoothed)
@@ -955,7 +942,7 @@ def main():
                 break 
             elif smoothing_cycle > 1000:
                 f = open(inp + '.error','w')
-                f.write('Smoothing procedure error. It probably just copied the input file as result. Check the .log file.')
+                f.write('Smoothing procedure error. It probably just copied the input file to generate result. Check the .log file.')
                 break
             else:
                 smoothing_cycle += 1
@@ -967,24 +954,20 @@ def main():
         tmp_name = inp + '.tmp'
         guess_ts_list.append(ts_name)
         tmp_list.append(tmp_name)
-    #E_info = OrderedDict() #Energy info 
+
     M_info = OrderedDict() #Molecule info
     for i, ts in enumerate(guess_ts_list):
         if not os.path.exists(ts): #Sometimes the smoothing function won't be able to smooth a given rxn path. If there are paths that were not smoothed, it will just skip them.
             continue
         inp = '~/' + '/'.join(('.'.join(tmp_list[i].split('.')[:-1]) + '.xyz').split('/')[-3:-1])
-
         tmp_dir = '/'.join(tmp_list[i].split('/')[:-1])
+
+        # Optimizing TS structure, geomeTRIC Molecule object has qm_energies attribute. 
         M_qc_ts, M_geo_ts, E_ts= wf.optimize(ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, ts=True)
         M_geo_ts.write(os.path.join(tmp_dir,'ts.xyz'))
 
         wf.irc(initial=M_geo_ts, charge=charge, mult=mult, method=tsmethod, basis=tsbasis, coordsys='cart', trust=trust, tmpdir=tmp_dir) 
 
-        #irc_results = ['forward.xyz','backward.xyz','IRC_%.2f.xyz'%trust]
-
-        #for f in irc_results:
-        #    shutil.move(f, tmp_dir+'/')
-       
         M = Molecule(os.path.join(tmp_dir, 'IRC_%.2f.xyz'%trust))
         reac = M[0]
         prod = M[-1]
@@ -994,27 +977,29 @@ def main():
         M_geo_prod.write(os.path.join(tmp_dir, 'product.xyz'))
         
         frame = str(frames[i][0]) + '-' + str(frames[i][-1])
-        #E_info[frame]=[E_reac, E_ts, E_prod]
-        M_info[frame]=M_geo_reac + M_geo_ts + M_geo_prod
+       
+        #Saving molecule objects 
+        M_info[frame]=[M_geo_reac, M_geo_ts, M_geo_prod]
         
-        x = ['Reactant', 'Transition', 'Product']
-        y = [0, (E_ts - E_reac)*au2kcal, (E_prod-E_reac)*au2kcal]
-        fig, ax = plt.subplots()
-        ax.set_title('Electronic Energy Differences of %s refinement result' %inp, size = 12)
-        ax.plot(x, y, marker = '_', markersize = 50, linestyle='dotted')
-        ax.set_ylabel('Energy (kcal/mol)', size = 12)
-        ax.text(0.5, y[1], 'Ea=' + str(np.round(y[1], 1)) + 'kcal/mol', size = 12)
-        ax.text(1.5, y[-1], 'Erxn=' + str(np.round(y[-1], 1)) + 'kcal/mol', size = 12)
-        fig.savefig(os.path.join(tmp_dir,'result.png')) 
     print("All the detected reactions were optimized.")
-    #if analyze:
+
+    if analyze:
+    
+        from .connect import connect_rxns 
+
+        print ("Unit reactions will be connected to generate uniqe pathways.")
+
+        cwd = os.getcwd()
+        unique_rxns = connect_rxns(M_info)
+        for i, (k, v) in enumerate(unique_rxns.items()):
+            v.write(os.path.join(cwd,"reaction_%i" %i))
+
   #  start_frm = min(frames[0]) 
   #  end_frm = max(frames[-1])
   #  print(start_frm, end_frm)
   #  print(M_info)
   #  connected = connect_rxns(M_info)
   #  print(connected)
-  #  cwd = os.getcwd()
   #  for k, v in connected.items():
   #      v.write(os.path.join(cwd,'%s.xyz' %k))
     

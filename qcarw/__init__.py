@@ -7,5 +7,6 @@ from . import smooth
 from . import params
 from . import molecule
 from . import constant
+from . import connect
 from . import _version
 __version__ = _version.get_versions()['version']

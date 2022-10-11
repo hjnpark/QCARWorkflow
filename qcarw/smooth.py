@@ -27,8 +27,8 @@ def main():
     client = User(user, password).server()
     
     ds = Dataset(dataset, client).setting('load')
-    wf = Workflow(client=client, ds=ds, spec_name=spec_name)
-    smoothed = wf.smoothing(filename)    
+    wf = Workflow(initial=filename, client=client, ds=ds, spec_name=spec_name)
+    smoothed = wf.smoothing()    
 
     print("Smoothing procedure is done. %i number of reactions were detected." %len(smoothed))
 
