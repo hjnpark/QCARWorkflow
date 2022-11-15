@@ -430,16 +430,12 @@ class Workflow(object):
         if (len(M)-1) not in frames:
             frames.append(len(M)-1)
         for frm in frames:               
-            print('1')
-            mol = qcel.models.Molecule(**{'symbols': M[frm].elem, 'geometry': np.array(M[frm].xyzs)/bohr2ang,  'molecular_charge' : self.charge, 'molecular_multiplicity' : self.mult}) 
-            print('2')
+            mol = qcel.models.Molecule(**{'symbols': M[frm].elem, 'geometry': np.array(M[frm].xyzs)/bohr2ang,  'molecular_charge' : self.charge, 'molecular_multiplicity' : self.mult})
             try:
     
-                print('3')
                 ds_opt.add_entries('%s_%i' %(self.initial.split('.')[0], frm), mol, save = False)
             except:
-                print('4')
-                pass 
+                pass
 
         print('Optimization dataset saved')
         ds_opt.save()
